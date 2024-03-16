@@ -8,9 +8,9 @@ const Charting = () => {
   useEffect(() => {
     if (!chartContainerRef.current) return;
     const chart = createChart(chartContainerRef.current, {
-      width: 700,
+      width: 600,
       height: 300,
-      autoSize: false,
+      autoSize: true,
       rightPriceScale: {
         mode: PriceScaleMode.Normal,
         autoScale: false,
@@ -25,13 +25,13 @@ const Charting = () => {
 
     const lineSeries = chart.addAreaSeries({
       topColor: "#5bb450",
-      bottomColor: "rgba(193,218,228, 0.04)",
-      lineColor: "#000000",
-      lineWidth: 2,
+      bottomColor: "#ffffe0",
+      lineColor: "#123524",
+      lineWidth: 1,
     });
 
     lineSeries.setData([
-      { time: "2019-04-11", value: 0 },
+      { time: "2019-04-11", value: 93 },
       { time: "2019-04-12", value: 96.63 },
       { time: "2019-04-13", value: 76.64 },
       { time: "2019-04-14", value: 81.89 },
@@ -44,7 +44,10 @@ const Charting = () => {
     ]);
 
     const barSeries = chart.addHistogramSeries({
-      color: "rgba(193,218,228, 0.6)",
+      color: "#5A5A5A",
+      priceFormat: {
+        type: "volume",
+      },
     });
 
     barSeries.setData([
@@ -64,14 +67,16 @@ const Charting = () => {
   return (
     <>
       <div className="chart-container">
-        <div className="chart" ref={chartContainerRef}></div>
-        <div className="legend">
-          <div className="legend-item">Area Chart (Line Series)</div>
-          <div className="legend-item">Bar Chart</div>
-        </div>
+        <div
+          className="chart border-2 border-solid"
+          ref={chartContainerRef}
+        ></div>
+        <div className="legend"></div>
       </div>
     </>
   );
 };
 
 export default Charting;
+
+// https://tradingview.github.io/lightweight-charts/tutorials/how_to/price-and-volume
