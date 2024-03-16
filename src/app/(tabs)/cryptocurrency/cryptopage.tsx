@@ -3,6 +3,7 @@ import { useCryptoStream } from "@/app/_components/hooks/useCryptoStream";
 import { nameToSymbol } from "@/app/_components/utils/cryptomappings";
 import React from "react";
 import StreamComponent from "./streamcomponent";
+import Charting from "./charting";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
@@ -19,7 +20,9 @@ const CryptoPage = ({ params }: any) => {
       >
         <StreamComponent params={symbolWithUSDT} name={name} />
       </div>
-      <div>weqe</div>
+      <div>
+        <Charting />
+      </div>
     </div>
   );
 };
