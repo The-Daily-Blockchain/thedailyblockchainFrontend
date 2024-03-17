@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 const Charting = () => {
   const chartContainerRef = useRef(null);
   // no internet
+  //need variables
   useEffect(() => {
     if (!chartContainerRef.current) return;
     const chart = createChart(chartContainerRef.current, {
