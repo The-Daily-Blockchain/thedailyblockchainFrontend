@@ -80,18 +80,6 @@ const Charting = () => {
       },
     });
 
-    // barSeries.setData([
-    //   { time: "2019-04-11", value: 30 },
-    //   { time: "2019-04-12", value: 20 },
-    //   { time: "2019-04-13", value: 25 },
-    //   { time: "2019-04-14", value: 35 },
-    //   { time: "2019-04-15", value: 28 },
-    //   { time: "2019-04-16", value: 30 },
-    //   { time: "2019-04-17", value: 20 },
-    //   { time: "2019-04-18", value: 25 },
-    //   { time: "2019-04-19", value: 35 },
-    //   { time: "2019-04-20", value: 2800 },
-    // ]);
     const data = [
       { time: "2019-04-11", value: 30 },
       { time: "2019-04-12", value: 20 },
@@ -102,7 +90,7 @@ const Charting = () => {
       { time: "2019-04-17", value: 20 },
       { time: "2019-04-18", value: 25 },
       { time: "2019-04-19", value: 35 },
-      { time: "2019-04-20", value: 40 },
+      { time: "2019-04-20", value: 40, key: 100 },
     ];
 
     const colorData = data.map((item, index) => {
@@ -132,7 +120,7 @@ const Charting = () => {
       setTooltipData(null);
     };
   }, []);
-  console.log("tooltipdata", tooltipData);
+
   return (
     <>
       <div className="chart-container relative">

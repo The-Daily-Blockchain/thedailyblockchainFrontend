@@ -1,7 +1,4 @@
-import useSWR from "swr";
-import { fetcher } from "../utils/fetcher";
 import { useEffect, useRef } from "react";
-import { useDebouncedValue } from "../utils/usedebouncevalue";
 import useCachedDynamicData from "./usecacheddynamicdata";
 
 export const useMarketData = (symbol: any) => {
