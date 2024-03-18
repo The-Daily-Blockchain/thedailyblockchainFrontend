@@ -33,25 +33,28 @@ const Charting = ({ symbol }: Props) => {
   const startTime = currentDate.getTime() - 7 * 24 * 60 * 60 * 1000;
   const interval = "1d";
 
-  const { data: chartData } = useChartData(params, startTime, interval);
-  console.log(chartContainerRef);
-  useEffect(() => {
-    if (Array.isArray(chartData)) {
-      const formatted = chartData.map((item: string[]) => ({
-        time: formatChartingDate(item[0]),
-        price: parseFloat(item[1]),
-        volume: parseFloat(item[5]),
-      }));
-      setFormattedData(formatted);
-      setLoading(false);
-    } else {
-      setFormattedData(null);
-      setLoading(false);
-    }
-  }, [chartData]);
+  // useEffect(() => {
+  //   if (Array.isArray(chartData)) {
+  //     const formatted = chartData.map((item: string[]) => ({
+  //       time: formatChartingDate(item[0]),
+  //       price: parseFloat(item[1]),
+  //       volume: parseFloat(item[5]),
+  //     }));
+  //     console.log(formatted);
+  //     setFormattedData(formatted);
+  //     setLoading(false);
+  //   } else {
+  //     setFormattedData(null);
+  //     setLoading(false);
+  //   }
+  // }, [chartData]);
 
+  // console.log(formattedData);
   useEffect(() => {
-    if (!formattedData || !chartContainerRef.current) return;
+    if (!chartContainerRef.current) return;
+    const { data: chartData } = useChartData(params, startTime, interval);
+    console.log(chartData);
+
     const chart = createChart(chartContainerRef.current, {
       width: 600,
       height: 300,
@@ -85,12 +88,24 @@ const Charting = ({ symbol }: Props) => {
     });
 
     // lineSeries.setData(formatPrice);
-    lineSeries.setData(
-      formattedData?.map((entry) => ({
-        time: entry.time,
-        value: entry.price,
-      }))
-    );
+    const formatPrice = formattedData?.map((entry) => ({
+      time: entry.time,
+      value: entry.price,
+    }));
+    console.log("formatPrice:", formatPrice);
+
+    const data = [
+      { time: "2024-03-18", value: 25 },
+      { time: "2024-03-19", value: 30 },
+      { time: "2024-03-20", value: 28 },
+      { time: "2024-03-21", value: 32 },
+      { time: "2024-03-22", value: 35 },
+      { time: "2024-03-23", value: 40 },
+      { time: "2024-03-24", value: 38 },
+      { time: "2024-03-25", value: 42 },
+    ];
+
+    lineSeries.setData(data);
 
     seriesRef.current = lineSeries;
 
@@ -116,10 +131,11 @@ const Charting = ({ symbol }: Props) => {
       time: entry.time,
       value: entry.volume,
     }));
+    console.log();
 
-    const colorData = formatVolume.map((item, index) => {
+    const colorData = data.map((item, index) => {
       if (index === 0) return { ...item, color: "#000000" }; // Initial color
-      const prevValue = formatVolume[index - 1].value;
+      const prevValue = data[index - 1].value;
       const color = item.value - prevValue >= 0 ? "#5bb450" : "#ff0000"; // Green for positive, red for negative
       return { ...item, color };
     });
@@ -143,7 +159,7 @@ const Charting = ({ symbol }: Props) => {
       }
       setTooltipData(null);
     };
-  }, [chartData, formattedData]);
+  }, []);
 
   return (
     <>
