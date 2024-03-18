@@ -34,7 +34,7 @@ const Charting = ({ symbol }: Props) => {
   const interval = "1d";
 
   const { data: chartData } = useChartData(params, startTime, interval);
-
+  console.log(chartContainerRef);
   useEffect(() => {
     if (Array.isArray(chartData)) {
       const formatted = chartData.map((item: string[]) => ({
@@ -52,103 +52,98 @@ const Charting = ({ symbol }: Props) => {
 
   useEffect(() => {
     if (!formattedData || !chartContainerRef.current) return;
-    if (!loading) {
-      const chart =
-        chartRef.current ??
-        createChart(chartContainerRef.current, {
-          width: 600,
-          height: 300,
-          autoSize: true,
-          rightPriceScale: {
-            mode: PriceScaleMode.Normal,
-            autoScale: false,
-            invertScale: false,
-            alignLabels: false,
-            scaleMargins: {
-              top: 0.3,
-              bottom: 0,
-            },
-          },
-        });
-      chartRef.current = chart;
-
-      const lineSeries =
-        seriesRef.current ??
-        chart.addAreaSeries({
-          topColor: "#5bb450",
-          bottomColor: "#ffffe0",
-          lineColor: "#123524",
-          lineWidth: 1,
-          crosshairMarkerVisible: false,
-        });
-      lineSeries.priceScale().applyOptions({
+    const chart = createChart(chartContainerRef.current, {
+      width: 600,
+      height: 300,
+      autoSize: true,
+      rightPriceScale: {
+        mode: PriceScaleMode.Normal,
+        autoScale: false,
+        invertScale: false,
+        alignLabels: false,
         scaleMargins: {
-          top: 0.1, // highest point of the series will be 10% away from the top
-          bottom: 0.4, // lowest point will be 40% away from the bottom
-        },
-      });
-
-      // lineSeries.setData(formatPrice);
-      lineSeries.setData(
-        formattedData?.map((entry) => ({
-          time: entry.time,
-          value: entry.price,
-        }))
-      );
-
-      seriesRef.current = lineSeries;
-
-      const barSeries = chart.addHistogramSeries({
-        color: "#5A5A5A",
-        priceFormat: {
-          type: "volume",
-        },
-        priceScaleId: "",
-      });
-
-      secondSeries.current = barSeries;
-
-      barSeries.priceScale().applyOptions({
-        // set the positioning of the volume series
-        scaleMargins: {
-          top: 0.7, // highest point of the series will be 70% away from the top
+          top: 0.3,
           bottom: 0,
         },
-      });
+      },
+    });
+    chartRef.current = chart;
 
-      const formatVolume = formattedData?.map((entry) => ({
+    const lineSeries = chart.addAreaSeries({
+      topColor: "#5bb450",
+      bottomColor: "#ffffe0",
+      lineColor: "#123524",
+      lineWidth: 1,
+      crosshairMarkerVisible: false,
+    });
+
+    lineSeries.priceScale().applyOptions({
+      scaleMargins: {
+        top: 0.1, // highest point of the series will be 10% away from the top
+        bottom: 0.4, // lowest point will be 40% away from the bottom
+      },
+    });
+
+    // lineSeries.setData(formatPrice);
+    lineSeries.setData(
+      formattedData?.map((entry) => ({
         time: entry.time,
-        value: entry.volume,
-      }));
+        value: entry.price,
+      }))
+    );
 
-      const colorData = formatVolume.map((item, index) => {
-        if (index === 0) return { ...item, color: "#000000" }; // Initial color
-        const prevValue = formatVolume[index - 1].value;
-        const color = item.value - prevValue >= 0 ? "#5bb450" : "#ff0000"; // Green for positive, red for negative
-        return { ...item, color };
-      });
-      barSeries.setData(colorData);
+    seriesRef.current = lineSeries;
 
-      const updateToolTip = (param: any) => {
-        setTooltipData(param);
-        if (param.point) {
-          const x = param.point.x;
-          const y = param.point.y;
-          setTooltipPosition({ x, y });
-        }
-      };
+    const barSeries = chart.addHistogramSeries({
+      color: "#5A5A5A",
+      priceFormat: {
+        type: "volume",
+      },
+      priceScaleId: "",
+    });
 
-      chartRef.current.subscribeCrosshairMove(updateToolTip);
-      chartRef.current.timeScale().fitContent();
+    secondSeries.current = barSeries;
 
-      return () => {
-        if (chartRef.current) {
-          chartRef.current.unsubscribeCrosshairMove(updateToolTip);
-        }
-        setTooltipData(null);
-      };
-    }
-  }, [chartData, formattedData, loading]);
+    barSeries.priceScale().applyOptions({
+      // set the positioning of the volume series
+      scaleMargins: {
+        top: 0.7, // highest point of the series will be 70% away from the top
+        bottom: 0,
+      },
+    });
+
+    const formatVolume = formattedData?.map((entry) => ({
+      time: entry.time,
+      value: entry.volume,
+    }));
+
+    const colorData = formatVolume.map((item, index) => {
+      if (index === 0) return { ...item, color: "#000000" }; // Initial color
+      const prevValue = formatVolume[index - 1].value;
+      const color = item.value - prevValue >= 0 ? "#5bb450" : "#ff0000"; // Green for positive, red for negative
+      return { ...item, color };
+    });
+    barSeries.setData(colorData);
+
+    const updateToolTip = (param: any) => {
+      setTooltipData(param);
+      if (param.point) {
+        const x = param.point.x;
+        const y = param.point.y;
+        setTooltipPosition({ x, y });
+      }
+    };
+
+    chartRef.current.subscribeCrosshairMove(updateToolTip);
+    chartRef.current.timeScale().fitContent();
+
+    return () => {
+      if (chartRef.current) {
+        chartRef.current.unsubscribeCrosshairMove(updateToolTip);
+      }
+      setTooltipData(null);
+    };
+  }, [chartData, formattedData]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useCachedDynamicData from "./usecacheddynamicdata";
 
 export const useChartData = (symbol: any, startTime: any, interval: any) => {
