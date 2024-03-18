@@ -33,7 +33,7 @@ const Charting = ({ symbol }: Props) => {
   const startTime = currentDate.getTime() - 7 * 24 * 60 * 60 * 1000;
   const interval = "1d";
   const { data: chartData } = useChartData(params, startTime, interval);
-  console.log(chartData);
+  // console.log(chartData);
   // useEffect(() => {
   //   if (Array.isArray(chartData)) {
   //     const formatted = chartData.map((item: string[]) => ({
@@ -87,7 +87,7 @@ const Charting = ({ symbol }: Props) => {
     });
 
     // lineSeries.setData(formatPrice);
-    const formatPrice = formattedData?.map((entry) => ({
+    const formatPrice = chartData?.map((entry: any) => ({
       time: entry.time,
       value: entry.price,
     }));
@@ -130,7 +130,6 @@ const Charting = ({ symbol }: Props) => {
       time: entry.time,
       value: entry.volume,
     }));
-    console.log();
 
     const colorData = data.map((item, index) => {
       if (index === 0) return { ...item, color: "#000000" }; // Initial color
@@ -158,7 +157,7 @@ const Charting = ({ symbol }: Props) => {
       }
       setTooltipData(null);
     };
-  }, []);
+  }, [chartData]);
 
   return (
     <>
