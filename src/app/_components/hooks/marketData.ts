@@ -17,7 +17,5 @@ export const useMarketData = (symbol: any) => {
     }
   }, [data, symbol]);
 
-  console.log(data);
-
   return { data: data };
 };

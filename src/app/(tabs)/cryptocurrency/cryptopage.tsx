@@ -21,7 +21,7 @@ const CryptoPage = ({ params }: any) => {
         <StreamComponent params={symbolWithUSDT} name={name} />
       </div>
       <div>
-        <Charting />
+        <Charting symbol={symbolWithUSDT} />
       </div>
     </div>
   );

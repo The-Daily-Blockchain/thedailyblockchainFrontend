@@ -1,5 +1,3 @@
-// cryptoMappings.ts
-
 export const symbolToName: { [key: string]: string } = {
   btc: "bitcoin",
   eth: "ethereum",

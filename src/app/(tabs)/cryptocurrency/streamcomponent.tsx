@@ -41,7 +41,6 @@ const StreamComponent = ({ params, name }: any) => {
   const { arrowIcon, valueClassName } = useValueArrow(dataStream.w);
   const symbol = dataStream.s?.split("USDT")[0];
   const { data: marketData }: { data: any } = useMarketData(name);
-  console.log(marketData);
   const { imageUrl } = convertSymbolToName(symbol);
 
   useEffect(() => {

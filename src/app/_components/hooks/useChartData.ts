@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import useCachedDynamicData from "./usecacheddynamicdata";
 
-export const useChartData = ({ symbol, startTime, interval }: any) => {
+export const useChartData = (symbol: any, startTime: any, interval: any) => {
   const urls = `/api/graph?symbol=${symbol}&startTime=${startTime}&interval=${interval}`;
 
   const cacheOptions = {
