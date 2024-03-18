@@ -32,7 +32,8 @@ const Charting = ({ symbol }: Props) => {
   const params = symbol.toUpperCase();
   const startTime = currentDate.getTime() - 7 * 24 * 60 * 60 * 1000;
   const interval = "1d";
-
+  const { data: chartData } = useChartData(params, startTime, interval);
+  console.log(chartData);
   // useEffect(() => {
   //   if (Array.isArray(chartData)) {
   //     const formatted = chartData.map((item: string[]) => ({
@@ -52,8 +53,6 @@ const Charting = ({ symbol }: Props) => {
   // console.log(formattedData);
   useEffect(() => {
     if (!chartContainerRef.current) return;
-    const { data: chartData } = useChartData(params, startTime, interval);
-    console.log(chartData);
 
     const chart = createChart(chartContainerRef.current, {
       width: 600,
