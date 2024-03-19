@@ -1,12 +1,4 @@
-"use client";
-import {
-  createChart,
-  IChartApi,
-  ISeriesApi,
-  PriceScaleMode,
-} from "lightweight-charts";
 import { useEffect, useRef, useState } from "react";
-import { Tooltip } from "./tooltip";
 
 import {
   formatChartingDate,
@@ -23,11 +15,14 @@ interface Props {
 const Charting = ({ symbol }: Props) => {
   const [formattedData, setFormattedData] = useState<any[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  // const [startTime, setStartTime] = useState<any>(null);
+  // const [interval, setInterval] = useState<any>(null);
 
-  const currentDate = new Date();
   const params = symbol.toUpperCase();
+  const currentDate = new Date();
   const startTime = currentDate.getTime() - 7 * 24 * 60 * 60 * 1000;
   const interval = "1d";
+  console.log(startTime, interval);
 
   const { data: chartData } = useChartData(params, startTime, interval);
 
@@ -46,8 +41,14 @@ const Charting = ({ symbol }: Props) => {
     }
   }, [chartData]);
 
+  // const handleRangeSelect = (time: any, range: any) => {
+  //   setStartTime(time);
+  //   setInterval(range);
+  // };
+
   return (
     <>
+      {/* onRangeSelect={handleRangeSelect} */}
       <DynamicValues />
       <ChartComponent formattedData={formattedData} loading={loading} />
     </>

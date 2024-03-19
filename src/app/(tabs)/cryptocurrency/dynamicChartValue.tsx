@@ -26,22 +26,39 @@ console.log("5 years ago:", new Date(fiveYearsAgo));
 
 import React, { useState } from "react";
 
-const DynamicValues = () => {
+const DynamicValues = ({ onRangeSelect }: any) => {
   const [startTime, setStartTime] = useState<any>(null);
+  const [interval, setInterval] = useState<any>(null);
 
-  const handleButtonClick = (time: any) => {
+  const handleButtonClick = (time: any, range: any) => {
     setStartTime(time);
+    setInterval(range);
+    // onRangeSelect(time, range);
   };
 
   return (
     <div>
-      <button onClick={() => handleButtonClick(oneDayAgo)}>1 day</button>
-      <button onClick={() => handleButtonClick(sevenDaysAgo)}>7 days</button>
-      <button onClick={() => handleButtonClick(thirtyDaysAgo)}>30 days</button>
-      <button onClick={() => handleButtonClick(sixMonthsAgo)}>6 months</button>
-      <button onClick={() => handleButtonClick(oneYearAgo)}>1 year</button>
-      <button onClick={() => handleButtonClick(fiveYearsAgo)}>5 years</button>
-      {startTime && <p>Selected Data: {startTime}</p>}
+      <button onClick={() => handleButtonClick(oneDayAgo, "5m")}>1 day</button>
+      <button onClick={() => handleButtonClick(sevenDaysAgo, "15m")}>
+        7 days
+      </button>
+      <button onClick={() => handleButtonClick(thirtyDaysAgo, "6h")}>
+        30 days
+      </button>
+      <button onClick={() => handleButtonClick(sixMonthsAgo, "1d")}>
+        6 months
+      </button>
+      <button onClick={() => handleButtonClick(oneYearAgo, "3d")}>
+        1 year
+      </button>
+      <button onClick={() => handleButtonClick(fiveYearsAgo, "1M")}>
+        5 years
+      </button>
+      {startTime && (
+        <p>
+          Selected Data: {startTime} {interval}
+        </p>
+      )}
     </div>
   );
 };
