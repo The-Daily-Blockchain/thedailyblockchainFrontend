@@ -14,6 +14,7 @@ import {
 } from "@/app/_components/utils/formattingData";
 import { useChartData } from "@/app/_components/hooks/useChartData";
 import { ChartComponent } from "./chartComponent";
+import DynamicValues from "./dynamicChartValue";
 
 interface Props {
   symbol: any;
@@ -47,6 +48,7 @@ const Charting = ({ symbol }: Props) => {
 
   return (
     <>
+      <DynamicValues />
       <ChartComponent formattedData={formattedData} loading={loading} />
     </>
   );
