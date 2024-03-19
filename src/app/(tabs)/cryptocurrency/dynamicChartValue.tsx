@@ -1,7 +1,7 @@
 "use client";
 // Define constants for durations in milliseconds
 const ONE_DAY = 24 * 60 * 60 * 1000;
-const SEVEN_DAYS = 7 * 24 * 60 * 60 * 1000;
+const SEVEN_DAYS = 7 * ONE_DAY;
 const THIRTY_DAYS = 30 * ONE_DAY;
 const SIX_MONTHS = 6 * 30 * ONE_DAY;
 const ONE_YEAR = 365 * ONE_DAY;
