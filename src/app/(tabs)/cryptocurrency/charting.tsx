@@ -37,7 +37,7 @@ const Charting = ({ symbol }: Props) => {
 
   useEffect(() => {
     if (chartData && Array.isArray(chartData)) {
-      const formatted = chartData.map((item: string[]) => ({
+      const formatted = (chartData as string[][]).map((item: string[]) => ({
         time: formatChartingDate(item[0]),
         price: parseFloat(item[1]),
         volume: parseFloat(item[5]),
@@ -122,7 +122,7 @@ const Charting = ({ symbol }: Props) => {
       }));
 
       const colorData = formatVolume.map((item, index) => {
-        if (index === 0) return { ...item, color: "#000000" }; // Initial color
+        if (index === 0) return { ...item, color: "#5bb450" }; // Initial color
         const prevValue = formatVolume[index - 1].value;
         const color = item.value - prevValue >= 0 ? "#5bb450" : "#ff0000"; // Green for positive, red for negative
         return { ...item, color };
