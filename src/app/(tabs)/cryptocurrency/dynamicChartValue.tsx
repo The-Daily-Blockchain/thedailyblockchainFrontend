@@ -11,6 +11,8 @@ const DynamicValues = ({ onRangeSelect }: any) => {
     setInterval(range);
     onRangeSelect(time, range);
   };
+  // enum
+  const max = 1;
 
   return (
     <div>
@@ -32,6 +34,7 @@ const DynamicValues = ({ onRangeSelect }: any) => {
       <button onClick={() => handleButtonClick(timeStamps.fiveYearsAgo, "1w")}>
         5 years
       </button>
+      <button onClick={() => handleButtonClick(max, "1w")}>Max years</button>
       {startTime && (
         <p>
           Selected Data: {startTime} {interval}

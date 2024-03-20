@@ -18,8 +18,6 @@ const Charting = ({ symbol }: Props) => {
   const [interval, setInterval] = useState<any>(null || "15m");
 
   const params = symbol.toUpperCase();
-
-  console.log(startTime, interval);
   const { data: chartData } = useChartData(params, startTime, interval);
 
   useEffect(() => {
