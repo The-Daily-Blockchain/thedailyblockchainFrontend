@@ -1,4 +1,5 @@
-import { formatChartingDate } from "@/app/_components/utils/formattingData";
+import { formatNumberWithCommas } from "@/app/_components/utils/formatamount";
+import { formatChartingDateWithTime } from "@/app/_components/utils/formattingData";
 
 export const Tooltip = ({ time, value, volume, x, y }: any) => {
   return (
@@ -28,10 +29,14 @@ export const Tooltip = ({ time, value, volume, x, y }: any) => {
       }}
     >
       <div style={{ color: "rgba(38, 166, 154, 1)" }}></div>
-      <div style={{ color: "black" }}>Price: {value}</div>
-      <div style={{ color: "black" }}>volume: {volume}</div>
+      <div style={{ color: "black" }}>
+        Price: {formatNumberWithCommas(value)}
+      </div>
+      <div style={{ color: "black" }}>
+        volume: {formatNumberWithCommas(volume)}
+      </div>
       <div style={{ marginTop: "1px", color: "black" }}>
-        {formatChartingDate(time)}
+        {formatChartingDateWithTime(time)}
       </div>
     </div>
   );

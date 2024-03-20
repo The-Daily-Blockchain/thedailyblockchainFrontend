@@ -15,7 +15,7 @@ const Charting = ({ symbol }: Props) => {
   const [startTime, setStartTime] = useState<any>(
     null || timeStamps.sevenDaysAgo
   );
-  const [interval, setInterval] = useState<any>(null || "1d");
+  const [interval, setInterval] = useState<any>(null || "15m");
 
   const params = symbol.toUpperCase();
 
@@ -25,11 +25,8 @@ const Charting = ({ symbol }: Props) => {
   useEffect(() => {
     if (chartData && Array.isArray(chartData)) {
       const formatted = (chartData as string[][]).map((item: string[]) => {
-        //   time: formatChartingDate(item[0]),
-        //   price: parseFloat(item[1]),
-        //   volume: parseFloat(item[5]),
-        // }));
-        const formattedTime = interval.endsWith("m")
+        // const formattedTime = interval.endsWith("m")
+        const formattedTime = /[mh]$/.test(interval)
           ? parseFloat(item[0]) / 1000
           : formatChartingDate(item[0]);
 

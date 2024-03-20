@@ -17,10 +17,10 @@ const DynamicValues = ({ onRangeSelect }: any) => {
       <button onClick={() => handleButtonClick(timeStamps.oneDayAgo, "5m")}>
         1 day
       </button>
-      <button onClick={() => handleButtonClick(timeStamps.sevenDaysAgo, "1d")}>
+      <button onClick={() => handleButtonClick(timeStamps.sevenDaysAgo, "15m")}>
         7 days
       </button>
-      <button onClick={() => handleButtonClick(timeStamps.thirtyDaysAgo, "1d")}>
+      <button onClick={() => handleButtonClick(timeStamps.thirtyDaysAgo, "1h")}>
         30 days
       </button>
       <button onClick={() => handleButtonClick(timeStamps.sixMonthsAgo, "1d")}>
@@ -29,7 +29,7 @@ const DynamicValues = ({ onRangeSelect }: any) => {
       <button onClick={() => handleButtonClick(timeStamps.oneYearAgo, "3d")}>
         1 year
       </button>
-      <button onClick={() => handleButtonClick(timeStamps.fiveYearsAgo, "1M")}>
+      <button onClick={() => handleButtonClick(timeStamps.fiveYearsAgo, "1w")}>
         5 years
       </button>
       {startTime && (

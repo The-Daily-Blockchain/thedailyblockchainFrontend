@@ -38,6 +38,12 @@ export const ChartComponent = ({
       width: 600,
       height: 300,
       autoSize: true,
+      handleScroll: {
+        pressedMouseMove: false,
+        mouseWheel: false,
+        horzTouchDrag: false,
+        vertTouchDrag: false,
+      },
       timeScale: {
         timeVisible: true,
       },
@@ -117,7 +123,6 @@ export const ChartComponent = ({
     console.log("Formatted Data:", formattedData);
 
     chartRef.current.timeScale().fitContent();
-    // chartRef.current.timeScale().ti(false);
 
     return () => {
       if (chartRef.current) {
@@ -126,8 +131,8 @@ export const ChartComponent = ({
       setTooltipData(null);
     };
   }, [formattedData, loading]);
-
-  const adjustedTime = interval.endsWith("m")
+  // const adjustedTime = interval.endsWith("m")
+  const adjustedTime = /[mh]$/.test(interval)
     ? tooltipData?.time * 1000
     : tooltipData?.time;
 
