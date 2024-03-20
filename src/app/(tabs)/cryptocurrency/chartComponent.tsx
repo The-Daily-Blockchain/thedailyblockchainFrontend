@@ -27,6 +27,22 @@ export const ChartComponent = ({
   const [tooltipData, setTooltipData] = useState<any>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
+  const getTopColor = (data: any) => {
+    const firstValue = data[0].price;
+    const lastValue = data[data.length - 1].price;
+    const difference = lastValue - firstValue;
+
+    return difference >= 0 ? "#5bb450" : "red";
+  };
+
+  const getBottomColor = (data: any) => {
+    const firstValue = data[0].price;
+    const lastValue = data[data.length - 1].price;
+    const difference = lastValue - firstValue;
+
+    return difference >= 0 ? "#ffffe0" : "#FF7F7F";
+  };
+
   useEffect(() => {
     if (!formattedData || !chartContainerRef.current || loading) return;
 
@@ -45,6 +61,7 @@ export const ChartComponent = ({
         vertTouchDrag: false,
       },
       timeScale: {
+        visible: true,
         timeVisible: true,
       },
       rightPriceScale: {
@@ -61,8 +78,8 @@ export const ChartComponent = ({
     chartRef.current = chart;
 
     const lineSeries = chart.addAreaSeries({
-      topColor: "#5bb450",
-      bottomColor: "#ffffe0",
+      topColor: getTopColor(formattedData),
+      bottomColor: getBottomColor(formattedData),
       lineColor: "#123524",
       lineWidth: 1,
       crosshairMarkerVisible: false,
@@ -79,6 +96,7 @@ export const ChartComponent = ({
       value: entry.price,
     }));
     lineSeries.setData(formatPrice);
+
     seriesRef.current = lineSeries;
 
     const barSeries = chart.addHistogramSeries({

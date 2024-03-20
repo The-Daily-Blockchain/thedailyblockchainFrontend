@@ -27,6 +27,7 @@ const Charting = ({ symbol }: Props) => {
         const formattedTime = /[mh]$/.test(interval)
           ? parseFloat(item[0]) / 1000
           : formatChartingDate(item[0]);
+        console.log("formattedTime", formattedTime);
 
         return {
           time: formattedTime,

@@ -3,12 +3,6 @@ import axios from "axios";
 import { useDebouncedValue } from "../utils/usedebouncevalue";
 
 export const useChartData = (symbol: any, startTime: any, interval: any) => {
-  // const urls = useMemo(
-  //   () =>
-  //     `/api/graph?symbol=${symbol}&startTime=${startTime}&interval=${interval}`,
-  //   [interval, startTime, symbol]
-  // );
-
   const urls = useMemo(() => {
     let url = `/api/graph?symbol=${symbol}&startTime=${startTime}`;
     if (interval !== null && interval !== undefined && interval !== 1) {
