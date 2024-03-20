@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-
-import {
-  formatChartingDate,
-  formatDate,
-} from "@/app/_components/utils/formattingData";
 import { useChartData } from "@/app/_components/hooks/useChartData";
 import { ChartComponent } from "./chartComponent";
 import DynamicValues from "./dynamicChartValue";
 import timeStamps from "@/app/_components/utils/dataValues";
+import { formatChartingDate } from "@/app/_components/utils/formattingData";
 
 interface Props {
   symbol: any;
@@ -28,17 +24,28 @@ const Charting = ({ symbol }: Props) => {
 
   useEffect(() => {
     if (chartData && Array.isArray(chartData)) {
-      const formatted = (chartData as string[][]).map((item: string[]) => ({
-        time: item[0],
-        price: parseFloat(item[1]),
-        volume: parseFloat(item[5]),
-      }));
+      const formatted = (chartData as string[][]).map((item: string[]) => {
+        //   time: formatChartingDate(item[0]),
+        //   price: parseFloat(item[1]),
+        //   volume: parseFloat(item[5]),
+        // }));
+        const formattedTime = interval.endsWith("m")
+          ? parseFloat(item[0]) / 1000
+          : formatChartingDate(item[0]);
+
+        return {
+          time: formattedTime,
+          price: parseFloat(item[1]),
+          volume: parseFloat(item[5]),
+        };
+      });
       setFormattedData(formatted);
       setLoading(false);
     } else {
       setFormattedData(null);
       setLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartData]);
 
   const handleData = (time: any, range: any) => {
@@ -50,7 +57,11 @@ const Charting = ({ symbol }: Props) => {
   return (
     <>
       <DynamicValues onRangeSelect={handleData} />
-      <ChartComponent formattedData={formattedData} loading={loading} />
+      <ChartComponent
+        formattedData={formattedData}
+        loading={loading}
+        interval={interval}
+      />
     </>
   );
 };

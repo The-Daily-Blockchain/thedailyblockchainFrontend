@@ -4,15 +4,22 @@ import {
   IChartApi,
   ISeriesApi,
   PriceScaleMode,
+  TimeScaleOptions,
 } from "lightweight-charts";
 import { Tooltip } from "./tooltip";
+import { formatChartingDate } from "@/app/_components/utils/formattingData";
 
 interface ChartProps {
   formattedData: any[] | null;
   loading: boolean;
+  interval: string;
 }
 
-export const ChartComponent = ({ formattedData, loading }: ChartProps) => {
+export const ChartComponent = ({
+  formattedData,
+  loading,
+  interval,
+}: ChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const seriesRef = useRef<ISeriesApi<"Area"> | null>(null);
@@ -31,6 +38,9 @@ export const ChartComponent = ({ formattedData, loading }: ChartProps) => {
       width: 600,
       height: 300,
       autoSize: true,
+      timeScale: {
+        timeVisible: true,
+      },
       rightPriceScale: {
         mode: PriceScaleMode.Normal,
         autoScale: false,
@@ -57,7 +67,6 @@ export const ChartComponent = ({ formattedData, loading }: ChartProps) => {
         bottom: 0.4,
       },
     });
-    const sortedData = formattedData.slice().sort((a, b) => a.time - b.time);
 
     const formatPrice = formattedData.map((entry) => ({
       time: entry.time,
@@ -104,7 +113,11 @@ export const ChartComponent = ({ formattedData, loading }: ChartProps) => {
       }
     };
     chartRef.current.subscribeCrosshairMove(updateToolTip);
+
+    console.log("Formatted Data:", formattedData);
+
     chartRef.current.timeScale().fitContent();
+    // chartRef.current.timeScale().ti(false);
 
     return () => {
       if (chartRef.current) {
@@ -113,6 +126,10 @@ export const ChartComponent = ({ formattedData, loading }: ChartProps) => {
       setTooltipData(null);
     };
   }, [formattedData, loading]);
+
+  const adjustedTime = interval.endsWith("m")
+    ? tooltipData?.time * 1000
+    : tooltipData?.time;
 
   return (
     <div className="chart-container relative">
@@ -123,7 +140,7 @@ export const ChartComponent = ({ formattedData, loading }: ChartProps) => {
       <div className="legend"></div>
       {tooltipData?.time && seriesRef.current && secondSeries.current && (
         <Tooltip
-          time={tooltipData?.time}
+          time={adjustedTime}
           value={tooltipData?.seriesData?.get(seriesRef.current)?.value}
           volume={tooltipData?.seriesData?.get(secondSeries.current)?.value}
           x={tooltipData?.point?.x}
