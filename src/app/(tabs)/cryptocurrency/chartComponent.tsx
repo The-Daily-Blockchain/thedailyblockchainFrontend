@@ -23,46 +23,47 @@ export const ChartComponent = ({ formattedData, loading }: ChartProps) => {
   useEffect(() => {
     if (!formattedData || !chartContainerRef.current || loading) return;
 
-    const chart =
-      chartRef.current ??
-      createChart(chartContainerRef.current, {
-        width: 600,
-        height: 300,
-        autoSize: true,
-        rightPriceScale: {
-          mode: PriceScaleMode.Normal,
-          autoScale: false,
-          invertScale: false,
-          alignLabels: false,
-          scaleMargins: {
-            top: 0.3,
-            bottom: 0,
-          },
+    if (chartRef.current) {
+      chartRef.current.remove();
+      chartRef.current = null;
+    }
+    const chart = createChart(chartContainerRef.current, {
+      width: 600,
+      height: 300,
+      autoSize: true,
+      rightPriceScale: {
+        mode: PriceScaleMode.Normal,
+        autoScale: false,
+        invertScale: false,
+        alignLabels: false,
+        scaleMargins: {
+          top: 0.3,
+          bottom: 0,
         },
-      });
+      },
+    });
     chartRef.current = chart;
 
-    const lineSeries =
-      seriesRef.current ??
-      chart.addAreaSeries({
-        topColor: "#5bb450",
-        bottomColor: "#ffffe0",
-        lineColor: "#123524",
-        lineWidth: 1,
-        crosshairMarkerVisible: false,
-      });
+    const lineSeries = chart.addAreaSeries({
+      topColor: "#5bb450",
+      bottomColor: "#ffffe0",
+      lineColor: "#123524",
+      lineWidth: 1,
+      crosshairMarkerVisible: false,
+    });
     lineSeries.priceScale().applyOptions({
       scaleMargins: {
         top: 0.1,
         bottom: 0.4,
       },
     });
-    lineSeries.setData(
-      formattedData.map((entry) => ({
-        time: entry.time,
-        value: entry.price,
-      }))
-    );
+    const sortedData = formattedData.slice().sort((a, b) => a.time - b.time);
+
+    const formatPrice = formattedData.map((entry) => ({
+      time: entry.time,
+      value: entry.price,
+    }));
+    lineSeries.setData(formatPrice);
     seriesRef.current = lineSeries;
 
     const barSeries = chart.addHistogramSeries({
@@ -84,6 +85,8 @@ export const ChartComponent = ({ formattedData, loading }: ChartProps) => {
       time: entry.time,
       value: entry.volume,
     }));
+    console.log(formatPrice);
+    console.log(formatVolume);
     const colorData = formatVolume.map((item, index) => {
       if (index === 0) return { ...item, color: "#5bb450" };
       const prevValue = formatVolume[index - 1].value;
