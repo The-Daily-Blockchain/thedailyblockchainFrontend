@@ -16,6 +16,7 @@ const Charting = ({ symbol }: Props) => {
     null || timeStamps.sevenDaysAgo
   );
   const [interval, setInterval] = useState<any>(null || "15m");
+  const [toggle, setToggle] = useState<any>("1");
 
   const params = symbol.toUpperCase();
   const { data: chartData } = useChartData(params, startTime, interval);
@@ -51,14 +52,21 @@ const Charting = ({ symbol }: Props) => {
     setInterval(range);
   };
 
+  const handleChart = (params: any) => {
+    setToggle(params);
+  };
+
   return (
     <>
-      <DynamicValues onRangeSelect={handleData} />
-      <ChartComponent
-        formattedData={formattedData}
-        loading={loading}
-        interval={interval}
-      />
+      <DynamicValues onRangeSelect={handleData} onChangeChart={handleChart} />
+      {toggle === "1" && (
+        <ChartComponent
+          formattedData={formattedData}
+          loading={loading}
+          interval={interval}
+        />
+      )}
+      {toggle === "2" && "candleStick"}
     </>
   );
 };
