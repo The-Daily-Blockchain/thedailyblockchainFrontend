@@ -68,7 +68,7 @@ export const ChartComponent = ({
       },
       rightPriceScale: {
         mode: PriceScaleMode.Normal,
-        autoScale: false,
+        autoScale: true,
         invertScale: false,
         alignLabels: false,
         scaleMargins: {

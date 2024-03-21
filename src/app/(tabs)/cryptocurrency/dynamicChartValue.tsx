@@ -5,14 +5,10 @@ import React, { useState } from "react";
 import { MdOutlineCandlestickChart, MdOutlineShowChart } from "react-icons/md";
 
 const DynamicValues = ({ onRangeSelect, onChangeChart }: any) => {
-  const [startTime, setStartTime] = useState<any>(null);
-  const [interval, setInterval] = useState<any>(null);
   const [activeButton, setActiveButton] = useState<string | null>("2");
   const [activeChart, setActiveChart] = useState<string>("1");
 
   const handleButtonClick = (time: any, range: any, active: any) => {
-    setStartTime(time);
-    setInterval(range);
     onRangeSelect(time, range);
     setActiveButton(active);
   };
@@ -24,8 +20,8 @@ const DynamicValues = ({ onRangeSelect, onChangeChart }: any) => {
   };
 
   return (
-    <div className="grid grid-cols-2">
-      <div className="text-left">
+    <div className="flex">
+      <div>
         <Button
           variant={activeChart === "1" ? undefined : "outline"}
           onClick={() => {
@@ -43,7 +39,7 @@ const DynamicValues = ({ onRangeSelect, onChangeChart }: any) => {
           <MdOutlineCandlestickChart />
         </Button>
       </div>
-      <div className="text-right">
+      <div className="mx-auto">
         <Button
           variant={activeButton === "1" ? undefined : "outline"}
           onClick={() => handleButtonClick(timeStamps.oneDayAgo, "30m", "1")}
