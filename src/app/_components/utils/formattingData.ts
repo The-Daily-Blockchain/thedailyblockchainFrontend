@@ -18,12 +18,6 @@ export const formatChartingDate = (
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, "0");
   const day = date.getDate().toString().padStart(2, "0");
-  // let hours = date.getHours();
-  // const ampm = hours >= 12 ? "PM" : "AM";
-  // hours = hours % 12;
-  // hours = hours ? hours : 12; // 0 should be displayed as 12
-  // const minutes = date.getMinutes().toString().padStart(2, "0");
-  // ${hours}:${minutes} ${ampm}
   return `${year}-${month}-${day}`;
 };
 

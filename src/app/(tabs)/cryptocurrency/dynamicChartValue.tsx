@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const DynamicValues = ({ onRangeSelect }: any) => {
   const [startTime, setStartTime] = useState<any>(null);
   const [interval, setInterval] = useState<any>(null);
-  const [activeButton, setActiveButton] = useState<string | null>(null);
+  const [activeButton, setActiveButton] = useState<string | null>("2");
 
   const handleButtonClick = (time: any, range: any, active: any) => {
     setStartTime(time);

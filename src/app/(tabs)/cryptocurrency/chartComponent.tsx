@@ -50,6 +50,8 @@ export const ChartComponent = ({
       chartRef.current.remove();
       chartRef.current = null;
     }
+
+    const timeVisible = /[mh]$/.test(interval);
     const chart = createChart(chartContainerRef.current, {
       width: 600,
       height: 300,
@@ -62,7 +64,7 @@ export const ChartComponent = ({
       },
       timeScale: {
         visible: true,
-        timeVisible: true,
+        timeVisible: timeVisible,
       },
       rightPriceScale: {
         mode: PriceScaleMode.Normal,
@@ -148,10 +150,11 @@ export const ChartComponent = ({
       }
       setTooltipData(null);
     };
-  }, [formattedData, loading]);
+  }, [formattedData, interval, loading]);
   // const adjustedTime = interval.endsWith("m")
+  const PHT_TO_GMT_OFFSET = -8 * 60 * 60 * 1000;
   const adjustedTime = /[mh]$/.test(interval)
-    ? tooltipData?.time * 1000
+    ? tooltipData?.time * 1000 + PHT_TO_GMT_OFFSET
     : tooltipData?.time;
 
   return (
