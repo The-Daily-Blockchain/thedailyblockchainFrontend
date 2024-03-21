@@ -19,14 +19,14 @@ const Charting = ({ symbol }: Props) => {
 
   const params = symbol.toUpperCase();
   const { data: chartData } = useChartData(params, startTime, interval);
-  const GMT_TO_PHT_OFFSET = 8 * 60 * 60 * 1000; // 8 hours difference
+  const GMT_TO_PHT_OFFSET = 8 * 60 * 60; // 8 hours difference
 
   useEffect(() => {
     if (chartData && Array.isArray(chartData)) {
       const formatted = (chartData as string[][]).map((item: string[]) => {
         // const formattedTime = interval.endsWith("m")
         const formattedTime = /[mh]$/.test(interval)
-          ? parseFloat(item[0]) + GMT_TO_PHT_OFFSET / 1000
+          ? parseFloat(item[0]) / 1000 + GMT_TO_PHT_OFFSET
           : formatChartingDate(item[0]);
         console.log("formattedTime", formattedTime);
 
