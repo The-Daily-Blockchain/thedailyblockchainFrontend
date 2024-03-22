@@ -21,6 +21,7 @@ const Charting = ({ symbol }: Props) => {
   );
   const [interval, setInterval] = useState<any>(null || "15m");
   const [toggle, setToggle] = useState<any>("1");
+  const [marketPriceToggler, setMarketPriceToggler] = useState<string>("1");
 
   const params = symbol.toUpperCase();
   const { data: chartData } = useChartData(params, startTime, interval);
@@ -67,24 +68,34 @@ const Charting = ({ symbol }: Props) => {
   const { data: marketHistory } = useMarketHistory(newSymbol, "usd", days);
   console.log(marketHistory);
 
+  const handleMarketCap = (params: any) => {
+    setMarketPriceToggler(params);
+  };
+
   return (
     <>
-      <ButtonMarket />
+      <ButtonMarket onChangeMarketCap={handleMarketCap} />
       <DynamicValues onRangeSelect={handleData} onChangeChart={handleChart} />
-      {toggle === "1" && (
-        <ChartComponent
-          formattedData={formattedData}
-          loading={loading}
-          interval={interval}
-        />
+      {marketPriceToggler === "1" && (
+        <>
+          {toggle === "1" && (
+            <ChartComponent
+              formattedData={formattedData}
+              loading={loading}
+              interval={interval}
+            />
+          )}
+          {toggle === "2" && (
+            <CandleStickComponent
+              formattedData={formattedData}
+              loading={loading}
+              interval={interval}
+            />
+          )}
+        </>
       )}
-      {toggle === "2" && (
-        <CandleStickComponent
-          formattedData={formattedData}
-          loading={loading}
-          interval={interval}
-        />
-      )}
+
+      {marketPriceToggler === "2" && <>(marketchart)</>}
     </>
   );
 };
