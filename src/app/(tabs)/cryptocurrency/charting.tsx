@@ -4,6 +4,7 @@ import { ChartComponent } from "./chartComponent";
 import DynamicValues from "./dynamicChartValue";
 import timeStamps from "@/app/_components/utils/dataValues";
 import { formatChartingDate } from "@/app/_components/utils/formattingData";
+import { CandleStickComponent } from "./candleStickComponent";
 
 interface Props {
   symbol: any;
@@ -35,6 +36,10 @@ const Charting = ({ symbol }: Props) => {
           time: formattedTime,
           price: parseFloat(item[1]),
           volume: parseFloat(item[5]),
+          open: parseFloat(item[1]),
+          high: parseFloat(item[2]),
+          low: parseFloat(item[3]),
+          close: parseFloat(item[4]),
         };
       });
       setFormattedData(formatted);
@@ -66,7 +71,13 @@ const Charting = ({ symbol }: Props) => {
           interval={interval}
         />
       )}
-      {toggle === "2" && "candleStick"}
+      {toggle === "2" && (
+        <CandleStickComponent
+          formattedData={formattedData}
+          loading={loading}
+          interval={interval}
+        />
+      )}
     </>
   );
 };

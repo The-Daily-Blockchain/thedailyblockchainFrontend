@@ -15,5 +15,5 @@ export const newFormatAmount = (amount: number | string): string => {
 };
 
 export const formatNumberWithCommas = (number: any) => {
-  return number.toLocaleString();
+  return number?.toLocaleString();
 };
