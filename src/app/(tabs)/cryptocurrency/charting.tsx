@@ -6,6 +6,7 @@ import timeStamps from "@/app/_components/utils/dataValues";
 import { formatChartingDate } from "@/app/_components/utils/formattingData";
 import { CandleStickComponent } from "./candleStickComponent";
 import ButtonMarket from "./buttonMarket";
+import { symbolToName } from "@/app/_components/utils/cryptomappings";
 
 interface Props {
   symbol: any;
@@ -31,7 +32,6 @@ const Charting = ({ symbol }: Props) => {
         const formattedTime = /[mh]$/.test(interval)
           ? parseFloat(item[0]) / 1000 + GMT_TO_PHT_OFFSET
           : formatChartingDate(item[0]);
-        console.log("formattedTime", formattedTime);
 
         return {
           time: formattedTime,
@@ -53,7 +53,6 @@ const Charting = ({ symbol }: Props) => {
   }, [chartData]);
 
   const handleData = (time: any, range: any) => {
-    console.log(time, range);
     setStartTime(time);
     setInterval(range);
   };
@@ -62,6 +61,10 @@ const Charting = ({ symbol }: Props) => {
     setToggle(params);
   };
 
+  let newSymbol = symbol.replace(/usdt$/, "");
+  const idsymbol = symbolToName[newSymbol];
+
+  console.log(idsymbol);
   return (
     <>
       <ButtonMarket />

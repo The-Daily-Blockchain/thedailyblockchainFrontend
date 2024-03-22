@@ -120,8 +120,7 @@ export const ChartComponent = ({
       time: entry.time,
       value: entry.volume,
     }));
-    console.log(formatPrice);
-    console.log(formatVolume);
+
     const colorData = formatVolume.map((item, index) => {
       if (index === 0) return { ...item, color: "#5bb450" };
       const prevValue = formatVolume[index - 1].value;
@@ -139,8 +138,6 @@ export const ChartComponent = ({
       }
     };
     chartRef.current.subscribeCrosshairMove(updateToolTip);
-
-    console.log("Formatted Data:", formattedData);
 
     chartRef.current.timeScale().fitContent();
 
