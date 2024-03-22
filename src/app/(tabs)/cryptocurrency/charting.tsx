@@ -22,6 +22,7 @@ const Charting = ({ symbol }: Props) => {
   const [interval, setInterval] = useState<any>(null || "15m");
   const [toggle, setToggle] = useState<any>("1");
   const [marketPriceToggler, setMarketPriceToggler] = useState<string>("1");
+  const [marketcapDays, setMarketcapDays] = useState<string>("2");
 
   const params = symbol.toUpperCase();
   const { data: chartData } = useChartData(params, startTime, interval);
@@ -64,8 +65,11 @@ const Charting = ({ symbol }: Props) => {
   };
 
   const newSymbol = symbolToName[symbol.replace(/usdt$/, "")];
-  const days = "1";
-  const { data: marketHistory } = useMarketHistory(newSymbol, "usd", days);
+  const { data: marketHistory } = useMarketHistory(
+    newSymbol,
+    "usd",
+    marketcapDays
+  );
   console.log(marketHistory);
 
   const fomattedHistoryData = marketHistory?.market_caps.map(
@@ -75,16 +79,22 @@ const Charting = ({ symbol }: Props) => {
       volume: marketHistory?.total_volumes[index][1],
     })
   );
-  console.log(fomattedHistoryData);
-
   const handleMarketCap = (params: any) => {
     setMarketPriceToggler(params);
+  };
+  const onChangeMarketCapData = (data: any) => {
+    setMarketcapDays(data);
   };
 
   return (
     <>
       <ButtonMarket onChangeMarketCap={handleMarketCap} />
-      <DynamicValues onRangeSelect={handleData} onChangeChart={handleChart} />
+      <DynamicValues
+        onRangeSelect={handleData}
+        onChangeChart={handleChart}
+        onChangeMarketCapData={onChangeMarketCapData}
+        handleMarketCap={marketPriceToggler}
+      />
       {marketPriceToggler === "1" && (
         <>
           {toggle === "1" && (
@@ -106,11 +116,7 @@ const Charting = ({ symbol }: Props) => {
 
       {marketPriceToggler === "2" && (
         <>
-          <ChartComponent
-            formattedData={fomattedHistoryData}
-            loading={false}
-            interval={""}
-          />
+          <ChartComponent formattedData={fomattedHistoryData} loading={false} />
         </>
       )}
     </>

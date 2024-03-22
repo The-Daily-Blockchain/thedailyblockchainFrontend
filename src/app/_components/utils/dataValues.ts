@@ -26,3 +26,21 @@ const timeStamps = {
 };
 
 export default timeStamps;
+
+const oneDay = "1";
+const sevenDays = "7";
+const oneMonth = "30";
+const sixMonths = "180";
+const oneYear = "365";
+const fiveYears = " 1825";
+const maximum = "max";
+
+export const Days = {
+  oneDay,
+  sevenDays,
+  oneMonth,
+  sixMonths,
+  oneYear,
+  fiveYears,
+  maximum,
+};
