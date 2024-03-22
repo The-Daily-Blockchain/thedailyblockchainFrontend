@@ -7,6 +7,7 @@ import { formatChartingDate } from "@/app/_components/utils/formattingData";
 import { CandleStickComponent } from "./candleStickComponent";
 import ButtonMarket from "./buttonMarket";
 import { symbolToName } from "@/app/_components/utils/cryptomappings";
+import { useMarketHistory } from "@/app/_components/hooks/useMarketHistory";
 
 interface Props {
   symbol: any;
@@ -61,10 +62,11 @@ const Charting = ({ symbol }: Props) => {
     setToggle(params);
   };
 
-  let newSymbol = symbol.replace(/usdt$/, "");
-  const idsymbol = symbolToName[newSymbol];
+  const newSymbol = symbolToName[symbol.replace(/usdt$/, "")];
+  const days = "1";
+  const { data: marketHistory } = useMarketHistory(newSymbol, "usd", days);
+  console.log(marketHistory);
 
-  console.log(idsymbol);
   return (
     <>
       <ButtonMarket />

@@ -17,5 +17,5 @@ export const useMarketData = (symbol: any) => {
     }
   }, [data, symbol]);
 
-  return { data: data };
+  return { data: cachedDataRef.current };
 };
