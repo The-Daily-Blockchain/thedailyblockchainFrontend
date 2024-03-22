@@ -5,6 +5,7 @@ import DynamicValues from "./dynamicChartValue";
 import timeStamps from "@/app/_components/utils/dataValues";
 import { formatChartingDate } from "@/app/_components/utils/formattingData";
 import { CandleStickComponent } from "./candleStickComponent";
+import ButtonMarket from "./buttonMarket";
 
 interface Props {
   symbol: any;
@@ -63,6 +64,7 @@ const Charting = ({ symbol }: Props) => {
 
   return (
     <>
+      <ButtonMarket />
       <DynamicValues onRangeSelect={handleData} onChangeChart={handleChart} />
       {toggle === "1" && (
         <ChartComponent
