@@ -12,7 +12,7 @@ import { formatChartingDate } from "@/app/_components/utils/formattingData";
 interface ChartProps {
   formattedData: any[] | null;
   loading: boolean;
-  interval: string;
+  interval?: any;
 }
 
 export const ChartComponent = ({

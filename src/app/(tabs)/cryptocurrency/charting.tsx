@@ -68,6 +68,15 @@ const Charting = ({ symbol }: Props) => {
   const { data: marketHistory } = useMarketHistory(newSymbol, "usd", days);
   console.log(marketHistory);
 
+  const fomattedHistoryData = marketHistory?.market_caps.map(
+    (item: string[], index: any) => ({
+      time: item[0],
+      price: item[1],
+      volume: marketHistory?.total_volumes[index][1],
+    })
+  );
+  console.log(fomattedHistoryData);
+
   const handleMarketCap = (params: any) => {
     setMarketPriceToggler(params);
   };
@@ -95,7 +104,15 @@ const Charting = ({ symbol }: Props) => {
         </>
       )}
 
-      {marketPriceToggler === "2" && <>(marketchart)</>}
+      {marketPriceToggler === "2" && (
+        <>
+          <ChartComponent
+            formattedData={fomattedHistoryData}
+            loading={false}
+            interval={""}
+          />
+        </>
+      )}
     </>
   );
 };
