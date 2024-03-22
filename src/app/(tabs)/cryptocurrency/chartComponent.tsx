@@ -157,6 +157,8 @@ export const ChartComponent = ({
     ? tooltipData?.time * 1000 + PHT_TO_GMT_OFFSET
     : tooltipData?.time;
 
+  const togglerNo = "1";
+
   return (
     <div className="chart-container relative">
       <div
@@ -171,6 +173,7 @@ export const ChartComponent = ({
           volume={tooltipData?.seriesData?.get(secondSeries.current)?.value}
           x={tooltipData?.point?.x}
           y={tooltipData?.point?.y}
+          togglerNo={togglerNo}
         />
       )}
     </div>

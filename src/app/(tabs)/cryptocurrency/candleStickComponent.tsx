@@ -99,28 +99,6 @@ export const CandleStickComponent = ({
     candlestickSeries.setData(formatCandlestickData);
     seriesRef.current = candlestickSeries;
 
-    // const lineSeries = chart.addAreaSeries({
-    //   topColor: getTopColor(formattedData),
-    //   bottomColor: getBottomColor(formattedData),
-    //   lineColor: "#123524",
-    //   lineWidth: 1,
-    //   crosshairMarkerVisible: false,
-    // });
-    // lineSeries.priceScale().applyOptions({
-    //   scaleMargins: {
-    //     top: 0.1,
-    //     bottom: 0.4,
-    //   },
-    // });
-
-    // const formatPrice = formattedData.map((entry) => ({
-    //   time: entry.time,
-    //   value: entry.price,
-    // }));
-    // lineSeries.setData(formatPrice);
-
-    // seriesRef.current = lineSeries;
-
     const barSeries = chart.addHistogramSeries({
       color: "#5A5A5A",
       priceFormat: {
@@ -176,6 +154,8 @@ export const CandleStickComponent = ({
     ? tooltipData?.time * 1000 + PHT_TO_GMT_OFFSET
     : tooltipData?.time;
 
+  const togglerNo = "2";
+
   return (
     <div className="chart-container relative">
       <div
@@ -188,8 +168,14 @@ export const CandleStickComponent = ({
           time={adjustedTime}
           value={tooltipData?.seriesData?.get(seriesRef.current)?.value}
           volume={tooltipData?.seriesData?.get(secondSeries.current)?.value}
+          high={tooltipData?.seriesData?.get(seriesRef.current)?.high}
+          low={tooltipData?.seriesData?.get(seriesRef.current)?.low}
+          open={tooltipData?.seriesData?.get(seriesRef.current)?.open}
+          close={tooltipData?.seriesData?.get(seriesRef.current)?.close}
           x={tooltipData?.point?.x}
           y={tooltipData?.point?.y}
+          togglerNo={togglerNo}
+          tooltipData={tooltipData}
         />
       )}
     </div>

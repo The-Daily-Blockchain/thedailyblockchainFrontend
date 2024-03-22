@@ -1,12 +1,25 @@
 import { formatNumberWithCommas } from "@/app/_components/utils/formatamount";
 import { formatChartingDateWithTime } from "@/app/_components/utils/formattingData";
 
-export const Tooltip = ({ time, value, volume, x, y }: any) => {
+export const Tooltip = ({
+  time,
+  volume,
+  value,
+  x,
+  y,
+  togglerNo,
+  high,
+  low,
+  open,
+  close,
+}: any) => {
   return (
     <div
       style={{
-        width: "160px",
-        height: "80px",
+        width:
+          togglerNo === "1" ? "160px" : togglerNo === "2" ? "160px" : "240px",
+        height:
+          togglerNo === "1" ? "80px" : togglerNo === "2" ? "130px" : "180px",
         position: "absolute",
         display: "block",
         padding: "8px",
@@ -26,15 +39,34 @@ export const Tooltip = ({ time, value, volume, x, y }: any) => {
         background: "white",
         color: "black",
         borderColor: "rgba(38, 166, 154, 1)",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
       }}
     >
       <div style={{ color: "rgba(38, 166, 154, 1)" }}></div>
-      <div style={{ color: "black" }}>
-        Price: {formatNumberWithCommas(value)}
-      </div>
+      {togglerNo == "1" && (
+        <div style={{ color: "black" }}>
+          Price: ${formatNumberWithCommas(value)}
+        </div>
+      )}
       <div style={{ color: "black" }}>
         volume: {formatNumberWithCommas(volume)}
       </div>
+      {togglerNo == "2" && (
+        <div>
+          <div style={{ color: "black" }}>
+            High: ${formatNumberWithCommas(high)}
+          </div>
+          <div style={{ color: "black" }}>
+            Low: ${formatNumberWithCommas(low)}
+          </div>
+          <div style={{ color: "black" }}>
+            Open: ${formatNumberWithCommas(open)}
+          </div>
+          <div style={{ color: "black" }}>
+            Close: ${formatNumberWithCommas(close)}
+          </div>
+        </div>
+      )}
       <div style={{ marginTop: "1px", color: "black" }}>
         {formatChartingDateWithTime(time)}
       </div>
