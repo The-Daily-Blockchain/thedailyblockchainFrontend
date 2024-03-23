@@ -29,9 +29,10 @@ const DynamicValues = ({
   };
 
   return (
-    <div className="flex">
+    <div className="flex mb-2">
       <div>
         <Button
+          className="mr-2"
           variant={activeChart === "1" ? undefined : "outline"}
           onClick={() => {
             handleChartClick("1"), onChangeChart("1");
@@ -50,8 +51,9 @@ const DynamicValues = ({
           </Button>
         )}
       </div>
-      <div className="mx-auto">
+      <div className="mx-auto mb-2">
         <Button
+          className="mr-1"
           variant={activeButton === "1" ? undefined : "outline"}
           onClick={() => {
             handleMarketCap === "1"
@@ -64,6 +66,7 @@ const DynamicValues = ({
           1d
         </Button>
         <Button
+          className="mr-1"
           variant={activeButton === "2" ? undefined : "outline"}
           onClick={() => {
             handleMarketCap === "1"
@@ -76,6 +79,7 @@ const DynamicValues = ({
           7d
         </Button>
         <Button
+          className="mr-1"
           variant={activeButton === "3" ? undefined : "outline"}
           onClick={() => {
             handleMarketCap === "1"
@@ -88,6 +92,7 @@ const DynamicValues = ({
           1m
         </Button>
         <Button
+          className="mr-1"
           variant={activeButton === "4" ? undefined : "outline"}
           onClick={() => {
             handleMarketCap === "1"
@@ -100,6 +105,7 @@ const DynamicValues = ({
           6m
         </Button>
         <Button
+          className="mr-1"
           variant={activeButton === "5" ? undefined : "outline"}
           onClick={() => {
             handleMarketCap === "1"
@@ -112,6 +118,7 @@ const DynamicValues = ({
           1y
         </Button>
         <Button
+          className="mr-1"
           variant={activeButton === "6" ? undefined : "outline"}
           onClick={() => {
             handleMarketCap === "1"

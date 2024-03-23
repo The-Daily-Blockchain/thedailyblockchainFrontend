@@ -10,8 +10,9 @@ const ButtonMarket = ({ onChangeMarketCap }: any) => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex my-2 pt-2">
       <Button
+        className="mr-2"
         variant={activeButton === "1" ? undefined : "outline"}
         onClick={() => {
           handleClick("1"), onChangeMarketCap("1");

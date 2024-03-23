@@ -9,9 +9,18 @@ const PercentComponent = ({ symbol }: Props) => {
   const newSymbol = symbolToName[symbol.replace(/usdt$/, "")];
   //   const { data } = useTargetDatePrice();
   return (
-    <>
-      <div>{newSymbol}</div>
-      <div className="grid grid-cols-6 text-center">
+    <div className="py-2">
+      <div className="grid grid-cols-7 text-center pb-1 mb-1 border-b-2">
+        <div>1d</div>
+        <div>7d</div>
+        <div>1m</div>
+        <div>6m</div>
+        <div>1y</div>
+        <div>5y</div>
+        <div>max</div>
+      </div>
+      <div className="grid grid-cols-7 text-center">
+        <div>asd</div>
         <div>asd</div>
         <div>asd</div>
         <div>asd</div>
@@ -19,15 +28,7 @@ const PercentComponent = ({ symbol }: Props) => {
         <div>asd</div>
         <div>asd</div>
       </div>
-      <div className="grid grid-cols-6 text-center">
-        <div>asd</div>
-        <div>asd</div>
-        <div>asd</div>
-        <div>asd</div>
-        <div>asd</div>
-        <div>asd</div>
-      </div>
-    </>
+    </div>
   );
 };
 

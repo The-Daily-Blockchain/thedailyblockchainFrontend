@@ -30,7 +30,7 @@ export const Tooltip = ({
             : togglerNo === "2"
             ? "130px"
             : togglerNo === "3"
-            ? "60px"
+            ? "70px"
             : "180px",
         position: "absolute",
         display: "block",
@@ -58,6 +58,11 @@ export const Tooltip = ({
       {togglerNo == "1" && (
         <div style={{ color: "black" }}>
           Price: ${formatNumberWithCommas(value)}
+        </div>
+      )}
+      {togglerNo == "3" && (
+        <div style={{ color: "black" }}>
+          High: ${formatNumberWithCommas(value)}
         </div>
       )}
       <div style={{ color: "black" }}>

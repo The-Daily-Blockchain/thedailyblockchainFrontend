@@ -23,6 +23,7 @@ const Charting = ({ symbol }: Props) => {
   const [toggle, setToggle] = useState<any>("1");
   const [marketPriceToggler, setMarketPriceToggler] = useState<string>("1");
   const [marketcapDays, setMarketcapDays] = useState<string>("2");
+  const [marketFormatter, setMarketFormatter] = useState<any | null>(null);
 
   const params = symbol.toUpperCase();
   const { data: chartData } = useChartData(params, startTime, interval);
@@ -70,14 +71,17 @@ const Charting = ({ symbol }: Props) => {
     "usd",
     marketcapDays
   );
+  useEffect(() => {
+    const formattedHistoryData = marketHistory?.market_caps.map(
+      (item: string[], index: any) => ({
+        time: parseFloat(item[0]) / 1000 + GMT_TO_PHT_OFFSET,
+        price: item[1],
+        volume: marketHistory?.total_volumes[index][1],
+      })
+    );
+    setMarketFormatter(formattedHistoryData);
+  }, [GMT_TO_PHT_OFFSET, marketHistory]);
 
-  const fomattedHistoryData = marketHistory?.market_caps.map(
-    (item: string[], index: any) => ({
-      time: parseFloat(item[0]) / 1000 + GMT_TO_PHT_OFFSET,
-      price: item[1],
-      volume: marketHistory?.total_volumes[index][1],
-    })
-  );
   const handleMarketCap = (params: any) => {
     setMarketPriceToggler(params);
   };
@@ -87,15 +91,17 @@ const Charting = ({ symbol }: Props) => {
 
   return (
     <>
-      <ButtonMarket onChangeMarketCap={handleMarketCap} />
-      <DynamicValues
-        onRangeSelect={handleData}
-        onChangeChart={handleChart}
-        onChangeMarketCapData={onChangeMarketCapData}
-        handleMarketCap={marketPriceToggler}
-      />
+      <div className=" mb-1 pl-1 rounded-xl shadow-2xl">
+        <ButtonMarket onChangeMarketCap={handleMarketCap} />
+        <DynamicValues
+          onRangeSelect={handleData}
+          onChangeChart={handleChart}
+          onChangeMarketCapData={onChangeMarketCapData}
+          handleMarketCap={marketPriceToggler}
+        />
+      </div>
       {marketPriceToggler === "1" && (
-        <>
+        <div>
           {toggle === "1" && (
             <ChartComponent
               formattedData={formattedData}
@@ -111,13 +117,13 @@ const Charting = ({ symbol }: Props) => {
               interval={interval}
             />
           )}
-        </>
+        </div>
       )}
 
       {marketPriceToggler === "2" && (
         <>
           <ChartComponent
-            formattedData={fomattedHistoryData}
+            formattedData={marketFormatter}
             loading={false}
             stringTogler={"3"}
           />
