@@ -4,9 +4,11 @@ import { symbolToName } from "@/app/_components/utils/cryptomappings";
 import React from "react";
 interface Props {
   symbol: any;
+  dataStream: any;
 }
-const PercentComponent = ({ symbol }: Props) => {
+const PercentComponent = ({ symbol, dataStream }: Props) => {
   const newSymbol = symbolToName[symbol.replace(/usdt$/, "")];
+  console.log(dataStream);
   //   const { data } = useTargetDatePrice();
   return (
     <div className="py-2">

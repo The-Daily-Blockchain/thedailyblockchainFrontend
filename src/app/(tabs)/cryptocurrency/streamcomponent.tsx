@@ -35,9 +35,8 @@ import { IoMdGlobe } from "react-icons/io";
 import { FaGithub } from "react-icons/fa";
 import { MdExplore } from "react-icons/md";
 
-const StreamComponent = ({ params, name }: any) => {
+const StreamComponent = ({ name, dataStream }: any) => {
   const [isClient, setIsClient] = useState(false);
-  const { data: dataStream } = useCryptoStream(params) as { data: any };
   const { arrowIcon, valueClassName } = useValueArrow(dataStream.w);
   const symbol = dataStream.s?.split("USDT")[0];
   const { data: marketData }: { data: any } = useMarketData(name);
@@ -143,7 +142,7 @@ const StreamComponent = ({ params, name }: any) => {
                 {formatNumberWithCommas(
                   parseFloat(marketData?.market_data?.circulating_supply)
                 )}
-                <span className="ml-1 mt-[2px]  delay-100">
+                <span className="ml-1 mt-[3px]  delay-100">
                   <HoverCard openDelay={300}>
                     <HoverCardTrigger className="cursor-pointer">
                       <IoInformationCircleOutline className="text-gray-600" />
@@ -172,7 +171,7 @@ const StreamComponent = ({ params, name }: any) => {
                       parseFloat(marketData.market_data.total_supply)
                     )
                   : "∞"}
-                <span className="ml-1 mt-[2px] delay-100">
+                <span className="ml-1 mt-[3px] delay-100">
                   <HoverCard openDelay={300}>
                     <HoverCardTrigger className="cursor-pointer">
                       <IoInformationCircleOutline className="text-gray-600" />
@@ -199,7 +198,7 @@ const StreamComponent = ({ params, name }: any) => {
                       parseFloat(marketData.market_data.max_supply)
                     )
                   : "∞"}
-                <span className="ml-1 mt-[2px] delay-100">
+                <span className="ml-1 mt-[3px] delay-100">
                   <HoverCard openDelay={300}>
                     <HoverCardTrigger className="cursor-pointer">
                       <IoInformationCircleOutline className="text-gray-600" />

@@ -10,17 +10,19 @@ const CryptoPage = ({ params }: any) => {
   const name = params;
   const symbol = nameToSymbol[name];
   const symbolWithUSDT = symbol + "usdt";
+
+  const { data: dataStream } = useCryptoStream(symbolWithUSDT) as { data: any };
   return (
     <div className="grid grid-cols-[1fr,2fr] justify-items-center items-center">
       <div className="border-r-2 pl-3 rounded-xl mt-10 w-[350px] shadow-2xl">
-        <StreamComponent params={symbolWithUSDT} name={name} />
+        <StreamComponent name={name} dataStream={dataStream} />
       </div>
       <div>
         <div className="shadow-2xl rounded-xl">
           <Charting symbol={symbolWithUSDT} />
         </div>
         <div className="shadow-2xl bg-white rounded-xl px-2 mt-3">
-          <PercentComponent symbol={symbolWithUSDT} />
+          <PercentComponent symbol={symbolWithUSDT} dataStream={dataStream} />
         </div>
       </div>
     </div>
