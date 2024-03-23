@@ -70,7 +70,6 @@ const Charting = ({ symbol }: Props) => {
     "usd",
     marketcapDays
   );
-  console.log(marketHistory);
 
   const fomattedHistoryData = marketHistory?.market_caps.map(
     (item: string[], index: any) => ({
