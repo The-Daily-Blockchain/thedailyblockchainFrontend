@@ -4,6 +4,7 @@ import { nameToSymbol } from "@/app/_components/utils/cryptomappings";
 import React from "react";
 import StreamComponent from "./streamcomponent";
 import Charting from "./charting";
+import PercentComponent from "./belowchart/percentComponent";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
@@ -11,17 +12,16 @@ const CryptoPage = ({ params }: any) => {
   const symbolWithUSDT = symbol + "usdt";
   return (
     <div className="grid grid-cols-[1fr,2fr] justify-items-center items-center">
-      <div
-        className="border-r-2 rounded-br-xl mt-10 w-[350px] shadow-2xl"
-        style={{
-          boxShadow:
-            "2px 2px 0 rgba(148, 87, 235, 0.5), 4px 4px 0 rgba(203, 81, 247, 0.5)",
-        }}
-      >
+      <div className="border-r-2 pl-3 rounded-xl mt-10 w-[350px] shadow-2xl">
         <StreamComponent params={symbolWithUSDT} name={name} />
       </div>
       <div>
-        <Charting symbol={symbolWithUSDT} />
+        <div className="shadow-2xl rounded-xl">
+          <Charting symbol={symbolWithUSDT} />
+        </div>
+        <div className="shadow-2xl bg-white rounded-xl mt-3">
+          <PercentComponent symbol={symbolWithUSDT} />
+        </div>
       </div>
     </div>
   );

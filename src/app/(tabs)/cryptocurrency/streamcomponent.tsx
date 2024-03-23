@@ -102,7 +102,7 @@ const StreamComponent = ({ params, name }: any) => {
                 <span className="text-3xl text-left font-bold text-black w-[100px]">
                   ${newFormatAmount(parseFloat(dataStream.w))}
                 </span>
-                <span className={`${valueClassName} ml-2 w-[160px]`}>
+                <span className={`${valueClassName} ml-2 pl-3 w-[160px]`}>
                   {arrowIcon} {newFormatAmount(parseFloat(dataStream.P))}%
                 </span>
               </TableHead>
