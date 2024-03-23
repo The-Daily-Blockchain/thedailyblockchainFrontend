@@ -17,9 +17,21 @@ export const Tooltip = ({
     <div
       style={{
         width:
-          togglerNo === "1" ? "160px" : togglerNo === "2" ? "160px" : "240px",
+          togglerNo === "1"
+            ? "160px"
+            : togglerNo === "2"
+            ? "160px"
+            : togglerNo === "2"
+            ? "140"
+            : "240px",
         height:
-          togglerNo === "1" ? "80px" : togglerNo === "2" ? "130px" : "180px",
+          togglerNo === "1"
+            ? "80px"
+            : togglerNo === "2"
+            ? "130px"
+            : togglerNo === "3"
+            ? "60px"
+            : "180px",
         position: "absolute",
         display: "block",
         padding: "8px",

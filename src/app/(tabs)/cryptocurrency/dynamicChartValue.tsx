@@ -23,6 +23,11 @@ const DynamicValues = ({
     setActiveChart(active);
   };
 
+  const handleMarketData = (day: any, active: any) => {
+    onChangeMarketCapData(day);
+    setActiveButton(active);
+  };
+
   return (
     <div className="flex">
       <div>
@@ -49,8 +54,11 @@ const DynamicValues = ({
         <Button
           variant={activeButton === "1" ? undefined : "outline"}
           onClick={() => {
-            handleButtonClick(timeStamps.oneDayAgo, "30m", "1"),
-              onChangeMarketCapData(Days.oneDay);
+            handleMarketCap === "1"
+              ? handleButtonClick(timeStamps.oneDayAgo, "30m", "1")
+              : handleMarketCap === "2"
+              ? handleMarketData(Days.oneDay, "1")
+              : undefined;
           }}
         >
           1d
@@ -58,8 +66,11 @@ const DynamicValues = ({
         <Button
           variant={activeButton === "2" ? undefined : "outline"}
           onClick={() => {
-            handleButtonClick(timeStamps.sevenDaysAgo, "1h", "2");
-            onChangeMarketCapData(Days.sevenDays);
+            handleMarketCap === "1"
+              ? handleButtonClick(timeStamps.sevenDaysAgo, "1h", "2")
+              : handleMarketCap === "2"
+              ? handleMarketData(Days.sevenDays, "2")
+              : undefined;
           }}
         >
           7d
@@ -67,8 +78,11 @@ const DynamicValues = ({
         <Button
           variant={activeButton === "3" ? undefined : "outline"}
           onClick={() => {
-            handleButtonClick(timeStamps.thirtyDaysAgo, "2h", "3"),
-              onChangeMarketCapData(Days.oneMonth);
+            handleMarketCap === "1"
+              ? handleButtonClick(timeStamps.thirtyDaysAgo, "2h", "3")
+              : handleMarketCap === "2"
+              ? handleMarketData(Days.oneMonth, "3")
+              : undefined;
           }}
         >
           1m
@@ -76,8 +90,11 @@ const DynamicValues = ({
         <Button
           variant={activeButton === "4" ? undefined : "outline"}
           onClick={() => {
-            handleButtonClick(timeStamps.sixMonthsAgo, "1d", "4"),
-              onChangeMarketCapData(Days.sixMonths);
+            handleMarketCap === "1"
+              ? handleButtonClick(timeStamps.sixMonthsAgo, "1d", "4")
+              : handleMarketCap === "2"
+              ? handleMarketData(Days.sixMonths, "4")
+              : undefined;
           }}
         >
           6m
@@ -85,8 +102,11 @@ const DynamicValues = ({
         <Button
           variant={activeButton === "5" ? undefined : "outline"}
           onClick={() => {
-            handleButtonClick(timeStamps.oneYearAgo, "3d", "5"),
-              onChangeMarketCapData(Days.oneYear);
+            handleMarketCap === "1"
+              ? handleButtonClick(timeStamps.oneYearAgo, "3d", "5")
+              : handleMarketCap === "2"
+              ? handleMarketData(Days.oneYear, "5")
+              : undefined;
           }}
         >
           1y
@@ -94,8 +114,11 @@ const DynamicValues = ({
         <Button
           variant={activeButton === "6" ? undefined : "outline"}
           onClick={() => {
-            handleButtonClick(timeStamps.fiveYearsAgo, "1w", "6"),
-              onChangeMarketCapData(Days.fiveYears);
+            handleMarketCap === "1"
+              ? handleButtonClick(timeStamps.fiveYearsAgo, "1w", "6")
+              : handleMarketCap === "2"
+              ? handleMarketData(Days.fiveYears, "6")
+              : undefined;
           }}
         >
           5y
@@ -103,8 +126,11 @@ const DynamicValues = ({
         <Button
           variant={activeButton === "7" ? undefined : "outline"}
           onClick={() => {
-            handleButtonClick(max, "1w", "7"),
-              onChangeMarketCapData(Days.maximum);
+            handleMarketCap === "1"
+              ? handleButtonClick(max, "1w", "7")
+              : handleMarketCap === "2"
+              ? handleMarketData(Days.maximum, "7")
+              : undefined;
           }}
         >
           Max

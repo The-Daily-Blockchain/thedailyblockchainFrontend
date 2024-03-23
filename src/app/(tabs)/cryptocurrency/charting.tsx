@@ -74,7 +74,7 @@ const Charting = ({ symbol }: Props) => {
 
   const fomattedHistoryData = marketHistory?.market_caps.map(
     (item: string[], index: any) => ({
-      time: item[0],
+      time: parseFloat(item[0]) / 1000 + GMT_TO_PHT_OFFSET,
       price: item[1],
       volume: marketHistory?.total_volumes[index][1],
     })
@@ -102,6 +102,7 @@ const Charting = ({ symbol }: Props) => {
               formattedData={formattedData}
               loading={loading}
               interval={interval}
+              stringTogler={"1"}
             />
           )}
           {toggle === "2" && (
@@ -116,7 +117,11 @@ const Charting = ({ symbol }: Props) => {
 
       {marketPriceToggler === "2" && (
         <>
-          <ChartComponent formattedData={fomattedHistoryData} loading={false} />
+          <ChartComponent
+            formattedData={fomattedHistoryData}
+            loading={false}
+            stringTogler={"3"}
+          />
         </>
       )}
     </>

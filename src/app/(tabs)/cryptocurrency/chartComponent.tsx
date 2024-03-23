@@ -13,12 +13,14 @@ interface ChartProps {
   formattedData: any[] | null;
   loading: boolean;
   interval?: any;
+  stringTogler: string;
 }
 
 export const ChartComponent = ({
   formattedData,
   loading,
   interval,
+  stringTogler,
 }: ChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
@@ -148,13 +150,14 @@ export const ChartComponent = ({
       setTooltipData(null);
     };
   }, [formattedData, interval, loading]);
+  const togglerNo = stringTogler;
   // const adjustedTime = interval.endsWith("m")
   const PHT_TO_GMT_OFFSET = -8 * 60 * 60 * 1000;
   const adjustedTime = /[mh]$/.test(interval)
     ? tooltipData?.time * 1000 + PHT_TO_GMT_OFFSET
+    : togglerNo === "3"
+    ? tooltipData?.time * 1000 + PHT_TO_GMT_OFFSET
     : tooltipData?.time;
-
-  const togglerNo = "1";
 
   return (
     <div className="chart-container relative">
