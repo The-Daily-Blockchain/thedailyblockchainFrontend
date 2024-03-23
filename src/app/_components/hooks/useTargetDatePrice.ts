@@ -1,18 +1,37 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
-import { fetcher } from "../utils/fetcher";
+import { newMultiFetcher } from "../utils/fetcher";
+import timeStamps from "../utils/dataValues";
+import { formatDateGecko } from "../utils/formattingData";
+import { useDebouncedValue } from "../utils/usedebouncevalue";
+import useCachedDynamicData from "./usecacheddynamicdata";
 
-export const useTargetDatePrice = ({ symbol, date }: any) => {
-  // date =   30 - 12 - 2022
-  //   formatDateGecko
-  const dataUrl = `https://api.coingecko.com/api/v3/coins/${symbol}/history?date=${date}&localization=false`;
+export const useTargetDatePrice = (symbol: any) => {
+  const date = [
+    // timeStamps.oneDayAgo,
+    timeStamps.sevenDaysAgo,
+    timeStamps.thirtyDaysAgo,
+    timeStamps.sixMonthsAgo,
+    timeStamps.oneYearAgo,
+    timeStamps.fiveYearsAgo,
+  ].map((timestamp) => formatDateGecko(timestamp));
 
-  const { data, isLoading } = useSWR(dataUrl, fetcher);
+  const dataUrls = date.map(
+    (formattedDate) =>
+      `https://api.coingecko.com/api/v3/coins/${symbol}/history?date=${formattedDate}&localization=false`
+  );
+
+  const debounceUrls = useDebouncedValue(dataUrls, 86400000);
+
   const cachedDataRef = useRef<any>(null);
-
   useEffect(() => {
-    cachedDataRef.current = data;
-  });
+    const fetchData = async () => {
+      const responseData = await newMultiFetcher(debounceUrls);
+      cachedDataRef.current = responseData;
+    };
+    fetchData();
+  }, [debounceUrls]);
 
-  return { data: cachedDataRef.current, isLoading };
+  console.log(cachedDataRef.current);
+  return { data: cachedDataRef.current };
 };

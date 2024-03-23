@@ -8,6 +8,7 @@ import PercentComponent from "./belowchart/percentComponent";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
+
   const symbol = nameToSymbol[name];
   const symbolWithUSDT = symbol + "usdt";
 
@@ -22,7 +23,7 @@ const CryptoPage = ({ params }: any) => {
           <Charting symbol={symbolWithUSDT} />
         </div>
         <div className="shadow-2xl bg-white rounded-xl px-2 mt-3">
-          <PercentComponent symbol={symbolWithUSDT} dataStream={dataStream} />
+          <PercentComponent symbol={name} dataStream={dataStream} />
         </div>
       </div>
     </div>
