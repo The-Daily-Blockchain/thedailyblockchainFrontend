@@ -4,7 +4,6 @@ import { newMultiFetcher } from "../utils/fetcher";
 import timeStamps from "../utils/dataValues";
 import { formatDateGecko } from "../utils/formattingData";
 import { useDebouncedValue } from "../utils/usedebouncevalue";
-import useCachedDynamicData from "./usecacheddynamicdata";
 
 export const useTargetDatePrice = (symbol: any) => {
   const date = [
@@ -26,11 +25,27 @@ export const useTargetDatePrice = (symbol: any) => {
   const cachedDataRef = useRef<any>(null);
   useEffect(() => {
     const fetchData = async () => {
-      const responseData = await newMultiFetcher(debounceUrls);
-      cachedDataRef.current = responseData;
+      const localStorageKey = `percent_data_${symbol}`;
+      const cachedDataString = localStorage.getItem(localStorageKey);
+      const cachedData = cachedDataString ? JSON.parse(cachedDataString) : {};
+
+      const currentTime = new Date().getTime();
+      const lastFetchTime = cachedData.lastFetchTime || 0;
+      const isDataValid = currentTime - lastFetchTime < 86400000;
+
+      if (isDataValid) {
+        cachedDataRef.current = cachedData.data;
+      } else {
+        const responseData = await newMultiFetcher(debounceUrls);
+        cachedDataRef.current = responseData;
+        localStorage.setItem(
+          localStorageKey,
+          JSON.stringify({ data: responseData, lastFetchTime: currentTime })
+        );
+      }
     };
     fetchData();
-  }, [debounceUrls]);
+  }, [debounceUrls, symbol]);
 
   console.log(cachedDataRef.current);
   return { data: cachedDataRef.current };

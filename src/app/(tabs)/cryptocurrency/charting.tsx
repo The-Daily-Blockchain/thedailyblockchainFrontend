@@ -39,7 +39,7 @@ const Charting = ({ symbol }: Props) => {
 
         return {
           time: formattedTime,
-          price: parseFloat(item[1]),
+          price: parseFloat(item[4]),
           volume: parseFloat(item[5]),
           open: parseFloat(item[1]),
           high: parseFloat(item[2]),

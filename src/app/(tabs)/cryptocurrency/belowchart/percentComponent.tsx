@@ -1,6 +1,7 @@
 "use-client";
 import { useTargetDatePrice } from "@/app/_components/hooks/useTargetDatePrice";
 import { symbolToName } from "@/app/_components/utils/cryptomappings";
+import NumberFormatter from "@/app/_components/utils/numberFormater";
 import React from "react";
 interface Props {
   symbol: any;
@@ -8,7 +9,6 @@ interface Props {
 }
 const PercentComponent = ({ symbol, dataStream }: Props) => {
   const { data: datePrice } = useTargetDatePrice(symbol);
-  // console.log(datePrice[0].market_data.current_price.usd);
   const sevenDays = datePrice?.[0].market_data?.current_price?.usd;
   const thirtyDays = datePrice?.[1].market_data?.current_price?.usd;
   const sixMonths = datePrice?.[2].market_data?.current_price?.usd;
@@ -26,21 +26,41 @@ const PercentComponent = ({ symbol, dataStream }: Props) => {
         <div>max</div>
       </div>
       <div className="grid grid-cols-7 text-center overflow-hidden">
-        <div>{dataStream.P} </div>
         <div>
-          {(((dataStream.w - sevenDays) / dataStream.w) * 100).toFixed(2)}%
+          <NumberFormatter value={parseFloat(dataStream.P).toFixed(2)} />{" "}
         </div>
         <div>
-          {(((dataStream.w - thirtyDays) / dataStream.w) * 100).toFixed(2)}%
+          <NumberFormatter
+            value={(((dataStream.w - sevenDays) / dataStream.w) * 100).toFixed(
+              2
+            )}
+          />
         </div>
         <div>
-          {(((dataStream.w - sixMonths) / dataStream.w) * 100).toFixed(2)}%
+          <NumberFormatter
+            value={(((dataStream.w - thirtyDays) / dataStream.w) * 100).toFixed(
+              2
+            )}
+          />
         </div>
         <div>
-          {(((dataStream.w - oneYear) / dataStream.w) * 100).toFixed(2)}%
+          <NumberFormatter
+            value={(((dataStream.w - sixMonths) / dataStream.w) * 100).toFixed(
+              2
+            )}
+          />
         </div>
         <div>
-          {(((dataStream.w - fiveYears) / dataStream.w) * 100).toFixed(2)}%
+          <NumberFormatter
+            value={(((dataStream.w - oneYear) / dataStream.w) * 100).toFixed(2)}
+          />
+        </div>
+        <div>
+          <NumberFormatter
+            value={(((dataStream.w - fiveYears) / dataStream.w) * 100).toFixed(
+              2
+            )}
+          />
         </div>
         <div></div>
       </div>
