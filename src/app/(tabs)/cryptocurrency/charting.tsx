@@ -91,7 +91,7 @@ const Charting = ({ symbol }: Props) => {
 
   return (
     <>
-      <div className=" mb-1 pl-1 rounded-xl shadow-2xl">
+      <div className="pl-1 rounded-xl shadow-2xl">
         <ButtonMarket onChangeMarketCap={handleMarketCap} />
         <DynamicValues
           onRangeSelect={handleData}

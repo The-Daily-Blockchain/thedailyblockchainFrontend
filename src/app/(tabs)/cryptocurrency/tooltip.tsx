@@ -42,7 +42,6 @@ export const Tooltip = ({
         top: `${y}px`,
         left: `${x}px`,
         pointerEvents: "none",
-        border: "1px solid",
         borderRadius: "8px",
         fontFamily:
           "-apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif",
@@ -51,7 +50,7 @@ export const Tooltip = ({
         background: "white",
         color: "black",
         borderColor: "rgba(38, 166, 154, 1)",
-        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+        boxShadow: "2px 12px 16px rgba(0, 0, 0, 0.1)",
       }}
     >
       <div style={{ color: "rgba(38, 166, 154, 1)" }}></div>
@@ -60,14 +59,6 @@ export const Tooltip = ({
           Price: ${formatNumberWithCommas(value)}
         </div>
       )}
-      {togglerNo == "3" && (
-        <div style={{ color: "black" }}>
-          High: ${formatNumberWithCommas(value)}
-        </div>
-      )}
-      <div style={{ color: "black" }}>
-        volume: {formatNumberWithCommas(volume)}
-      </div>
       {togglerNo == "2" && (
         <div>
           <div style={{ color: "black" }}>
@@ -84,6 +75,14 @@ export const Tooltip = ({
           </div>
         </div>
       )}
+      {togglerNo == "3" && (
+        <div style={{ color: "black" }}>
+          High: ${formatNumberWithCommas(value)}
+        </div>
+      )}
+      <div style={{ color: "black" }}>
+        Volume: {formatNumberWithCommas(volume)}
+      </div>
       <div style={{ marginTop: "1px", color: "black" }}>
         {formatChartingDateWithTime(time)}
       </div>

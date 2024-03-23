@@ -29,7 +29,7 @@ const DynamicValues = ({
   };
 
   return (
-    <div className="flex mb-2">
+    <div className="flex mb-3">
       <div>
         <Button
           className="mr-2"
