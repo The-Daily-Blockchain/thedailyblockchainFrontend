@@ -15,7 +15,7 @@ const CryptoPage = ({ params }: any) => {
   const { data: dataStream } = useCryptoStream(symbolWithUSDT) as { data: any };
   return (
     <div className="grid grid-cols-[1fr,2fr] justify-items-center items-center">
-      <div className="border-r-2 pl-3 rounded-xl mt-10 w-[350px] shadow-2xl">
+      <div className="border-r-2 pl-3 rounded-xl mt-10 w-[380px] shadow-2xl">
         <StreamComponent name={name} dataStream={dataStream} />
       </div>
       <div>

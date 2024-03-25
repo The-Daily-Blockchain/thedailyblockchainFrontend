@@ -1,15 +1,6 @@
 import { useCryptoStream } from "@/app/_components/hooks/useCryptoStream";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { capitalizeFirstLetter } from "@/app/_components/utils/capitalizefirstletter";
 import {
   formatAmount,
@@ -65,24 +56,18 @@ const StreamComponent = ({ name, dataStream }: any) => {
   return (
     <>
       {isClient ? (
-        <Table className="mt-3 mb-3 content-center">
-          <TableHeader>
-            <TableRow className="flex" noBorder={true}>
+        <div className="mt-3 mx-1 py-3 px-1 mb-3 content-center">
+          <div>
+            <div className="flex">
               <span className=" ml-4 mt-2 w-8 h-8 flex items-center justify-center text-lg font-semibold border-solid border-2 border-indigo-500 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-full">
                 {marketData?.market_data?.market_cap_rank || "∞"}
               </span>
               <span className="ml-2 mt-[15px] font-bold">
                 Cryptocurrency rank
               </span>
-            </TableRow>
-            <TableRow
-              noBorder={true}
-              className="grid justify-items-center items-center mt-5 "
-            >
-              <TableHead
-                noBorder={true}
-                className="flex text-left text-xl text-black w-[200px] "
-              >
+            </div>
+            <div className="grid justify-items-center items-center mt-5 ">
+              <div className="flex text-left text-xl text-black w-[200px] mb-2">
                 <span className="mr-2">
                   <Image
                     className="rounded-full"
@@ -93,26 +78,23 @@ const StreamComponent = ({ name, dataStream }: any) => {
                   />
                 </span>
                 {capitalizeFirstLetter(name)}
-              </TableHead>
-              <TableHead
-                noBorder={true}
-                className="grid grid-cols-2 justify-center"
-              >
+              </div>
+              <div className="grid grid-cols-2 justify-center">
                 <span className="text-3xl text-left font-bold text-black w-[100px]">
                   ${newFormatAmount(parseFloat(dataStream.w))}
                 </span>
                 <span className={`${valueClassName} ml-2 pl-3 w-[160px]`}>
                   {arrowIcon} {newFormatAmount(parseFloat(dataStream.P))}%
                 </span>
-              </TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody className="grid justify-center">
-            <TableRow noBorder={true} className="w-[300px]">
+              </div>
+            </div>
+          </div>
+          <div className="grid justify-center">
+            <div className="w-[300px]">
               <PriceBarChart data={formattedData} />
-            </TableRow>
-            <TableRow noBorder={true}>
-              <TableCell className="font-medium flex">
+            </div>
+            <div>
+              <div className="font-medium flex mt-1">
                 <span className="mr-3">Market Capitalization</span>$
                 {formatAmount(marketData?.market_data?.market_cap?.usd) || "∞"}
                 <span className="ml-1 mt-[3px]  delay-100">
@@ -128,16 +110,16 @@ const StreamComponent = ({ name, dataStream }: any) => {
                     </HoverCardContent>
                   </HoverCard>
                 </span>
-              </TableCell>
-            </TableRow>
-            <TableRow noBorder={true}>
-              <TableCell className="font-medium">
+              </div>
+            </div>
+            <div className="mt-1">
+              <div className="font-medium">
                 <span className="mr-3">24 Hour Trading Volume</span>$
                 {newFormatAmount(parseFloat(dataStream.q))}
-              </TableCell>
-            </TableRow>
-            <TableRow noBorder={true}>
-              <TableCell className="font-medium flex">
+              </div>
+            </div>
+            <div className="mt-1">
+              <div className="font-medium flex">
                 <span className="mr-3">Circulating Supply</span>
                 {formatNumberWithCommas(
                   parseFloat(marketData?.market_data?.circulating_supply)
@@ -156,13 +138,13 @@ const StreamComponent = ({ name, dataStream }: any) => {
                     </HoverCardContent>
                   </HoverCard>
                 </span>
-              </TableCell>
-              <TableRow noBorder={true}>
+              </div>
+              <div>
                 <PercentBarChart data={reshapePercentPayload} />
-              </TableRow>
-            </TableRow>
-            <TableRow className="mt-3" noBorder={true}>
-              <TableCell className="font-medium flex">
+              </div>
+            </div>
+            <div className="mt-3">
+              <div className="font-medium flex">
                 <span className="mr-3">Total Supply</span>
                 {marketData &&
                 marketData.market_data &&
@@ -186,10 +168,10 @@ const StreamComponent = ({ name, dataStream }: any) => {
                     </HoverCardContent>
                   </HoverCard>
                 </span>
-              </TableCell>
-            </TableRow>
-            <TableRow noBorder={true}>
-              <TableCell className="font-medium flex">
+              </div>
+            </div>
+            <div className="mt-2">
+              <div className="font-medium flex">
                 <span className="mr-3">Max Supply</span>
                 {marketData &&
                 marketData.market_data &&
@@ -213,13 +195,13 @@ const StreamComponent = ({ name, dataStream }: any) => {
                     </HoverCardContent>
                   </HoverCard>
                 </span>
-              </TableCell>
-            </TableRow>
-            <TableRow noBorder={true}>
-              <TableCell className="font-bold">Website</TableCell>
-            </TableRow>
-            <TableRow noBg={true} noBorder={true}>
-              <TableCell className="grid grid-cols-3">
+              </div>
+            </div>
+            <div className="mt-2">
+              <div className="font-bold">Website</div>
+            </div>
+            <div>
+              <div className="grid grid-cols-3">
                 {marketData?.links?.homepage?.[0] && (
                   <Button
                     variant="outline"
@@ -256,11 +238,11 @@ const StreamComponent = ({ name, dataStream }: any) => {
                     </a>
                   </Button>
                 )}
-              </TableCell>
-            </TableRow>
+              </div>
+            </div>
             {marketData?.links?.blockchain_site?.[0] && (
-              <TableRow noBg={true} noBorder={true}>
-                <TableCell className="flex">
+              <div className="mt-2">
+                <div className="flex">
                   <span className="font-bold mt-2 mr-10">
                     Blockchain Explorer
                   </span>
@@ -275,11 +257,11 @@ const StreamComponent = ({ name, dataStream }: any) => {
                       Explorer
                     </a>
                   </Button>
-                </TableCell>
-              </TableRow>
+                </div>
+              </div>
             )}
-          </TableBody>
-        </Table>
+          </div>
+        </div>
       ) : (
         ""
       )}

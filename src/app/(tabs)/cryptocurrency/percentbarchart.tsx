@@ -8,8 +8,6 @@ import React from "react";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Bar } from "recharts";
 
-const mockData = [{ name: "Price", high: 100, low: 0, current: 100 }];
-
 interface Props {
   data?: any;
 }
@@ -83,8 +81,8 @@ const PercentBarChart = ({ data }: any) => {
             shape={<CustomBar />}
           />
         </BarChart>
-        <TableRow className="relative" noBorder={true}>
-          <TableCell className="flex absolute -top-3 left-32">
+        <div className="relative">
+          <div className="flex absolute -top-1 left-32">
             <span className="font-bold text-xs">
               {(
                 (parseFloat(data[0].cir_supply) /
@@ -106,8 +104,8 @@ const PercentBarChart = ({ data }: any) => {
                 </HoverCardContent>
               </HoverCard>
             </span>
-          </TableCell>
-        </TableRow>
+          </div>
+        </div>
       </>
     </>
   );

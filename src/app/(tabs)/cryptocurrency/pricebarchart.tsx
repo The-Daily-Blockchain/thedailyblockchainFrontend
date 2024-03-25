@@ -69,15 +69,13 @@ const PriceBarChart = ({ data }: Props) => {
           yAxisId={0}
         />
       </BarChart>
-      <TableRow noBorder={true} className="grid grid-cols-3">
-        <TableCell className="text-left">
-          ${formatNumberWithCommas(data[0].low)}
-        </TableCell>
-        <TableCell className="text-center">24h range</TableCell>
-        <TableCell className="text-right">
+      <div className="grid grid-cols-3">
+        <div className="text-left">${formatNumberWithCommas(data[0].low)}</div>
+        <div className="text-center">24h range</div>
+        <div className="text-right">
           ${formatNumberWithCommas(data[0].high)}
-        </TableCell>
-      </TableRow>
+        </div>
+      </div>
     </>
   );
 };
