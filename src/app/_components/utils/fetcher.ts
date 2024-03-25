@@ -24,42 +24,6 @@ export const multiFetcher = async (urls: string[]) => {
   return mergedData;
 };
 
-// export const newMultiFetcher = async (urls: string[]) => {
-//   try {
-//     const responses = await Promise.all(
-//       urls.map(async (url) => {
-//         while (true) {
-//           try {
-//             const response = await axios.get(url);
-//             return response.data;
-//           } catch (error) {
-//             // Handle Axios errors
-//             if (axios.isAxiosError(error)) {
-//               const axiosError = error as AxiosError;
-//               console.error(
-//                 `Axios error fetching data from ${url}:`,
-//                 axiosError.message
-//               );
-//             } else {
-//               console.error(`Error fetching data from ${url}:`, error);
-//             }
-//           }
-//         }
-//       })
-//     );
-
-//     // Merge all data arrays into one array
-//     const mergedData = responses.reduce((acc, data) => {
-//       return acc.concat(data);
-//     }, []);
-
-//     return mergedData;
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//     throw error;
-//   }
-// };
-
 export const newMultiFetcher = async (urls: string[]) => {
   try {
     const responses = await Promise.all(

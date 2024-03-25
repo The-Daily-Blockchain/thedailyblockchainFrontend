@@ -14,6 +14,7 @@ const PercentComponent = ({ symbol, dataStream }: Props) => {
   const sixMonths = datePrice?.[2]?.market_data?.current_price?.usd;
   const oneYear = datePrice?.[3]?.market_data?.current_price?.usd;
   const fiveYears = datePrice?.[4]?.market_data?.current_price?.usd;
+
   return (
     <div className="py-2">
       <div className="grid grid-cols-6 text-center pb-1 mb-1 border-b-2">
@@ -30,37 +31,27 @@ const PercentComponent = ({ symbol, dataStream }: Props) => {
         </div>
         <div>
           <NumberFormatter
-            value={
-              (((dataStream.w - sevenDays) / dataStream.w) * 100).toFixed(2) ||
-              "∞"
-            }
+            value={((dataStream.w / sevenDays) * 100).toFixed(2)}
           />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - thirtyDays) / dataStream.w) * 100).toFixed(
-              2
-            )}
+            value={((dataStream.w / thirtyDays) * 100).toFixed(2)}
           />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - sixMonths) / dataStream.w) * 100).toFixed(
-              2
-            )}
+            value={((dataStream.w / sixMonths) * 100).toFixed(2)}
           />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - oneYear) / dataStream.w) * 100).toFixed(2)}
+            value={((dataStream.w / oneYear) * 100).toFixed(2)}
           />
         </div>
         <div>
           <NumberFormatter
-            value={
-              (((dataStream.w - fiveYears) / dataStream.w) * 100).toFixed(2) ||
-              "∞"
-            }
+            value={((dataStream.w / fiveYears) * 100).toFixed(2)}
           />
         </div>
       </div>
