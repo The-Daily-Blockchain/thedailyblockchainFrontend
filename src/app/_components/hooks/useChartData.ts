@@ -4,7 +4,12 @@ import { useDebouncedValue } from "../utils/usedebouncevalue";
 
 export const useChartData = (symbol: any, startTime: any, interval: any) => {
   const urls = useMemo(() => {
-    let url = `/api/graph?symbol=${symbol}&startTime=${startTime}`;
+    let url = `/api/graph?symbol=${symbol}`;
+
+    if (startTime !== null && startTime !== undefined && startTime !== 0) {
+      url += `&startTime=${startTime}`;
+    }
+
     if (interval !== null && interval !== undefined && interval !== 1) {
       url += `&interval=${interval}`;
     }
@@ -13,7 +18,7 @@ export const useChartData = (symbol: any, startTime: any, interval: any) => {
 
   const debounceUrls = useDebouncedValue(urls, 8640000);
 
-  const [newData, setNewData] = useState(null);
+  const [newData, setNewData] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +28,7 @@ export const useChartData = (symbol: any, startTime: any, interval: any) => {
         setNewData(data);
       } catch (error) {
         console.error("Error fetching chart data:", error);
-        setNewData(null);
+        setNewData([]);
       }
     };
     fetchData();

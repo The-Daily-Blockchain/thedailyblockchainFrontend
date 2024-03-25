@@ -1,31 +1,38 @@
 "use-client";
+import { useChartData } from "@/app/_components/hooks/useChartData";
 import { useTargetDatePrice } from "@/app/_components/hooks/useTargetDatePrice";
 import { symbolToName } from "@/app/_components/utils/cryptomappings";
+import { Days } from "@/app/_components/utils/dataValues";
 import NumberFormatter from "@/app/_components/utils/numberFormater";
 import React from "react";
 interface Props {
   symbol: any;
   dataStream: any;
+  symbolWithUSDT: any;
 }
-const PercentComponent = ({ symbol, dataStream }: Props) => {
-  const { data: datePrice } = useTargetDatePrice(symbol);
-  const sevenDays = datePrice?.[0]?.market_data?.current_price?.usd;
-  const thirtyDays = datePrice?.[1]?.market_data?.current_price?.usd;
-  const sixMonths = datePrice?.[2]?.market_data?.current_price?.usd;
-  const oneYear = datePrice?.[3]?.market_data?.current_price?.usd;
-  const fiveYears = datePrice?.[4]?.market_data?.current_price?.usd;
+const PercentComponent = ({ symbol, dataStream, symbolWithUSDT }: Props) => {
+  const newSymbol = symbolWithUSDT.toUpperCase();
+  const { data: chartData } = useChartData(newSymbol, null, "1w");
+
+  const sevenDays = chartData?.[chartData.length - 2]?.[4];
+  const thirtyDays = chartData?.[chartData.length - 5]?.[4];
+  const sixMonths = chartData?.[chartData.length - 27]?.[4];
+  const oneYear = chartData?.[chartData.length - 53]?.[4];
+  const fiveYears = chartData?.[chartData.length - 260]?.[4];
+  const maxYears = chartData?.[0]?.[4];
 
   return (
     <div className="py-2">
-      <div className="grid grid-cols-6 text-center pb-1 mb-1 border-b-2">
+      <div className="grid grid-cols-7 text-center pb-1 mb-1 border-b-2">
         <div>1d</div>
         <div>7d</div>
         <div>1m</div>
         <div>6m</div>
         <div>1y</div>
         <div>5y</div>
+        <div>Max</div>
       </div>
-      <div className="grid grid-cols-6 text-center overflow-hidden">
+      <div className="grid grid-cols-7 text-center overflow-hidden">
         <div>
           <NumberFormatter value={parseFloat(dataStream.P).toFixed(2)} />
         </div>
@@ -52,6 +59,11 @@ const PercentComponent = ({ symbol, dataStream }: Props) => {
         <div>
           <NumberFormatter
             value={((dataStream.w / fiveYears) * 100).toFixed(2)}
+          />
+        </div>
+        <div>
+          <NumberFormatter
+            value={((dataStream.w / maxYears) * 100).toFixed(2)}
           />
         </div>
       </div>

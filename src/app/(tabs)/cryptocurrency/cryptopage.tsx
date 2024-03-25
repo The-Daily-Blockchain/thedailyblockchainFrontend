@@ -23,7 +23,11 @@ const CryptoPage = ({ params }: any) => {
           <Charting symbol={symbolWithUSDT} />
         </div>
         <div className="shadow-2xl bg-white rounded-xl px-2 mt-3">
-          <PercentComponent symbol={name} dataStream={dataStream} />
+          <PercentComponent
+            symbol={name}
+            symbolWithUSDT={symbolWithUSDT}
+            dataStream={dataStream}
+          />
         </div>
       </div>
     </div>
