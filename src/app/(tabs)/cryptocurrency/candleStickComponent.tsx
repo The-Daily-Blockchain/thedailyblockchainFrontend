@@ -156,10 +156,7 @@ export const CandleStickComponent = ({
 
   return (
     <div className="chart-container relative">
-      <div
-        className="chart border-2 border-solid"
-        ref={chartContainerRef}
-      ></div>
+      <div className="chart" ref={chartContainerRef}></div>
       <div className="legend"></div>
       {tooltipData?.time && seriesRef.current && secondSeries.current && (
         <Tooltip

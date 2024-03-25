@@ -53,6 +53,5 @@ export const useTargetDatePrice = (symbol: any) => {
     fetchData();
   }, [debounceUrls, symbol]);
 
-  console.log(cachedDataRef.current);
   return { data: cachedDataRef.current };
 };

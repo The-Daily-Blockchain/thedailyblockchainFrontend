@@ -29,10 +29,10 @@ const DynamicValues = ({
   };
 
   return (
-    <div className="flex mb-3">
+    <div className="flex mb-3 pb-2">
       <div>
         <Button
-          className="mr-2"
+          className="mr-1"
           variant={activeChart === "1" ? undefined : "outline"}
           onClick={() => {
             handleChartClick("1"), onChangeChart("1");
@@ -51,7 +51,7 @@ const DynamicValues = ({
           </Button>
         )}
       </div>
-      <div className="mx-auto mb-2">
+      <div className="mx-auto">
         <Button
           className="mr-1"
           variant={activeButton === "1" ? undefined : "outline"}
@@ -131,6 +131,7 @@ const DynamicValues = ({
           5y
         </Button>
         <Button
+          className="mr-1"
           variant={activeButton === "7" ? undefined : "outline"}
           onClick={() => {
             handleMarketCap === "1"

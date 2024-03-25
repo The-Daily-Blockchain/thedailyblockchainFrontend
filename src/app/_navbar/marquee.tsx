@@ -38,8 +38,6 @@ const MarQuee = () => {
     return () => clearInterval(interval);
   }, [crypto_api]);
 
-  console.log(crypto);
-
   return (
     <div>
       {!isLoading && (
