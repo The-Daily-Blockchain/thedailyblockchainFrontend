@@ -37,7 +37,11 @@ export const useTargetDatePrice = (symbol: any) => {
         cachedDataRef.current = cachedData.data;
       } else {
         const responseData = await newMultiFetcher(debounceUrls);
-        if (responseData.every((item: null) => item !== null)) {
+        if (
+          responseData.every(
+            (item: null) => item !== null || item !== "" || item !== undefined
+          )
+        ) {
           cachedDataRef.current = responseData;
           localStorage.setItem(
             localStorageKey,
