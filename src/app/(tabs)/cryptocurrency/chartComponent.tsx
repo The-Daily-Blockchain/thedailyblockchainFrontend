@@ -55,7 +55,7 @@ export const ChartComponent = ({
 
     const timeVisible = /[mh]$/.test(interval);
     const chart = createChart(chartContainerRef.current, {
-      width: 700,
+      width: 640,
       height: 300,
       autoSize: true,
       handleScroll: {

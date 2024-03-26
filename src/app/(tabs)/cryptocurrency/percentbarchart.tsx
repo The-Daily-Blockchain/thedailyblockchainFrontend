@@ -22,8 +22,8 @@ const CustomBar = ({
   base,
   total_supply,
 }: any) => {
-  const grayWidth = 290 * ((total_supply - cir_supply) / (total_supply - base));
-  const greenWidth = 290 - grayWidth;
+  const grayWidth = 310 * ((total_supply - cir_supply) / (total_supply - base));
+  const greenWidth = 310 - grayWidth;
 
   return (
     <g>
@@ -62,7 +62,7 @@ const CustomBar = ({
 };
 
 const PercentBarChart = ({ data }: any) => {
-  const width = 300;
+  const width = 320;
   const height = 20;
   return (
     <>
@@ -91,7 +91,7 @@ const PercentBarChart = ({ data }: any) => {
               ).toFixed(2)}
               %
             </span>
-            <span className="ml-1 mt-[2px] delay-100">
+            <span className="ml-1 delay-100">
               <HoverCard openDelay={300}>
                 <HoverCardTrigger className="cursor-pointer">
                   <IoInformationCircleOutline className="text-gray-600" />

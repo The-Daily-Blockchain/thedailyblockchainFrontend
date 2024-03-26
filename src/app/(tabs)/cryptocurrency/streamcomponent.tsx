@@ -56,7 +56,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
   return (
     <>
       {isClient ? (
-        <div className="mt-3 mx-1 py-3 px-1 mb-3 content-center">
+        <div className="mt-3 mx-1 py-3 mb-3 content-center">
           <div>
             <div className="flex">
               <span className=" ml-4 mt-2 w-8 h-8 flex items-center justify-center text-lg font-semibold border-solid border-2 border-indigo-500 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-full">
@@ -94,10 +94,10 @@ const StreamComponent = ({ name, dataStream }: any) => {
               <PriceBarChart data={formattedData} />
             </div>
             <div>
-              <div className="font-medium flex mt-1">
+              <div className="font-medium flex mt-2">
                 <span className="mr-3">Market Capitalization</span>$
                 {formatAmount(marketData?.market_data?.market_cap?.usd) || "∞"}
-                <span className="ml-1 mt-[3px]  delay-100">
+                <span className="ml-1 mt-[4px]  delay-100">
                   <HoverCard openDelay={300}>
                     <HoverCardTrigger className="cursor-pointer">
                       <IoInformationCircleOutline className="text-gray-600" />
@@ -124,7 +124,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
                 {formatNumberWithCommas(
                   parseFloat(marketData?.market_data?.circulating_supply)
                 )}
-                <span className="ml-1 mt-[3px]  delay-100">
+                <span className="ml-1 mt-[4px]  delay-100">
                   <HoverCard openDelay={300}>
                     <HoverCardTrigger className="cursor-pointer">
                       <IoInformationCircleOutline className="text-gray-600" />
@@ -143,7 +143,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
                 <PercentBarChart data={reshapePercentPayload} />
               </div>
             </div>
-            <div className="mt-3">
+            <div className="mt-4">
               <div className="font-medium flex">
                 <span className="mr-3">Total Supply</span>
                 {marketData &&
@@ -153,7 +153,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
                       parseFloat(marketData.market_data.total_supply)
                     )
                   : "∞"}
-                <span className="ml-1 mt-[3px] delay-100">
+                <span className="ml-1 mt-[4px] delay-100">
                   <HoverCard openDelay={300}>
                     <HoverCardTrigger className="cursor-pointer">
                       <IoInformationCircleOutline className="text-gray-600" />
@@ -180,7 +180,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
                       parseFloat(marketData.market_data.max_supply)
                     )
                   : "∞"}
-                <span className="ml-1 mt-[3px] delay-100">
+                <span className="ml-1 mt-[4px] delay-100">
                   <HoverCard openDelay={300}>
                     <HoverCardTrigger className="cursor-pointer">
                       <IoInformationCircleOutline className="text-gray-600" />
@@ -201,7 +201,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
               <div className="font-bold">Website</div>
             </div>
             <div>
-              <div className="grid grid-cols-3">
+              <div className="grid grid-cols-3 mr-3 mb-1">
                 {marketData?.links?.homepage?.[0] && (
                   <Button
                     variant="outline"
@@ -241,7 +241,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
               </div>
             </div>
             {marketData?.links?.blockchain_site?.[0] && (
-              <div className="mt-2">
+              <div className="mt-3">
                 <div className="flex">
                   <span className="font-bold mt-2 mr-10">
                     Blockchain Explorer

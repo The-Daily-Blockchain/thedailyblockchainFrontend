@@ -10,8 +10,8 @@ interface Props {
 }
 
 const CustomBar = ({ x, y, width, height, fill, current, low, high }: any) => {
-  const grayWidth = 290 * ((high - current) / (high - low));
-  const greenWidth = 290 - grayWidth;
+  const grayWidth = 310 * ((high - current) / (high - low));
+  const greenWidth = 310 - grayWidth;
 
   return (
     <g>
@@ -50,7 +50,7 @@ const CustomBar = ({ x, y, width, height, fill, current, low, high }: any) => {
 };
 
 const PriceBarChart = ({ data }: Props) => {
-  const width = 300;
+  const width = 320;
   const height = 30;
   return (
     <>
