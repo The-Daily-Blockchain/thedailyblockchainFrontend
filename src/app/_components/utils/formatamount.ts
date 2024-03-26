@@ -8,7 +8,7 @@ export const newFormatAmount = (amount: number | string): string => {
   if (typeof amount === "string") {
     amount = parseFloat(amount);
   }
-  return amount.toLocaleString(undefined, {
+  return amount?.toLocaleString(undefined, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });

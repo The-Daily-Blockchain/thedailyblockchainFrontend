@@ -25,7 +25,7 @@ const CryptoPage = ({ params }: any) => {
           <StreamComponent name={name} dataStream={dataStream} />
         </div>
         <div className="shadow-2xl bg-white p-1 rounded-xl">
-          <AllTime />
+          <AllTime chartData={chartData} dataStream={dataStream} />
         </div>
       </div>
       <div>
