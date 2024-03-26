@@ -8,6 +8,7 @@ import { CandleStickComponent } from "./candleStickComponent";
 import ButtonMarket from "./buttonMarket";
 import { symbolToName } from "@/app/_components/utils/cryptomappings";
 import { useMarketHistory } from "@/app/_components/hooks/useMarketHistory";
+import SmallLoader from "@/app/_components/utils/smallLoader";
 
 interface Props {
   symbol: any;

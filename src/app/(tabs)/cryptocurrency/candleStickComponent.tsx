@@ -54,7 +54,7 @@ export const CandleStickComponent = ({
 
     const timeVisible = /[mh]$/.test(interval);
     const chart = createChart(chartContainerRef.current, {
-      width: 640,
+      width: 660,
       height: 300,
       autoSize: true,
       handleScroll: {

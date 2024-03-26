@@ -94,10 +94,10 @@ const StreamComponent = ({ name, dataStream }: any) => {
               <PriceBarChart data={formattedData} />
             </div>
             <div>
-              <div className="font-medium flex mt-2">
-                <span className="mr-3">Market Capitalization</span>$
-                {formatAmount(marketData?.market_data?.market_cap?.usd) || "∞"}
-                <span className="ml-1 mt-[4px]  delay-100">
+              <div className="font-medium mt-2">Market Capitalization</div>
+              <div className="flex">
+                ${formatAmount(marketData?.market_data?.market_cap?.usd) || "∞"}
+                <div className="ml-1 mt-[4px]  delay-100">
                   <HoverCard openDelay={300}>
                     <HoverCardTrigger className="cursor-pointer">
                       <IoInformationCircleOutline className="text-gray-600" />
@@ -109,13 +109,13 @@ const StreamComponent = ({ name, dataStream }: any) => {
                       perceived worth of these decentralized digital currencies.
                     </HoverCardContent>
                   </HoverCard>
-                </span>
+                </div>
               </div>
             </div>
-            <div className="mt-1">
-              <div className="font-medium">
-                <span className="mr-3">24 Hour Trading Volume</span>$
-                {newFormatAmount(parseFloat(dataStream.q))}
+            <div className="flex">
+              <div className="mt-1">
+                <div className="font-medium">24 Hour Trading Volume</div>
+                <div>${newFormatAmount(parseFloat(dataStream.q))}</div>
               </div>
             </div>
             <div className="mt-1">
