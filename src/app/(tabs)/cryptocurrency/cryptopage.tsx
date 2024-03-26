@@ -5,6 +5,8 @@ import React from "react";
 import StreamComponent from "./streamcomponent";
 import Charting from "./charting";
 import PercentComponent from "./belowchart/percentComponent";
+import AllTime from "./belowchart/allTime";
+import { useChartData } from "@/app/_components/hooks/useChartData";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
@@ -13,10 +15,18 @@ const CryptoPage = ({ params }: any) => {
   const symbolWithUSDT = symbol + "usdt";
 
   const { data: dataStream } = useCryptoStream(symbolWithUSDT) as { data: any };
+  const newSymbol = symbolWithUSDT.toUpperCase();
+  const { data: chartData } = useChartData(newSymbol, null, "1w");
+
   return (
-    <div className="grid grid-cols-[1fr,2fr] justify-items-center items-center">
-      <div className="border-r-2 pl-3 rounded-xl mt-10 w-[350px] shadow-2xl">
-        <StreamComponent name={name} dataStream={dataStream} />
+    <div className="grid grid-cols-[1fr,2fr]  justify-items-center items-center">
+      <div>
+        <div className="border-r-2 pl-3 rounded-xl mt-10 w-[350px] shadow-2xl">
+          <StreamComponent name={name} dataStream={dataStream} />
+        </div>
+        <div className="shadow-2xl bg-white p-1 rounded-xl">
+          <AllTime />
+        </div>
       </div>
       <div>
         <div className="shadow-2xl rounded-xl">
@@ -24,7 +34,7 @@ const CryptoPage = ({ params }: any) => {
         </div>
         <div className="shadow-2xl bg-white rounded-xl px-2 mt-3">
           <PercentComponent
-            symbol={name}
+            chartData={chartData}
             symbolWithUSDT={symbolWithUSDT}
             dataStream={dataStream}
           />

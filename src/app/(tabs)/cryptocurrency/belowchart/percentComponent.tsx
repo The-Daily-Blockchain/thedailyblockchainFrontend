@@ -1,19 +1,12 @@
 "use-client";
-import { useChartData } from "@/app/_components/hooks/useChartData";
-import { useTargetDatePrice } from "@/app/_components/hooks/useTargetDatePrice";
-import { symbolToName } from "@/app/_components/utils/cryptomappings";
-import { Days } from "@/app/_components/utils/dataValues";
 import NumberFormatter from "@/app/_components/utils/numberFormater";
 import React from "react";
 interface Props {
-  symbol: any;
   dataStream: any;
   symbolWithUSDT: any;
+  chartData?: any[];
 }
-const PercentComponent = ({ symbol, dataStream, symbolWithUSDT }: Props) => {
-  const newSymbol = symbolWithUSDT.toUpperCase();
-  const { data: chartData } = useChartData(newSymbol, null, "1w");
-
+const PercentComponent = ({ dataStream, chartData }: Props) => {
   const sevenDays = chartData?.[chartData.length - 2]?.[4];
   const thirtyDays = chartData?.[chartData.length - 5]?.[4];
   const sixMonths = chartData?.[chartData.length - 27]?.[4];
@@ -32,7 +25,7 @@ const PercentComponent = ({ symbol, dataStream, symbolWithUSDT }: Props) => {
         <div>5y</div>
         <div>Max</div>
       </div>
-      <div className="grid grid-cols-7 text-center mr-2">
+      <div className="grid grid-cols-7 text-center">
         <div>
           <NumberFormatter value={parseFloat(dataStream.P).toFixed(2)} />
         </div>
