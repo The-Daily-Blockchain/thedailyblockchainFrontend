@@ -118,7 +118,7 @@ const AllTime = ({ chartData, dataStream, symbol }: Props) => {
       <div className="mt-3 ml-2 font-semibold">
         {formatSymbol} Historical Price
       </div>
-      <div className="grid grid-cols-[1fr,3fr] w-[360px] p-2">
+      <div className="grid grid-cols-[1fr,3fr] p-2">
         <div className="mt-[6px] text-[13px] font-medium">7d Range</div>
         <div className="mt-2 text-[12px] flex justify-end">
           <div className="mr-1">

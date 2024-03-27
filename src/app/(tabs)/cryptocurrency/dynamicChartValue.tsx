@@ -130,19 +130,21 @@ const DynamicValues = ({
         >
           5y
         </Button>
-        <Button
-          className="mr-1"
-          variant={activeButton === "7" ? undefined : "outline"}
-          onClick={() => {
-            handleMarketCap === "1"
-              ? handleButtonClick(max, "1w", "7")
-              : handleMarketCap === "2"
-              ? handleMarketData(Days.maximum, "7")
-              : undefined;
-          }}
-        >
-          Max
-        </Button>
+        {handleMarketCap !== "2" && (
+          <Button
+            className="mr-1"
+            variant={activeButton === "7" ? undefined : "outline"}
+            onClick={() => {
+              handleMarketCap === "1"
+                ? handleButtonClick(max, "1w", "7")
+                : handleMarketCap === "2"
+                ? handleMarketData(Days.maximum, "7")
+                : undefined;
+            }}
+          >
+            Max
+          </Button>
+        )}
       </div>
     </div>
   );
