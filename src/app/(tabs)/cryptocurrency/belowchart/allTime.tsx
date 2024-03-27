@@ -136,13 +136,13 @@ const AllTime = ({ chartData, dataStream, symbol }: Props) => {
         <div className="mt-[6px] text-[13px] font-medium">1y Range</div>
         <div className="mt-2 text-[12px] flex justify-end">
           <div className="mr-1">
-            <div> ${HighValueOneYear}</div>
+            <div> ${LowestValueOneYear}</div>
           </div>
           <div className="mt-[3px] mr-1">
             <FiMinus />
           </div>
           <div>
-            <div>${LowestValueOneYear}</div>
+            <div>${HighValueOneYear}</div>
           </div>
         </div>
         <div className="mt-6 text-[13px] font-medium">All Time High</div>
