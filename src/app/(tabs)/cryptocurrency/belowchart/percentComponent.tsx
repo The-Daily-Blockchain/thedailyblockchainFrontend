@@ -25,7 +25,7 @@ const PercentComponent = ({ dataStream, chartData }: Props) => {
         <div>5y</div>
         <div>Max</div>
       </div>
-      <div className="grid grid-cols-7 text-center">
+      <div className="grid grid-cols-7 text-center pr-2">
         <div>
           <NumberFormatter value={parseFloat(dataStream.P).toFixed(2)} />
         </div>

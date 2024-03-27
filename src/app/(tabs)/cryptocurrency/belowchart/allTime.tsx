@@ -115,11 +115,11 @@ const AllTime = ({ chartData, dataStream, symbol }: Props) => {
 
   return (
     <>
-      <div className="mt-3 ml-2 font-semibold">
+      <div className="mt-3 ml-2 mb-1 font-semibold">
         {formatSymbol} Historical Price
       </div>
       <div className="grid grid-cols-[1fr,3fr] p-2">
-        <div className="mt-[6px] text-[13px] font-medium">7d Range</div>
+        <div className="mt-[6px] text-[12px] font-medium">7d Range</div>
         <div className="mt-2 text-[12px] flex justify-end">
           <div className="mr-1">
             <div> ${LowestValueSevenDays}</div>
@@ -133,7 +133,7 @@ const AllTime = ({ chartData, dataStream, symbol }: Props) => {
             <div>${HighValueSevenDays}</div>
           </div>
         </div>
-        <div className="mt-[6px] text-[13px] font-medium">1y Range</div>
+        <div className="mt-[6px] text-[12px] font-medium">1y Range</div>
         <div className="mt-2 text-[12px] flex justify-end">
           <div className="mr-1">
             <div> ${LowestValueOneYear}</div>
@@ -145,7 +145,7 @@ const AllTime = ({ chartData, dataStream, symbol }: Props) => {
             <div>${HighValueOneYear}</div>
           </div>
         </div>
-        <div className="mt-6 text-[13px] font-medium">All Time High</div>
+        <div className="mt-6 text-[12px] font-medium">All Time High</div>
         <div className="mt-4 text-right grid grid-cols-[2fr,1fr] text-[12px]">
           <div className="mr-1">
             <div> ${newFormatAmount(highestValue)}</div>
@@ -163,7 +163,7 @@ const AllTime = ({ chartData, dataStream, symbol }: Props) => {
             <div> ({formattedHighestValueDiff})</div>
           </div>
         </div>
-        <div className="mt-4 text-[13px] font-medium">All Time Low</div>
+        <div className="mt-4 text-[12px] font-medium">All Time Low</div>
         <div className="mt-2 text-right grid grid-cols-[2fr,1fr] text-[12px]">
           <div className="mr-1">
             <div> ${newFormatAmount(lowestValue)}</div>

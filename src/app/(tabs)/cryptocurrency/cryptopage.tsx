@@ -33,7 +33,7 @@ const CryptoPage = ({ params }: any) => {
           />
         </div>
       </div>
-      <div className="w-[620px]">
+      <div className="w-[620px] ml-3">
         <div className="shadow-2xl rounded-xl">
           <Charting symbol={symbolWithUSDT} />
         </div>
