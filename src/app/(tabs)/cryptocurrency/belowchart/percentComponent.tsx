@@ -14,6 +14,8 @@ const PercentComponent = ({ dataStream, chartData }: Props) => {
   const fiveYears = chartData?.[chartData.length - 260]?.[4];
   const maxYears = chartData?.[0]?.[4];
 
+  // binance api not working?
+
   return (
     <div className="py-2 ">
       <div className="grid  grid-cols-7 text-center pb-1 mb-1 border-b-2">
