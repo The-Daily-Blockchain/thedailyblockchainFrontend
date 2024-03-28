@@ -8,6 +8,7 @@ import PercentComponent from "./belowchart/percentComponent";
 import AllTime from "./belowchart/allTime";
 import { useChartData } from "@/app/_components/hooks/useChartData";
 import CryptoDetails from "./belowCrypto/cryptoDetails";
+import CryptoPost from "./cryptopost/cryptoPost";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
@@ -21,7 +22,7 @@ const CryptoPage = ({ params }: any) => {
 
   return (
     <div className="grid grid-cols-[1fr,2fr,1fr] mt-10 justify-items-center mb-10">
-      <div className="w-[350px] ml-2">
+      <div className="w-[340px] ml-2">
         <div className="border-r-2 pl-3 rounded-xl  shadow-2xl">
           <StreamComponent name={name} dataStream={dataStream} />
         </div>
@@ -33,7 +34,7 @@ const CryptoPage = ({ params }: any) => {
           />
         </div>
       </div>
-      <div className="w-[620px] ml-3">
+      <div className="w-[620px] ml-2">
         <div className="shadow-2xl rounded-xl">
           <Charting symbol={symbolWithUSDT} />
         </div>
@@ -48,7 +49,11 @@ const CryptoPage = ({ params }: any) => {
           <CryptoDetails symbol={name} />
         </div>
       </div>
-      <div></div>
+      <div>
+        <div className="shadow-2xl bg-white rounded-xl px-2 mt-3">
+          <CryptoPost symbol={name} />
+        </div>
+      </div>
     </div>
   );
 };
