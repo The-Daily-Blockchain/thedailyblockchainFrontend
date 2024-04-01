@@ -10,6 +10,7 @@ import { useChartData } from "@/app/_components/hooks/useChartData";
 import CryptoDetails from "./belowCrypto/cryptoDetails";
 import CryptoPost from "./cryptopost/cryptoPost";
 import CryptoHeader from "./cryptopost/cryptoHeader";
+import Converter from "./belowchart/converter";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
@@ -26,6 +27,9 @@ const CryptoPage = ({ params }: any) => {
       <div className="w-[340px] ml-2">
         <div className="border-r-2 pl-3 rounded-xl  shadow-2xl">
           <StreamComponent name={name} dataStream={dataStream} />
+        </div>
+        <div className="shadow-2xl bg-white p-1 mb-3 rounded-xl">
+          <Converter symbol={name} />
         </div>
         <div className="shadow-2xl bg-white p-1 rounded-xl">
           <AllTime
