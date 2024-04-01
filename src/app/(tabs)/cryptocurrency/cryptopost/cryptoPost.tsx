@@ -17,9 +17,13 @@ const CryptoPost = ({ symbol }: Props) => {
   console.log(data);
 
   useEffect(() => {
-    if (data && data.results) {
+    if (data && data.results && data.results.length > 0) {
       setPosts((prevPosts) => [...prevPosts, ...data.results]);
-      setHasMore(data.results.length > 0);
+      if (data.next === null || undefined) {
+        setHasMore(false); // No more paginated results available
+      } else {
+        setHasMore(true); // More paginated results available
+      }
     } else {
       setHasMore(false);
     }
