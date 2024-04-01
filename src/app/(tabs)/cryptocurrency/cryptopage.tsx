@@ -50,7 +50,7 @@ const CryptoPage = ({ params }: any) => {
         </div>
       </div>
       <div>
-        <div className="shadow-2xl bg-white rounded-xl px-2 mt-3">
+        <div className="shadow-2xl bg-white rounded-xl px-2 mt-3 mr-2">
           <CryptoPost symbol={name} />
         </div>
       </div>
