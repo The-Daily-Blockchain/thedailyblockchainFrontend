@@ -9,6 +9,7 @@ import AllTime from "./belowchart/allTime";
 import { useChartData } from "@/app/_components/hooks/useChartData";
 import CryptoDetails from "./belowCrypto/cryptoDetails";
 import CryptoPost from "./cryptopost/cryptoPost";
+import CryptoHeader from "./cryptopost/cryptoHeader";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
@@ -50,6 +51,9 @@ const CryptoPage = ({ params }: any) => {
         </div>
       </div>
       <div>
+        <div className="shadow-2xl font-bold align-middle bg-white rounded-xl p-6 mt-3 mr-2">
+          <CryptoHeader symbol={name} />
+        </div>
         <div className="shadow-2xl bg-white rounded-xl px-2 mt-3 mr-2">
           <CryptoPost symbol={name} />
         </div>
