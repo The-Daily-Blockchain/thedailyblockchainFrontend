@@ -105,131 +105,159 @@ const Page = () => {
   };
 
   return (
-    <div className="flex min-h-screen mx-10">
-      <Table className="mt-2">
-        <TableCaption>Powered by Binance</TableCaption>
-        <TableHeader>
-          <TableRow className="font-xl">
-            <TableHead className="w-[10px]"></TableHead>
-            <TableHead className="w-[70px]">Cryptocurrency</TableHead>
-            <TableHead className="text-right w-[100px]">
-              24hr Price change
-            </TableHead>
-            <TableHead className="text-right w-[100px]">
-              24hr Price change%
-            </TableHead>
-            <TableHead className="text-right w-[100px]">Price PHP</TableHead>
-            <TableHead className="text-right w-[100px]">Price USD</TableHead>
-            <TableHead className="text-right w-[100px]">High 24hr</TableHead>
-            <TableHead className="text-right w-[100px]">Low 24hr</TableHead>
-            <TableHead className="text-right w-[100px]">Volume USD</TableHead>
-            <TableHead className="text-center w-[60px]"></TableHead>
-            <TableHead className="text-left w-[100px]">7 Day graph</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {Object.keys(tickerData)
-            .sort((pairA: any, pairB: any) => {
-              const bidPriceA = parseFloat(tickerData[pairA].q);
-              const bidPriceB = parseFloat(tickerData[pairB].q);
-              return bidPriceB - bidPriceA;
-            })
-            .map((pair: any) => (
-              <TableRow
-                key={pair}
-                onClick={() => handleClick(pair)}
-                style={{ cursor: "pointer" }}
-              >
-                <TableCell className="w-[10px]">
-                  <div style={{ width: "30px", height: "30px" }}>
-                    <Image
-                      className="rounded-full"
-                      src={
-                        convertSymbolToName(
-                          tickerData[pair].s.replace("USDT", "")
-                        ).imageUrl
-                      }
-                      alt={"Symbol"}
-                      width={30}
-                      height={30}
-                    />
-                  </div>
-                </TableCell>
-                <TableCell className="w-[70px]">
-                  {
-                    convertSymbolToName(tickerData[pair].s.replace("USDT", ""))
-                      .name
-                  }
-                </TableCell>
-                <TableCell
-                  style={{
-                    color: parseFloat(tickerData[pair].p) < 0 ? "red" : "green",
-                  }}
-                  className="text-right w-[100px]"
+    <>
+      <div
+        className="flex min-h-screen mx-10"
+        style={{
+          overflowX: "auto",
+          scrollbarColor: "transparent transparent",
+          msOverflowStyle: "none",
+        }}
+      >
+        <Table className="mt-2">
+          <TableHeader>
+            <TableRow className="font-xl">
+              <TableHead className="w-[10px] sticky left-0 bg-white z-10"></TableHead>
+              <TableHead className="w-[70px] sticky left-12 bg-white z-10">
+                Cryptocurrency
+              </TableHead>
+              <TableHead className="text-right w-[100px]">
+                24hr Price change
+              </TableHead>
+              <TableHead className="text-right w-[100px]">
+                24hr Price change%
+              </TableHead>
+              <TableHead className="text-right w-[100px]">Price PHP</TableHead>
+              <TableHead className="text-right w-[100px]">Price USD</TableHead>
+              <TableHead className="text-right w-[100px]">High 24hr</TableHead>
+              <TableHead className="text-right w-[100px]">Low 24hr</TableHead>
+              <TableHead className="text-right w-[100px]">Volume USD</TableHead>
+              <TableHead className="text-center w-[60px]"></TableHead>
+              <TableHead className="text-left w-[100px]">7 Day graph</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {Object.keys(tickerData)
+              .sort((pairA: any, pairB: any) => {
+                const bidPriceA = parseFloat(tickerData[pairA].q);
+                const bidPriceB = parseFloat(tickerData[pairB].q);
+                return bidPriceB - bidPriceA;
+              })
+              .map((pair: any) => (
+                <TableRow
+                  key={pair}
+                  onClick={() => handleClick(pair)}
+                  style={{ cursor: "pointer" }}
                 >
-                  $ {parseFloat(tickerData[pair].p).toLocaleString()}
-                </TableCell>
-                <TableCell
-                  style={{
-                    color: parseFloat(tickerData[pair].P) < 0 ? "red" : "green",
-                  }}
-                  className="text-right w-[100px]"
-                >
-                  {parseFloat(tickerData[pair].P).toFixed(2)}%
-                </TableCell>
-                <TableCell className="text-right">
-                  ₱
-                  {exchangeRate &&
-                    tickerData[pair].w &&
-                    newFormatAmount(
-                      exchangeRate * parseFloat(tickerData[pair].w)
-                    )}
-                </TableCell>
-                <TableCell className="text-right w-[100px]">
-                  ${newFormatAmount(parseFloat(tickerData[pair].w))}
-                </TableCell>
-                <TableCell className="text-right w-[100px]">
-                  {newFormatAmount(parseFloat(tickerData[pair].h))}
-                </TableCell>
-                <TableCell className="text-right w-[100px]">
-                  {newFormatAmount(parseFloat(tickerData[pair].l))}
-                </TableCell>
-                <TableCell className="text-right w-[140px]">
-                  {newFormatAmount(parseFloat(tickerData[pair].q))}
-                </TableCell>
-                <TableCell></TableCell>
-                <AreaChart
-                  width={210}
-                  height={60}
-                  data={formattedData[pair] || []}
-                >
-                  <defs>
-                    <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="1">
-                      <stop
-                        offset="10%"
-                        stopColor="#8884d8"
-                        stopOpacity={0.8}
+                  <TableCell className="w-[10px] sticky left-0 bg-white z-10">
+                    <div style={{ width: "32px", height: "30px" }}>
+                      <Image
+                        className="rounded-full"
+                        src={
+                          convertSymbolToName(
+                            tickerData[pair].s.replace("USDT", "")
+                          ).imageUrl
+                        }
+                        alt={"Symbol"}
+                        width={30}
+                        height={30}
                       />
-                      <stop offset="90%" stopColor="#8884d8" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <XAxis dataKey="time" hide />
-                  <YAxis hide />
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <Tooltip formatter={(value) => `$${value}`} />
-                  <Area
-                    type="monotone"
-                    dataKey="price"
-                    stroke={getPriceChangeColor(formattedData[pair] || [])}
-                    fillOpacity={1}
-                    fill="url(#colorUv)"
-                  />
-                </AreaChart>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
-    </div>
+                    </div>
+                  </TableCell>
+                  <TableCell className="w-[70px] sticky left-12 bg-white z-10">
+                    {
+                      convertSymbolToName(
+                        tickerData[pair].s.replace("USDT", "")
+                      ).name
+                    }
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      color:
+                        parseFloat(tickerData[pair].p) < 0 ? "red" : "green",
+                    }}
+                    className="text-right w-[100px]"
+                  >
+                    $ {parseFloat(tickerData[pair].p).toLocaleString()}
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      color:
+                        parseFloat(tickerData[pair].P) < 0 ? "red" : "green",
+                    }}
+                    className="text-right w-[100px]"
+                  >
+                    {parseFloat(tickerData[pair].P).toFixed(2)}%
+                  </TableCell>
+                  <TableCell className="text-right">
+                    ₱
+                    {exchangeRate &&
+                      tickerData[pair].w &&
+                      newFormatAmount(
+                        exchangeRate * parseFloat(tickerData[pair].w)
+                      )}
+                  </TableCell>
+                  <TableCell className="text-right w-[100px]">
+                    ${newFormatAmount(parseFloat(tickerData[pair].w))}
+                  </TableCell>
+                  <TableCell className="text-right w-[100px]">
+                    {newFormatAmount(parseFloat(tickerData[pair].h))}
+                  </TableCell>
+                  <TableCell className="text-right w-[100px]">
+                    {newFormatAmount(parseFloat(tickerData[pair].l))}
+                  </TableCell>
+                  <TableCell className="text-right w-[140px]">
+                    {newFormatAmount(parseFloat(tickerData[pair].q))}
+                  </TableCell>
+                  <TableCell></TableCell>
+                  <AreaChart
+                    width={210}
+                    height={60}
+                    data={formattedData[pair] || []}
+                  >
+                    <defs>
+                      <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="1">
+                        <stop
+                          offset="10%"
+                          stopColor="#8884d8"
+                          stopOpacity={0.8}
+                        />
+                        <stop
+                          offset="90%"
+                          stopColor="#8884d8"
+                          stopOpacity={0}
+                        />
+                      </linearGradient>
+                    </defs>
+                    <XAxis dataKey="time" hide />
+                    <YAxis hide />
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <Tooltip formatter={(value) => `$${value}`} />
+                    <Area
+                      type="monotone"
+                      dataKey="price"
+                      stroke={getPriceChangeColor(formattedData[pair] || [])}
+                      fillOpacity={1}
+                      fill="url(#colorUv)"
+                    />
+                  </AreaChart>
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      </div>
+      <div className="justify-center align-center flex font-bold mb-3">
+        <div className="mr-3 pt-[4px] text-[20px] text-[#F3BA2F]">
+          Powered by
+        </div>
+        <Image
+          src="/binance_logo.svg.png"
+          alt="binance"
+          width={200}
+          height={10}
+        />
+      </div>
+    </>
   );
 };
 
