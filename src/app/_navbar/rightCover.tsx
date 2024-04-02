@@ -37,17 +37,17 @@ const RightCover = () => {
     <div className="rounded-3xl overflow-auto">
       <div>
         <div className="max-w-[1280] w-11/12 mx-auto py-6 h-full px-4 group mt-9">
-          <div className="relative w-full">
+          <div className="w-full flex justify-center items-center">
             <Image
               src={slides[currentIndex].url}
               alt={`Slide ${currentIndex + 1}`}
-              className="absolute right-14 duration-500 rounded-3xl"
+              className="duration-500 rounded-3xl"
               style={{ objectFit: "cover" }}
               height={500}
               width={280}
               priority
             />
-            <div className="flex top-4 justify-center">
+            <div className="flex justify-center">
               {slides.map((slide, slideIndex) => (
                 <div
                   key={slideIndex}
