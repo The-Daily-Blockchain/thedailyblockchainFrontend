@@ -1,6 +1,9 @@
 "use client";
 import { capitalizeFirstLetter } from "@/app/_components/utils/capitalizefirstletter";
-import { newFormatAmount } from "@/app/_components/utils/formatamount";
+import {
+  formatNumberWithCommas,
+  removeLeadingZeros,
+} from "@/app/_components/utils/formatamount";
 import React, { useEffect, useState } from "react";
 
 interface Props {
@@ -21,25 +24,17 @@ const Converter = ({ symbol, conversionRate }: Props) => {
   }, [conversionRate]);
 
   const handleCurrencyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    if (newValue === "" || newValue === ".") {
-      setCurrencyValue("0");
-    } else {
-      setCurrencyValue(newValue);
-    }
+    const newValue = e.target.value || "0";
+    setCurrencyValue(removeLeadingZeros(newValue));
     const convertedValue = parseFloat(newValue) * conversionRate;
-    setUsdValue(convertedValue.toFixed(2).toString());
+    setUsdValue(formatNumberWithCommas(convertedValue));
   };
 
   const handleUsdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    if (newValue === "" || newValue === ".") {
-      setUsdValue("0");
-    } else {
-      setUsdValue(newValue);
-    }
+    const newValue = e.target.value || "0";
+    setUsdValue(removeLeadingZeros(newValue));
     const convertedValue = parseFloat(newValue) / conversionRate;
-    setCurrencyValue(convertedValue.toFixed(2).toString());
+    setCurrencyValue(formatNumberWithCommas(convertedValue));
   };
 
   return (
@@ -49,7 +44,7 @@ const Converter = ({ symbol, conversionRate }: Props) => {
       </div>
       <div className="flex justify-between px-3 pb-3 relative">
         <span
-          className="absolute left-5 top-[1px] transition-all text-[14px] font-bold text-black"
+          className="absolute left-5 top-[4px] transition-all text-[14px] font-bold text-black"
           style={{
             pointerEvents: "none",
             color: "rgba(0, 0, 0, 0.4)",
@@ -58,13 +53,13 @@ const Converter = ({ symbol, conversionRate }: Props) => {
           {capitalizeFirstLetter(symbol)}
         </span>
         <input
-          className="border-2 justify-center border-gray-300 focus:border-gray-300 border-solid rounded-lg px-2 pl-[63px] text-right text-[12px] font-extralight"
+          className="border-2 justify-center border-gray-300 focus:border-gray-300 border-solid rounded-lg px-2 pl-[63px] text-right text-[12px] font-extralight py-1"
           style={{ width: "150px" }}
-          value={newFormatAmount(currencyValue)}
+          value={currencyValue}
           onChange={handleCurrencyChange}
         ></input>
         <span
-          className="absolute right-[120px] top-[1px] transition-all text-[14px] font-bold text-black"
+          className="absolute right-[120px] top-[4px] transition-all text-[14px] font-bold text-black"
           style={{
             pointerEvents: "none",
             color: "rgba(0, 0, 0, 0.4)",
@@ -73,14 +68,13 @@ const Converter = ({ symbol, conversionRate }: Props) => {
           USD
         </span>
         <input
-          value={newFormatAmount(usdValue)}
+          value={usdValue}
           onChange={handleUsdChange}
-          className="border-2 justify-center border-gray-300 focus:border-gray-300 border-solid rounded-lg px-2 pl-[63px] text-right text-[12px] font-extralight"
+          className="border-2 justify-center border-gray-300 focus:border-gray-300 border-solid rounded-lg px-2 pl-[63px] text-right text-[12px] font-extralight py-1"
           style={{ width: "150px" }}
         ></input>
       </div>
     </div>
   );
 };
-
 export default Converter;
