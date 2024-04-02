@@ -34,20 +34,17 @@ const RightCover = () => {
   }, [currentIndex]);
 
   return (
-    <div className="mb-10">
-      <div className="h-[585px]">
-        <div
-          className="max-w-[1280] w-11/12 mx-auto py-6 h-full px-4 relative group mt-32"
-          style={{ overflow: "hidden" }}
-        >
-          <div className="relative w-full h-3/4 overflow-hidden rounded-2xl">
+    <div className="rounded-3xl overflow-auto">
+      <div>
+        <div className="max-w-[1280] w-11/12 mx-auto py-6 h-full px-4 group mt-9">
+          <div className="relative w-full">
             <Image
               src={slides[currentIndex].url}
               alt={`Slide ${currentIndex + 1}`}
-              className="w-full rounded-2xl duration-500"
+              className="absolute right-14 duration-500 rounded-3xl"
               style={{ objectFit: "cover" }}
               height={500}
-              width={2000}
+              width={280}
               priority
             />
             <div className="flex top-4 justify-center">

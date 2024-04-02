@@ -9,7 +9,7 @@ interface Props {
 
 const MdCover = ({ data }: Props) => {
   return (
-    <div className="grid grid-cols-2 pt-6 border-b-2 mb-12 border-solid border-[#727272]">
+    <div className="grid grid-cols-2 border-b-2 mb-12 border-solid border-[#727272]">
       <MdLeftCover data={data} />
       <RightCover />
     </div>

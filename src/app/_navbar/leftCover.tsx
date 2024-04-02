@@ -12,8 +12,8 @@ interface Props {
 const LeftCover = ({ data }: Props) => {
   const router = useRouter();
   return (
-    <div className="grid">
-      <div className="text-3xl mt-5 font-bold grid justify-center text-[#303030]">
+    <div className="grid overflow-hidden">
+      <div className="text-3xl mt-5 mb-7 font-bold grid justify-center text-[#303030]">
         Top Stories
       </div>
       {data?.results
@@ -23,7 +23,7 @@ const LeftCover = ({ data }: Props) => {
         .map((x: any, index: number) => (
           <div key={x.id} className="justify-items-end">
             <div
-              className={`grid grid-cols-2 pb-6 ${
+              className={`grid grid-cols-2 pb-6 mb-7 ${
                 index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
               }`}
             >
