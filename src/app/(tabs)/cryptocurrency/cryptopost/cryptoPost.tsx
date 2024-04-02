@@ -14,7 +14,6 @@ const CryptoPost = ({ symbol }: Props) => {
   const [posts, setPosts] = useState<any[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const { data, isLoading } = useGetCryptoPost(symbol, page);
-  console.log(data);
 
   useEffect(() => {
     if (data && data.results && data.results.length > 0) {

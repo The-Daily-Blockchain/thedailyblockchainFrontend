@@ -11,6 +11,7 @@ import CryptoDetails from "./belowCrypto/cryptoDetails";
 import CryptoPost from "./cryptopost/cryptoPost";
 import CryptoHeader from "./cryptopost/cryptoHeader";
 import Converter from "./belowchart/converter";
+import { useLatestPrice } from "@/app/_components/hooks/useLatestPrice";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
@@ -19,9 +20,11 @@ const CryptoPage = ({ params }: any) => {
   const symbolWithUSDT = symbol + "usdt";
 
   const { data: dataStream } = useCryptoStream(symbolWithUSDT) as { data: any };
+
   const newSymbol = symbolWithUSDT.toUpperCase();
   const { data: chartData } = useChartData(newSymbol, null, "1w");
-
+  const { data: Price } = useLatestPrice(newSymbol);
+  const conversionRate = Price?.price;
   return (
     <div className="grid grid-cols-[1fr,2fr,1fr] mt-10 justify-items-center mb-10">
       <div className="w-[340px] ml-2">
@@ -29,7 +32,7 @@ const CryptoPage = ({ params }: any) => {
           <StreamComponent name={name} dataStream={dataStream} />
         </div>
         <div className="shadow-2xl bg-white p-1 mb-3 rounded-xl">
-          <Converter symbol={name} />
+          <Converter symbol={name} conversionRate={conversionRate} />
         </div>
         <div className="shadow-2xl bg-white p-1 rounded-xl">
           <AllTime
