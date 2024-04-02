@@ -25,7 +25,7 @@ const MobileCover = ({ data }: Props) => {
         .map((x: any, index: number) => (
           <div key={x.id} className="justify-items-end">
             <div
-              className={`grid grid-cols-2 pb-6 ${
+              className={`grid grid-cols-2 pb-6 mb-6 ${
                 index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
               }`}
             >
