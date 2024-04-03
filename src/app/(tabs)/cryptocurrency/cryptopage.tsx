@@ -81,6 +81,7 @@ const CryptoPage = ({ params }: any) => {
         chartData={chartData}
         dataStream={dataStream}
         name={name}
+        conversionRate={conversionRate}
       />
     </>
   );
