@@ -29,29 +29,131 @@ const DynamicValues = ({
   };
 
   return (
-    <div className="flex mb-3 pb-2">
-      <div>
-        <Button
-          className="mr-1"
-          variant={activeChart === "1" ? undefined : "outline"}
-          onClick={() => {
-            handleChartClick("1"), onChangeChart("1");
-          }}
-        >
-          <MdOutlineShowChart />
-        </Button>
-        {handleMarketCap !== "2" && (
+    <>
+      <div className="flex sm:mb-3 pb-2">
+        <div>
           <Button
-            variant={activeChart === "2" ? undefined : "outline"}
+            className="mr-1"
+            variant={activeChart === "1" ? undefined : "outline"}
             onClick={() => {
-              handleChartClick("2"), onChangeChart("2");
+              handleChartClick("1"), onChangeChart("1");
             }}
           >
-            <MdOutlineCandlestickChart />
+            <MdOutlineShowChart />
           </Button>
-        )}
+          {handleMarketCap !== "2" && (
+            <Button
+              variant={activeChart === "2" ? undefined : "outline"}
+              onClick={() => {
+                handleChartClick("2"), onChangeChart("2");
+              }}
+            >
+              <MdOutlineCandlestickChart />
+            </Button>
+          )}
+        </div>
+        <div className="mx-auto hidden sm:block">
+          <Button
+            className="mr-1"
+            variant={activeButton === "1" ? undefined : "outline"}
+            onClick={() => {
+              handleMarketCap === "1"
+                ? handleButtonClick(timeStamps.oneDayAgo, "30m", "1")
+                : handleMarketCap === "2"
+                ? handleMarketData(Days.oneDay, "1")
+                : undefined;
+            }}
+          >
+            1d
+          </Button>
+          <Button
+            className="mr-1"
+            variant={activeButton === "2" ? undefined : "outline"}
+            onClick={() => {
+              handleMarketCap === "1"
+                ? handleButtonClick(timeStamps.sevenDaysAgo, "1h", "2")
+                : handleMarketCap === "2"
+                ? handleMarketData(Days.sevenDays, "2")
+                : undefined;
+            }}
+          >
+            7d
+          </Button>
+          <Button
+            className="mr-1"
+            variant={activeButton === "3" ? undefined : "outline"}
+            onClick={() => {
+              handleMarketCap === "1"
+                ? handleButtonClick(timeStamps.thirtyDaysAgo, "2h", "3")
+                : handleMarketCap === "2"
+                ? handleMarketData(Days.oneMonth, "3")
+                : undefined;
+            }}
+          >
+            1m
+          </Button>
+          <Button
+            className="mr-1"
+            variant={activeButton === "4" ? undefined : "outline"}
+            onClick={() => {
+              handleMarketCap === "1"
+                ? handleButtonClick(timeStamps.sixMonthsAgo, "1d", "4")
+                : handleMarketCap === "2"
+                ? handleMarketData(Days.sixMonths, "4")
+                : undefined;
+            }}
+          >
+            6m
+          </Button>
+          <Button
+            className="mr-1"
+            variant={activeButton === "5" ? undefined : "outline"}
+            onClick={() => {
+              handleMarketCap === "1"
+                ? handleButtonClick(timeStamps.oneYearAgo, "3d", "5")
+                : handleMarketCap === "2"
+                ? handleMarketData(Days.oneYear, "5")
+                : undefined;
+            }}
+          >
+            1y
+          </Button>
+          <Button
+            className="mr-1"
+            variant={activeButton === "6" ? undefined : "outline"}
+            onClick={() => {
+              handleMarketCap === "1"
+                ? handleButtonClick(timeStamps.fiveYearsAgo, "1w", "6")
+                : handleMarketCap === "2"
+                ? handleMarketData(Days.fiveYears, "6")
+                : undefined;
+            }}
+          >
+            5y
+          </Button>
+          {handleMarketCap !== "2" && (
+            <Button
+              className="mr-1"
+              variant={activeButton === "7" ? undefined : "outline"}
+              onClick={() => {
+                handleMarketCap === "1"
+                  ? handleButtonClick(max, "1w", "7")
+                  : handleMarketCap === "2"
+                  ? handleMarketData(Days.maximum, "7")
+                  : undefined;
+              }}
+            >
+              Max
+            </Button>
+          )}
+        </div>
+        {/* @@@@@@@@@@@@@@@@@@@@@@@
+      @@@@@@@@@@@@@@@@@@@@@
+      @@@@@@@@@@@@@@@@@@
+      sm below */}
       </div>
-      <div className="mx-auto">
+
+      <div className="mx-auto block sm:hidden mb-3 pb-3">
         <Button
           className="mr-1"
           variant={activeButton === "1" ? undefined : "outline"}
@@ -146,7 +248,7 @@ const DynamicValues = ({
           </Button>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
