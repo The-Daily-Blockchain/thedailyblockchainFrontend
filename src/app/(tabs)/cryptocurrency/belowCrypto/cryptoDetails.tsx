@@ -13,11 +13,13 @@ const CryptoDetails = ({ symbol }: Props) => {
 
   return (
     <div className="p-4 py-3">
-      <div className="text-[32px] font-bold">
+      <div className="text-lg sm:text-[32px] font-bold mb-5">
         {" "}
         About {capitalizeFirstLetter(symbol)}
       </div>
-      <div>{parse(data?.description || "")}</div>
+      <div className="text-[12px] sm:text-[16px]">
+        {parse(data?.description || "")}
+      </div>
     </div>
   );
 };

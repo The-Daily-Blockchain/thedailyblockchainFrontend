@@ -12,6 +12,7 @@ import CryptoPost from "./cryptopost/cryptoPost";
 import CryptoHeader from "./cryptopost/cryptoHeader";
 import Converter from "./belowchart/converter";
 import { useLatestPrice } from "@/app/_components/hooks/useLatestPrice";
+import LgBelow from "./lgbelow/lgBelow";
 
 const CryptoPage = ({ params }: any) => {
   const name = params;
@@ -75,6 +76,12 @@ const CryptoPage = ({ params }: any) => {
           </div>
         </div>
       </div>
+      <LgBelow
+        symbolWithUSDT={symbolWithUSDT}
+        chartData={chartData}
+        dataStream={dataStream}
+        name={name}
+      />
     </>
   );
 };

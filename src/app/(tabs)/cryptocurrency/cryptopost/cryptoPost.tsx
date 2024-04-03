@@ -50,7 +50,7 @@ const CryptoPost = ({ symbol }: Props) => {
         }}
       >
         {posts?.map((items: any, index: number) => (
-          <div className="pt-3" key={index}>
+          <div className="pt-3 text-[12px] sm:text-[16px]" key={index}>
             <div className="flex">
               <div className="mr-2 mt-2">
                 <Image
@@ -69,11 +69,11 @@ const CryptoPost = ({ symbol }: Props) => {
                   <div className="justify-self-center xl:flex-1">
                     @{items?.author?.username}
                   </div>
-                  <div className="ml-2 font-thin mt-1 text-[12px] mb-3 block xl:hidden">
+                  <div className="ml-2 font-thin mt-1 text-[10px] sm:text-[12px] mb-3 block xl:hidden">
                     {timeAgoFormatter(items?.created_at)}
                   </div>
                 </div>
-                <div className="ml-2 font-thin mt-1 text-[12px] mb-3 hidden xl:block">
+                <div className="ml-2 font-thin mt-1 text-[10px] sm:text-[12px] mb-3 hidden xl:block">
                   {timeAgoFormatter(items?.created_at)}
                 </div>
               </div>
