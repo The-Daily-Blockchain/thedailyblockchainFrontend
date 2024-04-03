@@ -42,7 +42,7 @@ const CryptoPage = ({ params }: any) => {
           />
         </div>
       </div>
-      <div className="w-[620px] ml-2">
+      <div className="w-[620px] ml-10 xl:ml-2  xl:w-[530px] 2xl:w-[620px] ">
         <div className="shadow-2xl rounded-xl">
           <Charting symbol={symbolWithUSDT} />
         </div>
@@ -56,9 +56,15 @@ const CryptoPage = ({ params }: any) => {
         <div className="shadow-2xl bg-white rounded-xl p-2 mt-3">
           <CryptoDetails symbol={name} />
         </div>
+        <div className="shadow-2xl xl:hidden font-semibold align-middle bg-white rounded-xl p-6 mt-3 mr-2">
+          <CryptoHeader symbol={name} />
+        </div>
+        <div className="shadow-2xl xl:hidden bg-white rounded-xl px-2 mt-3 mr-2">
+          <CryptoPost symbol={name} />
+        </div>
       </div>
-      <div>
-        <div className="shadow-2xl font-bold align-middle bg-white rounded-xl p-6 mt-3 mr-2">
+      <div className="hidden xl:block w-[360px] 2xl:w-[400px] 2xl:mr-10">
+        <div className="shadow-2xl font-semibold align-middle bg-white rounded-xl p-6 mt-3 mr-2">
           <CryptoHeader symbol={name} />
         </div>
         <div className="shadow-2xl bg-white rounded-xl px-2 mt-3 mr-2">
