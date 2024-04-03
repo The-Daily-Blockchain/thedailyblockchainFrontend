@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import Image from "next/image";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { timeAgoFormatter } from "@/app/_components/utils/formattingDate";
 
 interface Props {
   symbol: any;
@@ -49,7 +50,7 @@ const CryptoPost = ({ symbol }: Props) => {
         }}
       >
         {posts?.map((items: any, index: number) => (
-          <div className="pt-3" key={items?.id}>
+          <div className="pt-3" key={index}>
             <div className="flex">
               <div className="mr-2 mt-2">
                 <Image
@@ -60,8 +61,22 @@ const CryptoPost = ({ symbol }: Props) => {
                   alt="Picture of the author"
                 />
               </div>
-              <div className="font-bold mr-2">{items?.profile?.nickname}</div>
-              <div>@{items?.author?.username}</div>
+              <div>
+                <div className="flex">
+                  <div className="font-bold mr-2 xl:flex-1">
+                    {items?.profile?.nickname}
+                  </div>
+                  <div className="justify-self-center xl:flex-1">
+                    @{items?.author?.username}
+                  </div>
+                  <div className="ml-2 font-thin mt-1 text-[12px] mb-3 block xl:hidden">
+                    {timeAgoFormatter(items?.created_at)}
+                  </div>
+                </div>
+                <div className="ml-2 font-thin mt-1 text-[12px] mb-3 hidden xl:block">
+                  {timeAgoFormatter(items?.created_at)}
+                </div>
+              </div>
             </div>
             <div className="mt-1 ml-10 pb-3">{parse(items?.description)}</div>
             {index !== posts?.length - 1 && (
