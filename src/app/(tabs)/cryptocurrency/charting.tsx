@@ -3,7 +3,7 @@ import { useChartData } from "@/app/_components/hooks/useChartData";
 import { ChartComponent } from "./chartComponent";
 import DynamicValues from "./dynamicChartValue";
 import timeStamps from "@/app/_components/utils/dataValues";
-import { formatChartingDate } from "@/app/_components/utils/formattingData";
+import { formatChartingDate } from "@/app/_components/utils/formattingDate";
 import { CandleStickComponent } from "./candleStickComponent";
 import ButtonMarket from "./buttonMarket";
 import { symbolToName } from "@/app/_components/utils/cryptomappings";

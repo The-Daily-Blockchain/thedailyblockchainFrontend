@@ -1,5 +1,5 @@
 import { formatNumberWithCommas } from "@/app/_components/utils/formatamount";
-import { formatChartingDateWithTime } from "@/app/_components/utils/formattingData";
+import { formatChartingDateWithTime } from "@/app/_components/utils/formattingDate";
 
 export const Tooltip = ({
   time,

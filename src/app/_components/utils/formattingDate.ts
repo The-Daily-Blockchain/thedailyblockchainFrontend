@@ -44,3 +44,34 @@ export const formatDateGecko = (timeStamp: any) => {
   const year = date.getUTCFullYear();
   return `${day}-${month}-${year}`;
 };
+
+export const timeAgoFormatter = (timestamp: any) => {
+  const timeStampDate = new Date(timestamp);
+  const now = new Date();
+  const differenceInSeconds = Math.floor(
+    (now.getTime() - timeStampDate.getTime()) / 1000
+  );
+  const differenceInMinutes = Math.floor(differenceInSeconds / 60);
+  const differenceInHours = Math.floor(differenceInMinutes / 60);
+  const differenceInDays = Math.floor(differenceInHours / 24);
+
+  if (differenceInSeconds < 60) {
+    return "just now";
+  } else if (differenceInMinutes < 60) {
+    return `${differenceInMinutes} minute${
+      differenceInMinutes > 1 ? "s" : ""
+    } ago`;
+  } else if (differenceInHours < 24) {
+    return `${differenceInHours} hour${differenceInHours > 1 ? "s" : ""} ago`;
+  } else if (differenceInDays === 1) {
+    return "yesterday";
+  } else if (differenceInDays < 7) {
+    return `${differenceInDays} days ago`;
+  } else {
+    return timeStampDate.toLocaleDateString("en-US", {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+    });
+  }
+};

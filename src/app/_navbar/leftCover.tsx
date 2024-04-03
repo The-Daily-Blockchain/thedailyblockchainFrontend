@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import { formatDate } from "../_components/utils/formattingData";
+import { formatDate } from "../_components/utils/formattingDate";
 import parse from "html-react-parser";
 import { useRouter } from "next/navigation";
 

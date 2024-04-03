@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import parse from "html-react-parser";
 import { useRouter } from "next/navigation";
-import { formatDate } from "@/app/_components/utils/formattingData";
+import { formatDate } from "@/app/_components/utils/formattingDate";
 
 interface Props {
   data: any;

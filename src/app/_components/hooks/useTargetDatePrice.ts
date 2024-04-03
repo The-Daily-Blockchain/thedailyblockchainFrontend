@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import { newMultiFetcher } from "../utils/fetcher";
 import timeStamps from "../utils/dataValues";
-import { formatDateGecko } from "../utils/formattingData";
+import { formatDateGecko } from "../utils/formattingDate";
 import { useDebouncedValue } from "../utils/usedebouncevalue";
 
 export const useTargetDatePrice = (symbol: any) => {

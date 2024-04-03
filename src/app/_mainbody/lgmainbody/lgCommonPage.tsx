@@ -1,6 +1,6 @@
 import React from "react";
 import parse from "html-react-parser";
-import { formatDate } from "@/app/_components/utils/formattingData";
+import { formatDate } from "@/app/_components/utils/formattingDate";
 import Loader from "@/app/loader";
 import Error from "@/app/error";
 

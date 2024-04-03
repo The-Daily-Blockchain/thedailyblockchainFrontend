@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import parse from "html-react-parser";
 import Loader from "@/app/loader";
-import { formatDate } from "@/app/_components/utils/formattingData";
+import { formatDate } from "@/app/_components/utils/formattingDate";
 interface Props {
   title?: any;
   data: any;

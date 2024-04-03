@@ -8,7 +8,7 @@ import {
   TimeScaleOptions,
 } from "lightweight-charts";
 import { Tooltip } from "./tooltip";
-import { formatChartingDate } from "@/app/_components/utils/formattingData";
+import { formatChartingDate } from "@/app/_components/utils/formattingDate";
 
 interface ChartProps {
   formattedData: any[] | null;

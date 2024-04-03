@@ -4,7 +4,7 @@ import React from "react";
 import { fetcher } from "../_components/utils/fetcher";
 import Loader from "../loader";
 import { useRouter } from "next/navigation";
-import { formatDate } from "../_components/utils/formattingData";
+import { formatDate } from "../_components/utils/formattingDate";
 import parse from "html-react-parser";
 
 const RightPage = () => {

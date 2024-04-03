@@ -1,6 +1,6 @@
 import React from "react";
 import parse from "html-react-parser";
-import { formatDate } from "@/app/_components/utils/formattingData";
+import { formatDate } from "@/app/_components/utils/formattingDate";
 import Loader from "@/app/loader";
 import Error from "@/app/error";
 
@@ -10,11 +10,11 @@ interface Props {
   error?: boolean;
 }
 const MdCommonPage = ({ payload, isLoading, error }: Props) => {
-  if(error) return <Error />
-  if(isLoading) return <Loader />
+  if (error) return <Error />;
+  if (isLoading) return <Loader />;
   return (
     <div className="min-h-screen mx-6 mt-10 mb-10 overflow-y-hidden">
-      <div  className="flex-grow overflow-auto">
+      <div className="flex-grow overflow-auto">
         <div className="mb-10 font-bold text-lg">
           {payload?.title || payload?.title_post}
         </div>
