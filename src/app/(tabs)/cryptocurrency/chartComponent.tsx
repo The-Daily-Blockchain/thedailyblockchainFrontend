@@ -52,10 +52,12 @@ export const ChartComponent = ({
       chartRef.current.remove();
       chartRef.current = null;
     }
+    const chartContainer = chartContainerRef.current;
+    const containerWidth = chartContainer ? chartContainer.clientWidth : 660;
 
     const timeVisible = /[mh]$/.test(interval);
-    const chart = createChart(chartContainerRef.current, {
-      width: 660,
+    const chart = createChart(chartContainer, {
+      width: containerWidth,
       height: 300,
       autoSize: true,
       handleScroll: {
