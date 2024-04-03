@@ -7,6 +7,7 @@ import CryptoHeader from "../cryptopost/cryptoHeader";
 import CryptoPost from "../cryptopost/cryptoPost";
 import Converter from "../belowchart/converter";
 import AllTime from "../belowchart/allTime";
+import LgBelowHeaders from "./lgBelowHeaders";
 
 interface Props {
   symbolWithUSDT: any;
@@ -25,8 +26,10 @@ const LgBelow = ({
 }: Props) => {
   return (
     <div className="block lg:hidden sm:w-[620px] mx-auto mb-10">
-      {" "}
-      <div className="shadow-2xl rounded-xl">
+      <div className="shadow-2xl bg-white p-1 mb-3 rounded-xl mt-5">
+        <LgBelowHeaders name={name} dataStream={dataStream} />
+      </div>
+      <div className="shadow-2xl rounded-xl mb-3">
         <Charting symbol={symbolWithUSDT} />
       </div>
       <div className="shadow-2xl bg-white p-1 mb-3 rounded-xl">

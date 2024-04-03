@@ -59,7 +59,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
         <div className="mt-3 mx-1 py-3 mb-3 content-center">
           <div>
             <div className="flex">
-              <span className=" ml-4 mt-2 w-8 h-8 flex items-center justify-center text-lg font-semibold border-solid border-2 border-indigo-500 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-full">
+              <span className=" ml-4 mt-3 w-8 h-8 flex items-center justify-center text-lg font-semibold border-solid border-2 border-indigo-500 text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-full">
                 {marketData?.market_data?.market_cap_rank || "∞"}
               </span>
               <span className="ml-2 mt-[15px] font-bold">
