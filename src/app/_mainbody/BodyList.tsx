@@ -45,9 +45,9 @@ const BodyList = ({
     );
 
     if (hasTitle) {
-      router.push(`/article/${x.id}`);
+      router.push(`/article/${x?.id}`);
     } else if (hasTitlePost) {
-      router.push(`/post/${x.id}`);
+      router.push(`/post/${x?.id}`);
     }
   };
 

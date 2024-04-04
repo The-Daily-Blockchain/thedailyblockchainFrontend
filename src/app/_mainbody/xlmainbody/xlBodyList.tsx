@@ -29,7 +29,7 @@ const XlBodyList = ({ title, data, handleClick, isLoading }: Props) => {
             className="font-bold mb-12 mx-44 hover:cursor-pointer hover:opacity-80"
             onClick={() => handleClick(x)}
           >
-            {x.title || x.title_post}
+            {x?.title || x?.title_post}
           </div>
           <div className="grid grid-cols-2">
             <div className="flex items-center justify-center">
@@ -38,7 +38,7 @@ const XlBodyList = ({ title, data, handleClick, isLoading }: Props) => {
                   width={300}
                   height={300}
                   alt="toparticlepic"
-                  src={x.image || x.image_post}
+                  src={x?.image || x?.image_post}
                 />
 
                 <div className="mt-4 font-bold">

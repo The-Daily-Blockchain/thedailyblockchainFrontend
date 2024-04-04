@@ -16,9 +16,9 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
   return Response.json(data);
 }
 
-export async function POST(req: NextRequest, token: string) {
+export async function POST(req: NextRequest) {
   let url = `${API_URL}/articles/`;
-  // const token = "f7a241925df6abaecf7a7b8a408a41d6f9119b50";
+  const token = "f7a241925df6abaecf7a7b8a408a41d6f9119b50";
   const body = await req.json();
   const response = await axios.post(url, body, {
     headers: {

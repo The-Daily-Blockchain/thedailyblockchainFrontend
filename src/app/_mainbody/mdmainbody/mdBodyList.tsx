@@ -37,7 +37,7 @@ const MdBodyList = ({ title, data, handleClick, isLoading }: Props) => {
                   width={300}
                   height={300}
                   alt="toparticlepic"
-                  src={x.image || x.image_post}
+                  src={x?.image || x?.image_post}
                 />
 
                 <div className="mt-4 font-bold">

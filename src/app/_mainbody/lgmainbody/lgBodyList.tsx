@@ -19,7 +19,7 @@ const LgBodyList = ({ title, data, handleClick, isLoading }: Props) => {
       </div>
       {data?.results?.map?.((x: any, index: any, array: any[]) => (
         <div
-          key={x.id}
+          key={x?.id}
           className={`mx-1 mt-8 mb-2 border-double ${
             index === array.length - 1 ? "border-b-0" : "border-b-4"
           }`}
@@ -28,7 +28,7 @@ const LgBodyList = ({ title, data, handleClick, isLoading }: Props) => {
             className="font-bold mb-12 mx-8 hover:cursor-pointer hover:opacity-80"
             onClick={() => handleClick(x)}
           >
-            {x.title || x.title_post}
+            {x?.title || x?.title_post}
           </div>
           <div className="grid grid-cols-2">
             <div className="flex items-center justify-center">
@@ -37,7 +37,7 @@ const LgBodyList = ({ title, data, handleClick, isLoading }: Props) => {
                   width={300}
                   height={300}
                   alt="toparticlepic"
-                  src={x.image || x.image_post}
+                  src={x?.image || x?.image_post}
                 />
 
                 <div className="mt-4 font-bold">

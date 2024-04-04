@@ -37,7 +37,7 @@ const MobileBodyList = ({ title, data, handleClick, isLoading }: Props) => {
                   width={250}
                   height={250}
                   alt="toparticlepic"
-                  src={x.image || x.image_post}
+                  src={x?.image || x?.image_post}
                 />
 
                 <div className="mt-4 font-bold">
