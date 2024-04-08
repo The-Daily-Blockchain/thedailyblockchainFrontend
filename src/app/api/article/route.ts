@@ -16,17 +16,34 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
   return Response.json(data);
 }
 
-export async function POST(req: NextRequest) {
-  let url = `${API_URL}/articles/`;
-  const token = "f7a241925df6abaecf7a7b8a408a41d6f9119b50";
-  const body = await req.json();
-  const response = await axios.post(url, body, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Token ${token}`,
-    },
-  });
-  const data = await response.data;
+export async function POST(req: NextRequest, res: NextResponse) {
+  const clientFormData = await req.formData();
+  const title = clientFormData.get("title");
+  const content = clientFormData.get("content");
+  const image = clientFormData.get("image");
 
-  return Response.json(data);
+  const token = "f7a241925df6abaecf7a7b8a408a41d6f9119b50";
+  const url = `${API_URL}/articles/`;
+
+  const formData = new FormData();
+  formData.append("title", title as string);
+  formData.append("content", content as string);
+  formData.append("image", image as Blob);
+
+  try {
+    const response = await axios.post(url, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Token ${token}`,
+      },
+    });
+
+    const data = response.data;
+    console.log(data);
+    return Response.json(data);
+  } catch (error) {
+    // Handle error appropriately
+    console.error("Error:", error);
+    console.log({ message: "Internal Server Error" });
+  }
 }
