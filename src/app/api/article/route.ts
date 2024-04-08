@@ -16,11 +16,14 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
   return Response.json(data);
 }
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const clientFormData = await req.formData();
   const title = clientFormData.get("title");
   const content = clientFormData.get("content");
-  const image = clientFormData.get("image");
+  const imageFile = clientFormData.get("image");
+
+  const imageBuffer = await (imageFile as File).arrayBuffer();
+  const image = Buffer.from(imageBuffer);
 
   const token = "f7a241925df6abaecf7a7b8a408a41d6f9119b50";
   const url = `${API_URL}/articles/`;
@@ -28,7 +31,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   const formData = new FormData();
   formData.append("title", title as string);
   formData.append("content", content as string);
-  formData.append("image", image as Blob);
+  formData.append("image", new Blob([image]));
 
   try {
     const response = await axios.post(url, formData, {
@@ -42,7 +45,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
     console.log(data);
     return Response.json(data);
   } catch (error) {
-    // Handle error appropriately
     console.error("Error:", error);
     console.log({ message: "Internal Server Error" });
   }
