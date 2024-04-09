@@ -29,6 +29,8 @@ const Page = () => {
     setImage(event.target.files[0]);
   };
 
+  // TODO FB graph apis
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
