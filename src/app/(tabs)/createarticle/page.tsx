@@ -1,12 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Page = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
+  const [message, setMessage] = useState("");
   const [responseData, setResponseData] = useState(null);
+  console.log(process.env.NEXT_PUBLIC_ACCESS_TOKEN);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -29,8 +31,30 @@ const Page = () => {
     setImage(event.target.files[0]);
   };
 
-  // TODO FB graph apis
-  // TODO NEED API KEY
+  const handleMessageChange = (event: any) => {
+    setMessage(event.target.value);
+  };
+
+  useEffect(() => {
+    const sendDataToFbPage = async () => {
+      if (responseData) {
+        const originalURL = (responseData as { article_url: string })
+          ?.article_url;
+        const link = encodeURIComponent(originalURL);
+        try {
+          await axios.post(
+            `https://graph.facebook.com/v19.0/${process.env.NEXT_PUBLIC_PAGES_ID}/feed?access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&message=${message}&link=${link}`
+          );
+          console.log("Data sent to another API successfully");
+        } catch (error) {
+          console.error("Error sending data to another API:", error);
+        }
+      }
+    };
+
+    sendDataToFbPage();
+  }, [message, responseData]);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -42,7 +66,6 @@ const Page = () => {
           onChange={(e) => setTitle(e.target.value)}
         />
         <br />
-
         <label>Content:</label>
         <br />
         <textarea
@@ -50,12 +73,13 @@ const Page = () => {
           onChange={(e) => setContent(e.target.value)}
         />
         <br />
-
         <label>Image:</label>
         <br />
         <input type="file" onChange={handleFileChange} />
         <br />
-
+        <label>Message:</label> {/* New input field for the message */}
+        <br />
+        <textarea value={message} onChange={handleMessageChange} />
         <button type="submit">Submit</button>
       </form>
 
