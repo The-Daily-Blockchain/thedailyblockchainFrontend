@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [title, setTitle] = useState("");
@@ -8,6 +9,7 @@ const Page = () => {
   const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
   const [responseData, setResponseData] = useState(null);
+  const router = useRouter();
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -45,6 +47,7 @@ const Page = () => {
             `https://graph.facebook.com/v19.0/${process.env.NEXT_PUBLIC_PAGES_ID}/feed?access_token=${process.env.NEXT_PUBLIC_ACCESS_TOKEN}&message=${message}&link=${link}`
           );
           console.log("Data sent to another API successfully");
+          router.push("/topnews");
         } catch (error) {
           console.error("Error sending data to another API:", error);
         }
@@ -52,7 +55,7 @@ const Page = () => {
     };
 
     sendDataToFbPage();
-  }, [message, responseData]);
+  }, [message, responseData, router]);
 
   return (
     <div>

@@ -26,7 +26,6 @@ export async function POST(req: NextRequest) {
   const imageBuffer = await (imageFile as File).arrayBuffer();
   const image = Buffer.from(imageBuffer);
 
-  // const token = "f67627a049f3366759ce765dce133e94a789dd09";
   const cookieStore = cookies();
   const token = cookieStore?.get("token")?.value;
 
