@@ -1,5 +1,6 @@
 import { API_URL } from "@/app/config";
 import axios from "axios";
+import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -12,8 +13,9 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const data = response.data;
-    return Response.json(data);
+    const token = response.data.token;
+    cookies().set("token", token);
+    return Response.json(token);
   } catch (error) {
     console.error("Error logging in:", error);
     throw error;

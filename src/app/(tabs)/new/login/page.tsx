@@ -1,16 +1,24 @@
 "use client";
+import axios, { AxiosError } from "axios";
 import React, { useState } from "react";
 
 const Page = () => {
-  // State variables to store username and password
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  // Function to handle form submission
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log("Username:", username);
-    console.log("Password:", password);
+    try {
+      const response = await axios.post("/api/login/", {
+        username,
+        password,
+      });
+      const token = response.data;
+      console.log("Login successful! Token:", token);
+    } catch (error) {
+      const axiosError = error as AxiosError;
+      console.error("Error logging in:", axiosError.message);
+    }
   };
 
   return (
