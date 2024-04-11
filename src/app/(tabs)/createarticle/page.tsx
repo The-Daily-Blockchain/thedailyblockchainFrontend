@@ -17,7 +17,6 @@ const Page = () => {
     formData.append("content", content);
     formData.append("image", image as any);
 
-    // token needed it was hardcoded
     try {
       const response = await axios.post(`api/article/`, formData);
       const data = response.data;

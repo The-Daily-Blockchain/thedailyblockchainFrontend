@@ -2,6 +2,7 @@ import { API_URL } from "@/app/config";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 export async function GET(req: NextRequest, res: NextApiResponse) {
   let url = `${API_URL}/articles`;
@@ -25,7 +26,10 @@ export async function POST(req: NextRequest) {
   const imageBuffer = await (imageFile as File).arrayBuffer();
   const image = Buffer.from(imageBuffer);
 
-  const token = "f7a241925df6abaecf7a7b8a408a41d6f9119b50";
+  // const token = "f67627a049f3366759ce765dce133e94a789dd09";
+  const cookieStore = cookies();
+  const token = cookieStore?.get("token")?.value;
+
   const url = `${API_URL}/articles/`;
 
   const formData = new FormData();
