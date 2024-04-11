@@ -8,7 +8,6 @@ const Page = () => {
   const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
   const [responseData, setResponseData] = useState(null);
-  console.log(process.env.NEXT_PUBLIC_ACCESS_TOKEN);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -18,6 +17,7 @@ const Page = () => {
     formData.append("content", content);
     formData.append("image", image as any);
 
+    // token needed it was hardcoded
     try {
       const response = await axios.post(`api/article/`, formData);
       const data = response.data;
@@ -82,13 +82,6 @@ const Page = () => {
         <textarea value={message} onChange={handleMessageChange} />
         <button type="submit">Submit</button>
       </form>
-
-      {responseData && (
-        <div>
-          <h2>Returned Data</h2>
-          <pre>{JSON.stringify(responseData, null, 2)}</pre>
-        </div>
-      )}
     </div>
   );
 };
