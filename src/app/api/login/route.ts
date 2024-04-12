@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
     });
 
     const token = response.data.token;
+    console.log(token);
     cookies().set("token", token);
     return Response.json(token);
   } catch (error) {
