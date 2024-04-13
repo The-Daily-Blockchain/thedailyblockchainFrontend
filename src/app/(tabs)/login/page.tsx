@@ -6,6 +6,7 @@ const Page = () => {
   return (
     <>
       <Login />
+      {/* wards go to body page */}
     </>
   );
 };
