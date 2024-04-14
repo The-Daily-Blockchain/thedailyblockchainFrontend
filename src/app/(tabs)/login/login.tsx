@@ -1,14 +1,17 @@
 "use client";
-import useAuth from "@/app/_components/hooks/useAuthHook";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const Login = () => {
+interface Props {
+  isLoggedIn: boolean;
+  login: (token: string) => void;
+}
+const Login = ({ isLoggedIn, login }: Props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const { isLoggedIn, login } = useAuth();
+
   useEffect(() => {
     console.log("Is logged in:", isLoggedIn);
   }, [isLoggedIn]);
@@ -16,17 +19,18 @@ const Login = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/api/login/", {
+      const response = await axios.post("/api/login", {
         username,
         password,
       });
       const token = response.data;
-      console.log("Login successful! Token:", token);
       login(token);
       router.push("/");
+      console.log("Login successful! Token:", token);
     } catch (error) {
       const axiosError = error as AxiosError;
       console.error("Error logging in:", axiosError.message);
+      router.push("/");
     }
   };
 

@@ -1,22 +1,16 @@
 "use client";
 import axios from "axios";
 import Cookies from "js-cookie";
-import useAuth from "../hooks/useAuthHook";
-import { useEffect } from "react";
 
-const LogoutButton = () => {
-  const { isLoggedIn, logout } = useAuth();
-
+const LogoutButton = ({ logout }: any) => {
   const handleLogout = async () => {
     const response = await axios.post(`api/logout/`);
     console.log("Logout successful!:", response);
+    Cookies.remove("token");
     logout();
   };
-  useEffect(() => {
-    console.log("Is logged in:", isLoggedIn);
-  }, [isLoggedIn]);
 
-  return <>{isLoggedIn && <button onClick={handleLogout}>Logout</button>}</>;
+  return <button onClick={handleLogout}>Logout</button>;
 };
 
 export default LogoutButton;

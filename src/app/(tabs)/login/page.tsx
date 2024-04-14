@@ -2,11 +2,15 @@
 import React from "react";
 import Login from "./login";
 
-const Page = () => {
+interface Props {
+  isLoggedIn: boolean;
+  login: (token: string) => void;
+}
+
+const Page = ({ isLoggedIn, login }: Props) => {
   return (
     <>
-      <Login />
-      {/* wards go to body page */}
+      <Login isLoggedIn={isLoggedIn} login={login} />
     </>
   );
 };
