@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
+import { IoCloseOutline } from "react-icons/io5";
 
 const Page = () => {
   const [title, setTitle] = useState("");
@@ -42,6 +43,9 @@ const Page = () => {
 
   const handleFileChange = (event: any) => {
     setImage(event.target.files[0]);
+  };
+  const clearFile = () => {
+    setImage(null);
   };
 
   const handleMessageChange = (event: any) => {
@@ -87,13 +91,26 @@ const Page = () => {
           />
           <div className="grid grid-cols-1">
             <Label className="mt-2">Image:</Label>
-            <input
-              className="mt-2 mb-4"
-              type="file"
-              onChange={handleFileChange}
-            />
-            <Label className="mb-2">Message:</Label>{" "}
-            {/* New input field for the message */}
+            <div className="flex">
+              <input type="file" onChange={handleFileChange} />
+              <IoCloseOutline />
+            </div>
+
+            {/* <Button
+              onClick={clearFile}
+              style={{
+                position: "absolute",
+                top: 0,
+                right: 0,
+                padding: "4px",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Close
+            </Button> */}
+            <Label className="mb-2">Message:</Label>
             <Textarea value={message} onChange={handleMessageChange} />
           </div>
           <Button className="mt-5" type="submit">
