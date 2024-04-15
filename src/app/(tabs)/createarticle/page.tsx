@@ -75,7 +75,7 @@ const Page = () => {
 
   return (
     <div className="min-h-screen grid place-items-center">
-      <Card className="w-[600px] p-6">
+      <Card className="w-[600px] p-6 mt-[-30vh]">
         <form onSubmit={handleSubmit}>
           <Label>Title:</Label>
           <Input
@@ -91,25 +91,10 @@ const Page = () => {
           />
           <div className="grid grid-cols-1">
             <Label className="mt-2">Image:</Label>
-            <div className="flex">
+            <div className="flex mb-2 mt-1">
               <input type="file" onChange={handleFileChange} />
-              <IoCloseOutline />
+              {image && <IoCloseOutline onClick={clearFile} />}
             </div>
-
-            {/* <Button
-              onClick={clearFile}
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                padding: "4px",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Close
-            </Button> */}
             <Label className="mb-2">Message:</Label>
             <Textarea value={message} onChange={handleMessageChange} />
           </div>
