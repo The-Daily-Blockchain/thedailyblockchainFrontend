@@ -2,6 +2,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
 
 const Page = () => {
   const [title, setTitle] = useState("");
@@ -58,32 +70,37 @@ const Page = () => {
   }, [message, responseData, router]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <br />
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <br />
-        <label>Content:</label>
-        <br />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <br />
-        <label>Image:</label>
-        <br />
-        <input type="file" onChange={handleFileChange} />
-        <br />
-        <label>Message:</label> {/* New input field for the message */}
-        <br />
-        <textarea value={message} onChange={handleMessageChange} />
-        <button type="submit">Submit</button>
-      </form>
+    <div className="min-h-screen grid place-items-center">
+      <Card className="w-[600px] p-6">
+        <form onSubmit={handleSubmit}>
+          <Label>Title:</Label>
+          <Input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <Label>Content:</Label>
+          <Textarea
+            className="height-[100[px]"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <div className="grid grid-cols-1">
+            <Label className="mt-2">Image:</Label>
+            <input
+              className="mt-2 mb-4"
+              type="file"
+              onChange={handleFileChange}
+            />
+            <Label className="mb-2">Message:</Label>{" "}
+            {/* New input field for the message */}
+            <Textarea value={message} onChange={handleMessageChange} />
+          </div>
+          <Button className="mt-5" type="submit">
+            Submit
+          </Button>
+        </form>
+      </Card>
     </div>
   );
 };

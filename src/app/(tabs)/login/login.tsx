@@ -40,7 +40,7 @@ const Login = () => {
 
   return (
     <Card className="w-[350px] mt-[-30vh]">
-      <CardHeader className="text-center">
+      <CardHeader className="text-center mt-5">
         <CardTitle>Log Into TheDailyBlockchain-PH</CardTitle>
       </CardHeader>
       <CardContent>
