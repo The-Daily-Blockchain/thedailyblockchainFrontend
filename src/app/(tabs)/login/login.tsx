@@ -1,16 +1,14 @@
 "use client";
+import { useAuth } from "@/app/_context/authContext";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-interface Props {
-  isLoggedIn: boolean;
-  login: (token: string) => void;
-}
-const Login = ({ isLoggedIn, login }: Props) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const { isLoggedIn, login } = useAuth();
 
   useEffect(() => {
     console.log("Is logged in:", isLoggedIn);

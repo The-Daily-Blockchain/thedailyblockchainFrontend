@@ -7,10 +7,10 @@ interface Props {
   login: (token: string) => void;
 }
 
-const Page = ({ isLoggedIn, login }: Props) => {
+const Page = () => {
   return (
     <>
-      <Login isLoggedIn={isLoggedIn} login={login} />
+      <Login />
     </>
   );
 };

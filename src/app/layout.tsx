@@ -4,9 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "@/app/_navbar/navbar";
 import Footer from "./_navbar/footer";
+import { AuthProvider, useAuth } from "./_context/authContext";
 import LogoutButton from "./_components/component/logout";
-import useAuth from "./_components/hooks/useAuthHook";
-import Page from "./(tabs)/login/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,15 +19,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isLoggedIn, login, logout } = useAuth();
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar />
-        {isLoggedIn && <LogoutButton logout={logout} />}
-        {false && <Page isLoggedIn={isLoggedIn} login={login} />}
-        {children}
-        <Footer />
+        <AuthProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
