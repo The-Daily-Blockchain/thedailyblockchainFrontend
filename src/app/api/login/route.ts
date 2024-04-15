@@ -6,7 +6,6 @@ import { NextRequest } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const requestData = await req.json();
-    // Fixed
     const response = await axios.post(`${API_URL}/login/`, requestData, {
       headers: {
         "Content-Type": "application/json",
@@ -14,7 +13,6 @@ export async function POST(req: NextRequest) {
     });
 
     const token = response.data.token;
-    console.log(token);
     cookies().set("token", token);
     return Response.json(token);
   } catch (error) {
