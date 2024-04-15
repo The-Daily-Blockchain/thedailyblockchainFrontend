@@ -24,6 +24,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthProvider>
           <NavBar />
+          <div className="text-right bg-black">
+            <LogoutButton />
+          </div>
           {children}
           <Footer />
         </AuthProvider>

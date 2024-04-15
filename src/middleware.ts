@@ -5,6 +5,7 @@ import { API_URL } from "./app/config";
 export async function middleware(request: NextRequest) {
   const hasToken = request.cookies.get("token");
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
   if (hasToken) {
     try {
       const response = await fetch(`${API_URL}/validate_token/`, {

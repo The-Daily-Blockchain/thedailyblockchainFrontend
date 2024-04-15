@@ -13,7 +13,7 @@ const LogoutButton = () => {
   };
   return (
     isLoggedIn && (
-      <Button className="py-2 mr-2" onClick={handleLogout}>
+      <Button className="my-2 mr-2" onClick={handleLogout}>
         Logout
       </Button>
     )
