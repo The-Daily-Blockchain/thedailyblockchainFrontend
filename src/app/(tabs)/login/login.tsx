@@ -10,9 +10,7 @@ const Login = () => {
   const router = useRouter();
   const { isLoggedIn, login } = useAuth();
 
-  useEffect(() => {
-    console.log("Is logged in:", isLoggedIn);
-  }, [isLoggedIn]);
+  useEffect(() => {}, [isLoggedIn]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -24,11 +22,8 @@ const Login = () => {
       const token = response.data;
       login(token);
       router.push("/");
-      console.log("Login successful! Token:", token);
     } catch (error) {
       const axiosError = error as AxiosError;
-      console.error("Error logging in:", axiosError.message);
-      router.push("/");
     }
   };
 

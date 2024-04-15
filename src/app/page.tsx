@@ -6,7 +6,9 @@ import LogoutButton from "./_components/component/logout";
 const index = () => {
   return (
     <div>
-      <LogoutButton />
+      <div className="text-right bg-black">
+        <LogoutButton />
+      </div>
       <Body />
     </div>
   );
