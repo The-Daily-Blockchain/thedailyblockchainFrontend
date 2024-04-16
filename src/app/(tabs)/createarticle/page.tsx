@@ -79,7 +79,7 @@ const Page = () => {
   }, [message, responseData, router]);
 
   return (
-    <div className="min-h-screen grid place-items-center">
+    <div className="min-h-screen grid place-items-center m-3">
       <Card className="flex p-6 mt-[-10vh]">
         <form onSubmit={handleSubmit}>
           <Label>Title:</Label>
