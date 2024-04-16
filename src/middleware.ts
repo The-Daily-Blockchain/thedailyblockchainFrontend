@@ -13,7 +13,6 @@ export async function middleware(request: NextRequest) {
           Authorization: `Token ${hasToken.value}`,
         },
       });
-      console.log("Response status:", response.status);
       if (response.status == 200) {
         return NextResponse.next();
       } else {

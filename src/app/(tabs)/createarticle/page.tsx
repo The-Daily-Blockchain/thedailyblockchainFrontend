@@ -5,16 +5,10 @@ import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { IoCloseOutline } from "react-icons/io5";
+import { Editor } from "@tinymce/tinymce-react";
 
 const Page = () => {
   const [title, setTitle] = useState("");
@@ -22,7 +16,9 @@ const Page = () => {
   const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
   const [responseData, setResponseData] = useState(null);
+  const [fileInputKey, setFileInputKey] = useState(0);
   const router = useRouter();
+  const apiKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY;
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -45,7 +41,16 @@ const Page = () => {
     setImage(event.target.files[0]);
   };
   const clearFile = () => {
-    setImage(null);
+    if (image) {
+      URL.revokeObjectURL(image);
+      setImage(null);
+    }
+    setFileInputKey((prevKey) => prevKey + 1);
+  };
+
+  const handleContentChange = (event: any, editor: any) => {
+    const newContent = editor.getContent();
+    setContent(newContent);
   };
 
   const handleMessageChange = (event: any) => {
@@ -75,7 +80,7 @@ const Page = () => {
 
   return (
     <div className="min-h-screen grid place-items-center">
-      <Card className="w-[600px] p-6 mt-[-30vh]">
+      <Card className="flex p-6 mt-[-10vh]">
         <form onSubmit={handleSubmit}>
           <Label>Title:</Label>
           <Input
@@ -84,19 +89,39 @@ const Page = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
           <Label>Content:</Label>
-          <Textarea
-            className="height-[100[px]"
+          <Editor
+            apiKey={apiKey}
+            init={{
+              plugins:
+                "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+              toolbar:
+                "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+            }}
             value={content}
-            onChange={(e) => setContent(e.target.value)}
+            // onChange={handleContentChange}
+            onEditorChange={handleContentChange}
           />
           <div className="grid grid-cols-1">
             <Label className="mt-2">Image:</Label>
             <div className="flex mb-2 mt-1">
-              <input type="file" onChange={handleFileChange} />
-              {image && <IoCloseOutline onClick={clearFile} />}
+              <input
+                key={fileInputKey}
+                type="file"
+                onChange={handleFileChange}
+              />
+              {image && (
+                <IoCloseOutline
+                  className="hover:opacity-50"
+                  onClick={clearFile}
+                />
+              )}
             </div>
             <Label className="mb-2">Message:</Label>
-            <Textarea value={message} onChange={handleMessageChange} />
+            <Textarea
+              className="h-[100px]"
+              value={message}
+              onChange={handleMessageChange}
+            />
           </div>
           <Button className="mt-5" type="submit">
             Submit
