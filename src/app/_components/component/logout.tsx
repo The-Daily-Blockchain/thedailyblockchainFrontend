@@ -4,18 +4,19 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useGetLogUser } from "../hooks/useGetLogUser";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const LogoutButton = () => {
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
   const handleLogout = async () => {
-    const response = await axios.post(`api/logout`);
+    await axios.post(`api/logout`);
     Cookies.remove("token");
     logout();
   };
 
   const { data } = useGetLogUser();
+  const pathname = usePathname();
   return (
     isLoggedIn && (
       <div>
@@ -33,13 +34,14 @@ const LogoutButton = () => {
         </div>
         <div className="flex">
           <Button
-            // variant
+            variant={pathname === "/createarticle" ? "secondary" : undefined}
             onClick={() => router.push("/createarticle")}
             className="ml-2 mb-2 hover:opacity-60"
           >
             Create Article
           </Button>
           <Button
+            variant={pathname === "/createpost" ? "secondary" : undefined}
             onClick={() => router.push("/createpost")}
             className="ml-2 mb-2 hover:opacity-60"
           >
