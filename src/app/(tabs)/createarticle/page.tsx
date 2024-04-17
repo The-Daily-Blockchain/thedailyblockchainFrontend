@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { IoCloseOutline } from "react-icons/io5";
 import { Editor } from "@tinymce/tinymce-react";
+import HtmlViewer from "@/app/_components/component/HtmlViewer";
 
 const Page = () => {
   const [title, setTitle] = useState("");
@@ -17,6 +18,7 @@ const Page = () => {
   const [message, setMessage] = useState("");
   const [responseData, setResponseData] = useState(null);
   const [fileInputKey, setFileInputKey] = useState(0);
+  const [toggler, setToggler] = useState("1");
   const router = useRouter();
   const apiKey = process.env.NEXT_PUBLIC_TINYMCE_API_KEY;
 
@@ -87,21 +89,51 @@ const Page = () => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className="mb-3"
           />
-          <Label>Content:</Label>
-          <Editor
-            apiKey={apiKey}
-            init={{
-              branding: false,
-              plugins:
-                "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
-              toolbar:
-                "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+
+          <Button
+            variant={toggler === "1" ? undefined : "outline"}
+            onClick={(event) => {
+              event.preventDefault();
+              setToggler("1");
             }}
-            value={content}
-            // onChange={handleContentChange}
-            onEditorChange={handleContentChange}
-          />
+          >
+            Content
+          </Button>
+
+          <Button
+            variant={toggler === "2" ? undefined : "outline"}
+            onClick={(event) => {
+              event.preventDefault();
+              setToggler("2");
+            }}
+          >
+            Preview
+          </Button>
+          <div className="w-[576px] md:w-[691px] lg:w-[922px] xl:w-[1152px] 2xl:w-[1382px h-[450px]">
+            {toggler === "1" && (
+              <>
+                <Editor
+                  apiKey={apiKey}
+                  init={{
+                    branding: false,
+                    plugins:
+                      "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate mentions tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+                    toolbar:
+                      "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+                  }}
+                  value={content}
+                  onEditorChange={handleContentChange}
+                />
+              </>
+            )}
+            {toggler === "2" && (
+              <>
+                <HtmlViewer htmlContent={content} />
+              </>
+            )}
+          </div>
           <div className="grid grid-cols-1">
             <Label className="mt-2">Image:</Label>
             <div className="flex mb-2 mt-1">
