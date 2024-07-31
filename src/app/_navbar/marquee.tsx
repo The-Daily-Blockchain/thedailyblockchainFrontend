@@ -34,7 +34,7 @@ const MarQuee = () => {
 
     const interval = setInterval(() => {
       fetchCrypto();
-    }, 50000);
+    }, 500000);
     return () => clearInterval(interval);
   }, [crypto_api]);
 
