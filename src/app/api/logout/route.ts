@@ -1,4 +1,3 @@
-import { API_URL } from "@/app/config";
 import { NextRequest, NextResponse } from "next/server";
 import { cookies, headers } from "next/headers";
 
@@ -11,7 +10,7 @@ export async function POST(request: NextRequest) {
   // const token = headersd.get("Authorization");
 
   if (token) {
-    const response = await fetch(`${API_URL}/logout/`, {
+    const response = await fetch(`${process.env.API_URL}/logout/`, {
       method: "POST",
       headers: {
         Authorization: `Token ${token.value}`,

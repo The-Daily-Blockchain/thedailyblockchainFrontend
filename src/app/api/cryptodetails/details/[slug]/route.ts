@@ -1,4 +1,3 @@
-import { API_URL } from "@/app/config";
 import axios from "axios";
 
 export async function GET(
@@ -7,7 +6,7 @@ export async function GET(
 ) {
   const id = params.slug;
 
-  const response = await axios.get(`${API_URL}/crypto/${id}`);
+  const response = await axios.get(`${process.env.API_URL}/crypto/${id}`);
 
   const data = await response.data;
 

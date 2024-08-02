@@ -1,11 +1,10 @@
-import { API_URL } from "@/app/config";
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 export async function GET(req: NextRequest, res: NextApiResponse) {
-  let url = `${API_URL}/articles`;
+  let url = `${process.env.API_URL}/articles`;
   const page = req.nextUrl.searchParams.get("page");
 
   if (page !== null) {
@@ -29,7 +28,7 @@ export async function POST(req: NextRequest) {
   const cookieStore = cookies();
   const token = cookieStore?.get("token")?.value;
 
-  const url = `${API_URL}/articles/`;
+  const url = `${process.env.API_URL}/articles/`;
 
   const formData = new FormData();
   formData.append("title", title as string);

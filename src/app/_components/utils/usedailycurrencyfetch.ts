@@ -1,11 +1,10 @@
 import { useEffect, useRef } from "react";
 import axios from "axios";
-import { api_key_currency } from "@/app/config";
 
 export const useDailyCurrencyFetch = () => {
   const intervalRef = useRef(null);
 
-  const currencyUrl = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${api_key_currency}&symbols=PHP`;
+  const currencyUrl = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${process.env.api_key_currency}&symbols=PHP`;
 
   useEffect(() => {
     const fetchData = async () => {

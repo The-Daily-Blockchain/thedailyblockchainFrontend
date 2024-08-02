@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { API_URL } from "./app/config";
 
 export async function middleware(request: NextRequest) {
   const hasToken = request.cookies.get("token");
@@ -8,7 +7,7 @@ export async function middleware(request: NextRequest) {
 
   if (hasToken) {
     try {
-      const response = await fetch(`${API_URL}/validate_token/`, {
+      const response = await fetch(`${process.env.API_URL}/validate_token/`, {
         headers: {
           Authorization: `Token ${hasToken.value}`,
         },

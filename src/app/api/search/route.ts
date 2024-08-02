@@ -1,4 +1,3 @@
-import { API_URL } from "@/app/config";
 import axios from "axios";
 import { NextRequest } from "next/server";
 
@@ -9,7 +8,7 @@ export async function GET(req: NextRequest) {
 
   const params = { title: title ? title : undefined, page };
 
-  const response = await axios.get(`${API_URL}/search`, {
+  const response = await axios.get(`${process.env.API_URL}/search`, {
     params,
   });
   const data = response.data;
