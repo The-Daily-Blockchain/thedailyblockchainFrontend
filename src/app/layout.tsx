@@ -1,13 +1,13 @@
 "use client";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import NavBar from "@/app/_navbar/navbar";
 import Footer from "./_navbar/footer";
 import { AuthProvider, useAuth } from "./_context/authContext";
 import LogoutButton from "./_components/component/logout";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 const metadata: Metadata = {
   title: "The Daily Blockchain Ph",
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <AuthProvider>
           <NavBar />
           <div className="bg-black text-white">
