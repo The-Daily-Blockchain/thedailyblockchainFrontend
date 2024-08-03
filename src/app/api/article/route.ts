@@ -44,7 +44,6 @@ export async function POST(req: NextRequest) {
     });
 
     const data = response.data;
-    console.log(data);
     return Response.json(data);
   } catch (error) {
     console.error("Error:", error);
