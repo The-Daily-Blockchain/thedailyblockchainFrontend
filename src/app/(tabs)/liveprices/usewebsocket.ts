@@ -29,7 +29,7 @@ export const useWebSocket = () => {
       };
 
       socket.onclose = () => {
-        setTimeout(connectWebSocket, 24 * 60 * 60 * 1000);
+        setTimeout(connectWebSocket, 60 * 1000);
       };
     };
 
