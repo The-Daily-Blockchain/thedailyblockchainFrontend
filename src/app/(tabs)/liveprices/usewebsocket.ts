@@ -55,5 +55,5 @@ export const useWebSocket = () => {
       }
     };
   }, []);
-  return { tickerData, isLoading };
+  return { tickerData, isLoading, error };
 };
