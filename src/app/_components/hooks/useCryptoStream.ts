@@ -10,8 +10,8 @@ export const useCryptoStream = (query: any) => {
     const connectWebSocket = () => {
       socket = new WebSocket(
         // `wss://stream.binance.com:9443/ws/${query}@ticker`
-        `ws://${process.env.NEXT_PUBLIC_BASE_URL}/api/binance/${query}`
-      );
+        `wss://binanceproxyserver.onrender.com/ws/${query}`
+      );`
 
       socket.onmessage = (event) => {
         const newData = JSON.parse(event.data);
