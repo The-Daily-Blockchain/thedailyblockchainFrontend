@@ -13,7 +13,7 @@ export const useWebSocket = () => {
 
     const connectWebSocket = () => {
       socket = new WebSocket(
-        `wss://stream.binance.com:9443/stream?streams=${query}`
+        `${process.env.WEBSOCKET_ENDPOINT}/ws/allticker/${query}`
       );
 
       socket.onopen = () => {
