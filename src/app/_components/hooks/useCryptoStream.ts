@@ -11,8 +11,7 @@ export const useCryptoStream = (query: string) => {
     const connectWebSocket = () => {
       try {
         socket = new WebSocket(
-          // `wss://${process.env.NEXT_PUBLIC_WEBSOCKET_ENDPOINT}/ws/singleticker/${query}`
-          `wss://stream.binance.com:9443/ws/${query}@ticker`
+          `wss://${process.env.NEXT_PUBLIC_WEBSOCKET_ENDPOINT}/ws/singleticker/${query}`
         );
 
         socket.onmessage = (event) => {
