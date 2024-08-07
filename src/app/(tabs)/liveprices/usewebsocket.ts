@@ -13,7 +13,7 @@ export const useWebSocket = () => {
 
     const connectWebSocket = () => {
       socket = new WebSocket(
-        `${process.env.WEBSOCKET_ENDPOINT}/ws/allticker/${query}`
+        `wss://${process.env.WEBSOCKET_ENDPOINT}/ws/allticker/${query}`
       );
 
       socket.onopen = () => {

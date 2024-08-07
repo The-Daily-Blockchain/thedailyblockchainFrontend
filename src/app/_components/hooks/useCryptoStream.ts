@@ -9,7 +9,7 @@ export const useCryptoStream = (query: any) => {
 
     const connectWebSocket = () => {
       socket = new WebSocket(
-        `${process.env.WEBSOCKET_ENDPOINT}/ws/singleticker/${query}`
+        `wss://${process.env.WEBSOCKET_ENDPOINT}/ws/singleticker/${query}`
       );
 
       socket.onmessage = (event) => {
