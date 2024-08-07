@@ -20,14 +20,14 @@ const CryptoPage = ({ params }: any) => {
   const symbol = nameToSymbol[name];
   const symbolWithUSDT = symbol + "usdt";
 
-  const { data: rawDataStream } = useCryptoStream(symbolWithUSDT) as {
+  const { data: dataStream } = useCryptoStream(symbolWithUSDT) as {
     data: any;
   };
-  const dataStream = rawDataStream?.data;
 
   const newSymbol = symbolWithUSDT.toUpperCase();
   const { data: chartData } = useChartData(newSymbol, null, "1w");
   const { data: Price } = useLatestPrice(newSymbol);
+
   const conversionRate = Price?.price;
   return (
     <>
