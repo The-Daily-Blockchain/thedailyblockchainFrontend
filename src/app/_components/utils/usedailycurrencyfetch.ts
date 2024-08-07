@@ -4,7 +4,7 @@ import axios from "axios";
 export const useDailyCurrencyFetch = () => {
   const intervalRef = useRef(null);
 
-  const currencyUrl = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${process.env.api_key_currency}&symbols=PHP`;
+  const currencyUrl = `https://api.currencyfreaks.com/v2.0/rates/latest?apikey=${process.env.NEXT_PUBLIC_API_CURRENCY_KEY}&symbols=PHP`;
 
   useEffect(() => {
     const fetchData = async () => {
