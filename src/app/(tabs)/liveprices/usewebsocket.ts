@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 export const useWebSocket = () => {
   const [tickerData, setTickerData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let socket: WebSocket | null = null;
@@ -16,13 +15,9 @@ export const useWebSocket = () => {
         `wss://${process.env.NEXT_PUBLIC_WEBSOCKET_ENDPOINT}/ws/allticker/${query}`
       );
 
-      socket.onopen = () => {
-        console.log("WebSocket connection established");
-      };
-
       socket.onmessage = (event) => {
-        try {
-          const newData = JSON.parse(event.data);
+        const newData = JSON.parse(event.data);
+        if (newData && newData.stream) {
           const pair = newData.stream.split("@")[0];
 
           setTickerData((prevData) => {
@@ -32,14 +27,7 @@ export const useWebSocket = () => {
           });
 
           setIsLoading(false);
-        } catch (error) {
-          console.error("Error parsing message data:", error);
-          setError("Failed to parse WebSocket data");
         }
-      };
-      socket.onerror = (error) => {
-        console.error("WebSocket error:", error);
-        setError("WebSocket error");
       };
 
       socket.onclose = () => {
@@ -55,5 +43,5 @@ export const useWebSocket = () => {
       }
     };
   }, []);
-  return { tickerData, isLoading, error };
+  return { tickerData, isLoading };
 };
