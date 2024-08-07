@@ -28,8 +28,8 @@ import { MdExplore } from "react-icons/md";
 
 const StreamComponent = ({ name, dataStream }: any) => {
   const [isClient, setIsClient] = useState(false);
-  const { arrowIcon, valueClassName } = useValueArrow(dataStream.w);
-  const symbol = dataStream.s?.split("USDT")[0];
+  const { arrowIcon, valueClassName } = useValueArrow(dataStream?.w);
+  const symbol = dataStream?.s?.split("USDT")[0];
   const { data: marketData }: { data: any } = useMarketData(name);
   const { imageUrl } = convertSymbolToName(symbol);
 
@@ -39,10 +39,10 @@ const StreamComponent = ({ name, dataStream }: any) => {
 
   const formattedData = [
     {
-      name: dataStream.s,
-      high: parseFloat(dataStream.h),
-      low: parseFloat(dataStream.l),
-      current: parseFloat(dataStream.w),
+      name: dataStream?.s,
+      high: parseFloat(dataStream?.h),
+      low: parseFloat(dataStream?.l),
+      current: parseFloat(dataStream?.w),
     },
   ];
   const reshapePercentPayload = [
@@ -81,10 +81,10 @@ const StreamComponent = ({ name, dataStream }: any) => {
               </div>
               <div className="grid grid-cols-2 justify-center">
                 <span className="text-3xl text-left font-bold text-black w-[100px]">
-                  ${newFormatAmount(parseFloat(dataStream.w))}
+                  ${newFormatAmount(parseFloat(dataStream?.w))}
                 </span>
                 <span className={`${valueClassName} ml-2 pl-3 w-[160px]`}>
-                  {arrowIcon} {newFormatAmount(parseFloat(dataStream.P))}%
+                  {arrowIcon} {newFormatAmount(parseFloat(dataStream?.P))}%
                 </span>
               </div>
             </div>
@@ -115,7 +115,7 @@ const StreamComponent = ({ name, dataStream }: any) => {
             <div className="flex">
               <div className="mt-1">
                 <div className="font-medium">24 Hour Trading Volume</div>
-                <div>${newFormatAmount(parseFloat(dataStream.q))}</div>
+                <div>${newFormatAmount(parseFloat(dataStream?.q))}</div>
               </div>
             </div>
             <div className="mt-1">

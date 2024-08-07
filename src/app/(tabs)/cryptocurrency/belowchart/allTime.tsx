@@ -155,7 +155,7 @@ const AllTime = ({ chartData, dataStream, symbol }: Props) => {
             <div>
               <NumberFormatter
                 value={(
-                  ((dataStream.w - highestValue) / highestValue) *
+                  ((dataStream?.w - highestValue) / highestValue) *
                   100
                 ).toFixed(2)}
               />
@@ -173,7 +173,7 @@ const AllTime = ({ chartData, dataStream, symbol }: Props) => {
             <div>
               <NumberFormatter
                 value={(
-                  ((dataStream.w - lowestValue) / lowestValue) *
+                  ((dataStream?.w - lowestValue) / lowestValue) *
                   100
                 ).toFixed(2)}
               />

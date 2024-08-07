@@ -14,8 +14,6 @@ const PercentComponent = ({ dataStream, chartData }: Props) => {
   const fiveYears = chartData?.[chartData.length - 260]?.[4];
   const maxYears = chartData?.[0]?.[4];
 
-  // binance api not working?
-
   return (
     <div className="py-2 ">
       <div className="grid  grid-cols-7 text-center pb-1 mb-1 border-b-2">
@@ -29,38 +27,38 @@ const PercentComponent = ({ dataStream, chartData }: Props) => {
       </div>
       <div className="grid grid-cols-7 text-center pr-2 text-[9px] sm:text-[14px]">
         <div>
-          <NumberFormatter value={parseFloat(dataStream.P).toFixed(2)} />
+          <NumberFormatter value={parseFloat(dataStream?.P).toFixed(2)} />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - sevenDays) / sevenDays) * 100).toFixed(2)}
+            value={(((dataStream?.w - sevenDays) / sevenDays) * 100).toFixed(2)}
           />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - thirtyDays) / thirtyDays) * 100).toFixed(
+            value={(((dataStream?.w - thirtyDays) / thirtyDays) * 100).toFixed(
               2
             )}
           />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - sixMonths) / sixMonths) * 100).toFixed(2)}
+            value={(((dataStream?.w - sixMonths) / sixMonths) * 100).toFixed(2)}
           />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - oneYear) / oneYear) * 100).toFixed(2)}
+            value={(((dataStream?.w - oneYear) / oneYear) * 100).toFixed(2)}
           />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - fiveYears) / fiveYears) * 100).toFixed(2)}
+            value={(((dataStream?.w - fiveYears) / fiveYears) * 100).toFixed(2)}
           />
         </div>
         <div>
           <NumberFormatter
-            value={(((dataStream.w - maxYears) / maxYears) * 100).toFixed(2)}
+            value={(((dataStream?.w - maxYears) / maxYears) * 100).toFixed(2)}
           />
         </div>
       </div>

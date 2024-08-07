@@ -9,8 +9,8 @@ import { useMarketData } from "@/app/_components/hooks/marketData";
 
 const LgBelowHeaders = ({ name, dataStream }: any) => {
   const [isClient, setIsClient] = useState(false);
-  const { arrowIcon, valueClassName } = useValueArrow(dataStream.w);
-  const symbol = dataStream.s?.split("USDT")[0];
+  const { arrowIcon, valueClassName } = useValueArrow(dataStream?.w);
+  const symbol = dataStream?.s?.split("USDT")[0];
   const { data: marketData }: { data: any } = useMarketData(name);
   const { imageUrl } = convertSymbolToName(symbol);
 
@@ -46,10 +46,10 @@ const LgBelowHeaders = ({ name, dataStream }: any) => {
               </div>
               <div className="grid grid-cols-2 justify-center">
                 <span className="text-3xl text-left font-bold text-black w-[100px]">
-                  ${newFormatAmount(parseFloat(dataStream.w))}
+                  ${newFormatAmount(parseFloat(dataStream?.w))}
                 </span>
                 <span className={`${valueClassName} ml-2 pl-3 w-[160px]`}>
-                  {arrowIcon} {newFormatAmount(parseFloat(dataStream.P))}%
+                  {arrowIcon} {newFormatAmount(parseFloat(dataStream?.P))}%
                 </span>
               </div>
             </div>
