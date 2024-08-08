@@ -63,6 +63,10 @@ export const CandleStickComponent = ({
         horzTouchDrag: false,
         vertTouchDrag: false,
       },
+      handleScale: {
+        mouseWheel: false,
+        pinch: false,
+      },
       timeScale: {
         visible: true,
         timeVisible: timeVisible,

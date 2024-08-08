@@ -9,6 +9,7 @@ import ButtonMarket from "./buttonMarket";
 import { symbolToName } from "@/app/_components/utils/cryptomappings";
 import { useMarketHistory } from "@/app/_components/hooks/useMarketHistory";
 import SmallLoader from "@/app/_components/utils/smallLoader";
+import BreakpointWrapper from "@/app/_adhoc/breakpointWrapper";
 
 interface Props {
   symbol: any;
@@ -91,7 +92,7 @@ const Charting = ({ symbol }: Props) => {
   };
 
   return (
-    <>
+    <BreakpointWrapper>
       <div className="pl-1 rounded-xl shadow-2xl">
         <ButtonMarket onChangeMarketCap={handleMarketCap} />
         <DynamicValues
@@ -130,7 +131,7 @@ const Charting = ({ symbol }: Props) => {
           />
         </>
       )}
-    </>
+    </BreakpointWrapper>
   );
 };
 
