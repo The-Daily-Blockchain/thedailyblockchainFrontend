@@ -23,7 +23,7 @@ const LeftCover = ({ data }: Props) => {
         .map((x: any, index: number) => (
           <div key={x.id} className="justify-items-end">
             <div
-              className={`grid grid-cols-2 pb-6 mb-7 ${
+              className={`grid grid-cols-2 mb-7 ${
                 index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
               }`}
             >
@@ -34,6 +34,7 @@ const LeftCover = ({ data }: Props) => {
                     height={280}
                     alt="toparticlepic"
                     src={x?.image}
+                    className="rounded-lg border border-black"
                   />
                 </div>
                 <div className="flex justify-center items-center mt-4 font-bold">

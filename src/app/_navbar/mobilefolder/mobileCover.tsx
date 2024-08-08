@@ -36,6 +36,7 @@ const MobileCover = ({ data }: Props) => {
                     height={280}
                     alt="toparticlepic"
                     src={x?.image}
+                    className="rounded-lg border border-black"
                   />
                 </div>
                 <div className="mt-4 font-bold text-md">

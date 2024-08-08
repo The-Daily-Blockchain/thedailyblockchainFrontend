@@ -35,6 +35,7 @@ const MdLeftCover = ({ data }: Props) => {
                     height={280}
                     alt="toparticlepic"
                     src={x?.image}
+                    className="rounded-lg border border-black"
                   />
                 </div>
                 <div className="flex justify-center items-center mt-4 font-bold">
