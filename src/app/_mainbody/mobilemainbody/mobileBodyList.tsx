@@ -38,13 +38,17 @@ const MobileBodyList = ({ title, data, handleClick, isLoading }: Props) => {
                   height={250}
                   alt="toparticlepic"
                   src={x?.image || x?.image_post}
+                  className="rounded-lg"
                 />
 
                 <div className="mt-4 font-bold">
                   By: {x?.author?.first_name || x?.author_post?.first_name} {""}
                   {x?.author?.last_name || x?.author_post?.last_name}
                 </div>
-                <div className="mb-4 text-sm">{formatDate(x.time_created)}</div>
+                <div className="mb-4 text-sm">
+                  {" "}
+                  {formatDate(x.time_created || x.time_created_post)}
+                </div>
               </div>
             </div>
             <div
