@@ -61,15 +61,15 @@ const XlBodyList = ({ title, data, handleClick, isLoading }: Props) => {
                 onClick={() => handleClick(x)}
               >
                 {parse(
-                  stripContent && stripContent.length > 380
+                  stripContent && stripContent.length > 260
                     ? `${stripContent.substring(
                         0,
-                        380
+                        260
                       )} <span className="hover:underline hover:opacity-80" style="font-weight: bold;"> see more...</span>`
-                    : stripContentPost && stripContentPost.length > 380
+                    : stripContentPost && stripContentPost.length > 260
                     ? `${stripContentPost.substring(
                         0,
-                        380
+                        260
                       )} <span className="hover:underline hover:opacity-80" style="font-weight: bold;"> see more...</span>`
                     : stripContent || stripContentPost || ""
                 )}
