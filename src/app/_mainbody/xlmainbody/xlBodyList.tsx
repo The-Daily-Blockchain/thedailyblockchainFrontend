@@ -20,8 +20,8 @@ const XlBodyList = ({ title, data, handleClick, isLoading }: Props) => {
         {title}
       </div>
       {data?.results?.map?.((x: any, index: any, array: any[]) => {
-        const stripContent = stripHtmlTags(x.content);
-        const stripContentPost = stripHtmlTags(x.content_post);
+        const stripContent = stripHtmlTags(x.content).trimStart();
+        const stripContentPost = stripHtmlTags(x.content_post).trimStart();
         return (
           <div
             key={x.id}
