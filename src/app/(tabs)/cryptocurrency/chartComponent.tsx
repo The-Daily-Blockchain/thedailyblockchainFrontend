@@ -70,6 +70,10 @@ export const ChartComponent = ({
         visible: true,
         timeVisible: timeVisible,
       },
+      handleScale: {
+        mouseWheel: false,
+        pinch: false,
+      },
       rightPriceScale: {
         mode: PriceScaleMode.Normal,
         autoScale: true,
