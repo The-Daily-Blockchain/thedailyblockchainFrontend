@@ -107,7 +107,7 @@ const Page = () => {
   return (
     <>
       <div
-        className="flex min-h-screen mx-10"
+        className="flex min-h-screen sm:mx-20 xl:mx-[130px]"
         style={{
           overflowX: "auto",
           scrollbarColor: "transparent transparent",

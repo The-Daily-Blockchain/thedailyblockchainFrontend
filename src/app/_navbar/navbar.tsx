@@ -111,8 +111,8 @@ const NavBar = () => {
           <div
             className={
               nav
-                ? "fixed right-0 sm:right-0 text-black mobile-nav-shadow top-0  w-full h-full bg-gray-500 ease-in-out duration-300 z-10"
-                : "ease-in-out duration-300 top-0 h-full w-full fixed right-[-100%] bg-gray-500  z-10"
+                ? "fixed right-0 sm:right-0 text-black mobile-nav-shadow top-0  w-full h-full bg-gray-500 ease-in-out duration-300 z-20"
+                : "ease-in-out duration-300 top-0 h-full w-full fixed right-[-100%] bg-gray-500  z-20"
             }
           >
             <div
