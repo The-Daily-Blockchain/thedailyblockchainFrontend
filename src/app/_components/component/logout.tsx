@@ -2,7 +2,6 @@
 import { useAuth } from "@/app/_context/authContext";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { useGetLogUser } from "../hooks/useGetLogUser";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -10,9 +9,8 @@ import { useEffect, useState } from "react";
 const LogoutButton = () => {
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
-  const handleLogout = async () => {
+  const handleLogout = async (e: any) => {
     await axios.post(`api/logout`);
-    Cookies.remove("token");
     logout();
   };
 

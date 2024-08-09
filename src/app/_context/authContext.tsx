@@ -7,6 +7,7 @@ import React, {
   ReactNode,
 } from "react";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -22,6 +23,7 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const token = Cookies.get("token");
@@ -35,6 +37,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = (): void => {
     Cookies.remove("token");
+    router.push("/");
     setIsLoggedIn(false);
   };
 
