@@ -15,14 +15,14 @@ export async function POST(request: NextRequest) {
       },
     });
     console.log(token);
-    if (response.ok) {
-      console.log("Sucessfull logout", response);
-      cookies().delete("token");
-      redirect(`${baseUrl}`);
-    } else {
-      console.error("Failed to logout:", response.statusText);
-      return NextResponse.error();
-    }
+    // if (response.ok) {
+    console.log("Sucessfull logout", response);
+    cookies().delete("token");
+    redirect(`${baseUrl}`);
+    // } else {
+    //   console.error("Failed to logout:", response.statusText);
+    //   return NextResponse.error();
+    // }
   } else {
     return NextResponse.json({ error: "logout failed" });
   }
