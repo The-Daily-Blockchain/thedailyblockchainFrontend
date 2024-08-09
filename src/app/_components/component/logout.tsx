@@ -17,6 +17,8 @@ const LogoutButton = () => {
 
   const { data } = useGetLogUser();
   const pathname = usePathname();
+  if (!data) return <></>;
+
   return (
     isLoggedIn && (
       <div>
