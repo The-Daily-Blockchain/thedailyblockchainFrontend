@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useGetLogUser } from "../hooks/useGetLogUser";
 import { useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const LogoutButton = () => {
   const { isLoggedIn, logout } = useAuth();
@@ -17,6 +18,11 @@ const LogoutButton = () => {
 
   const { data } = useGetLogUser();
   const pathname = usePathname();
+
+  useEffect(() => {
+    console.log("data change");
+  }, [data]);
+
   if (!data) return <></>;
 
   return (

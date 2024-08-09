@@ -19,7 +19,8 @@ export async function POST(request: NextRequest) {
     console.log(token);
     if (response.ok) {
       console.log("Sucessfull logout", response);
-      request.cookies.delete("token");
+      cookies().delete("token");
+      // request.cookies.delete("token");
       return NextResponse.redirect(`${baseUrl}/`);
     } else {
       console.error("Failed to logout:", response.statusText);
