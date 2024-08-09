@@ -44,7 +44,7 @@ const RightCover = () => {
               className="duration-500 rounded-3xl"
               style={{ objectFit: "cover" }}
               height={500}
-              width={280}
+              width={350}
               priority
             />
             <div className="flex justify-center">

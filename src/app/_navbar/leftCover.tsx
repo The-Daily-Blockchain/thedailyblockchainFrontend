@@ -27,7 +27,7 @@ const LeftCover = ({ data }: Props) => {
                 index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
               }`}
             >
-              <div>
+              <div className="mb-2">
                 <div className="flex justify-end items-center mr-8">
                   <Image
                     width={280}

@@ -49,7 +49,7 @@ const Body = () => {
         <AdHocLoader isLoading={isLoading || isLoadingPost}>
           <div className="mx-2">
             <CoverMobileBody data={data} />
-            <div className="h-10 bg-black"></div>
+            <div className="h-10"></div>
             <MobileMainPage />
           </div>
           <ArrowButton />
