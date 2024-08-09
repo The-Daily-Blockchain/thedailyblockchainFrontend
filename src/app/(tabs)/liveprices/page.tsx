@@ -107,7 +107,7 @@ const Page = () => {
   return (
     <>
       <div
-        className="flex min-h-screen sm:mx-20 xl:mx-[130px]"
+        className="flex min-h-screen mx-2 sm:mx-20 xl:mx-[200px] 2xl:mx-[300px]"
         style={{
           overflowX: "auto",
           scrollbarColor: "transparent transparent",
@@ -121,7 +121,7 @@ const Page = () => {
               <TableHead className="w-[70px] sticky left-12 bg-white z-10">
                 Cryptocurrency
               </TableHead>
-              <TableHead className="text-right w-[100px]">
+              <TableHead className="text-right pl-8 sm:w-[100px]">
                 24hr Price change
               </TableHead>
               <TableHead className="text-right w-[100px]">
@@ -176,7 +176,7 @@ const Page = () => {
                       color:
                         parseFloat(tickerData[pair].p) < 0 ? "red" : "green",
                     }}
-                    className="text-right w-[100px]"
+                    className="text-right w-[130px]"
                   >
                     $ {parseFloat(tickerData[pair].p).toLocaleString()}
                   </TableCell>
@@ -185,7 +185,7 @@ const Page = () => {
                       color:
                         parseFloat(tickerData[pair].P) < 0 ? "red" : "green",
                     }}
-                    className="text-right w-[100px]"
+                    className="text-right sm:w-[100px]"
                   >
                     {parseFloat(tickerData[pair].P).toFixed(2)}%
                   </TableCell>
