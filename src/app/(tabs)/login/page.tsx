@@ -8,7 +8,6 @@ import Loader from "@/app/loader";
 const Page = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const token = Cookies.get("token");
   useEffect(() => {
     const token = Cookies.get("token");
     if (token) {

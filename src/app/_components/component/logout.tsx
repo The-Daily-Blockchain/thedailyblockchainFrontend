@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useGetLogUser } from "../hooks/useGetLogUser";
 import { useRouter, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 const LogoutButton = () => {
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
-  const handleLogout = async (e: any) => {
-    await axios.post(`api/logout`);
-    logout();
+  const handleLogout = async () => {
+    await axios.post(`/api/logout`);
   };
 
   const { data } = useGetLogUser();
@@ -33,7 +33,13 @@ const LogoutButton = () => {
             </div>
           )}
           <div>
-            <Button className="flex-1 hover:opacity-60" onClick={handleLogout}>
+            <Button
+              className="flex-1 hover:opacity-60"
+              onClick={() => {
+                handleLogout();
+                logout();
+              }}
+            >
               Logout
             </Button>
           </div>
