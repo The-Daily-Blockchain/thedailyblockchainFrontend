@@ -32,7 +32,7 @@ const CryptoPage = ({ params }: any) => {
   return (
     <>
       <div className="hidden lg:block">
-        <div className="grid grid-cols-[1fr,2fr,1fr] mt-10 justify-items-center mb-10">
+        <div className="grid grid-cols-[1fr,2fr,1fr] xl:mx-[200px] mt-10 justify-items-center mb-10">
           <div className="w-[340px] ml-2">
             <div className="border-r-2 pl-3 rounded-xl  shadow-2xl">
               <StreamComponent name={name} dataStream={dataStream} />
@@ -69,7 +69,7 @@ const CryptoPage = ({ params }: any) => {
               <CryptoPost symbol={name} />
             </div>
           </div>
-          <div className="hidden xl:block w-[360px] 2xl:w-[400px] 2xl:mr-10">
+          <div className="hidden ml-3 xl:block w-[360px] 2xl:w-[400px] 2xl:mr-10">
             <div className="shadow-2xl font-semibold align-middle bg-white rounded-xl p-6 mt-3 mr-2">
               <CryptoHeader symbol={name} />
             </div>
