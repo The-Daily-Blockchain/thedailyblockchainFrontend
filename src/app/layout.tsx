@@ -1,4 +1,3 @@
-"use client";
 import "./globals.css";
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
@@ -9,9 +8,10 @@ import LogoutButton from "./_components/component/logout";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: "The Daily Blockchain Ph",
   description: "Giving your daily dose of cryptocurrency needs",
+  icons: { icon: "/LOGO.png" },
 };
 
 export default function RootLayout({
