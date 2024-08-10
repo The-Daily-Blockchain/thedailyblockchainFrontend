@@ -7,7 +7,15 @@ import LgScreenAdhoc from "@/app/_adhoc/lgscreenadhoc";
 import MdScreenAdhoc from "@/app/_adhoc/mdscreenadhoc";
 import LgAbout from "./lgabout";
 
-const page = () => {
+import type { Metadata } from "next";
+import { ABOUT_SEO } from "@/app/_seo/seo_config";
+
+export const metadata: Metadata = {
+  title: ABOUT_SEO.TITLE,
+  description: ABOUT_SEO.DESCRIPTION,
+};
+
+export default function Page() {
   return (
     <>
       <FullScreenAdhoc>
@@ -24,6 +32,4 @@ const page = () => {
       </MobileScreenAdhoc>
     </>
   );
-};
-
-export default page;
+}

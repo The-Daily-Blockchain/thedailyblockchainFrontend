@@ -1,35 +1,12 @@
-"use client";
-import React from "react";
-import BodyList from "../../_mainbody/BodyList";
-import Pagination from "../../_mainbody/pagination";
-import { useDataHandler } from "../../_components/utils/dataHandler";
+import type { Metadata } from "next";
+import { CRYPTO101_SEO } from "@/app/_seo/seo_config";
+import { Crypto101Root } from "./crypto101Root";
 
-const Page = () => {
-  const {
-    data,
-    isLoading,
-    error,
-    handleDataUpdate,
-    handleLoading,
-    handleError,
-  } = useDataHandler();
-  const title = "Crypto 101";
-  const apiEndpoint = "/api/post?";
-
-  return (
-    <div>
-      <BodyList
-        data={data}
-        isLoading={isLoading}
-        error={error}
-        title={title}
-        apiEndpoint={apiEndpoint}
-        handleDataUpdate={handleDataUpdate}
-        handleLoading={handleLoading}
-        handleError={handleError}
-      />
-    </div>
-  );
+export const metadata: Metadata = {
+  title: CRYPTO101_SEO.TITLE,
+  description: CRYPTO101_SEO.DESCRIPTION,
 };
 
-export default Page;
+export default function Page() {
+  return <Crypto101Root />;
+}

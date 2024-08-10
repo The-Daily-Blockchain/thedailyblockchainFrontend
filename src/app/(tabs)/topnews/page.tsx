@@ -1,34 +1,12 @@
-"use client";
-import React, { useState } from "react";
-import { useDataHandler } from "@/app/_components/utils/dataHandler";
-import BodyList from "@/app/_mainbody/BodyList";
+import type { Metadata } from "next";
+import { TOP_NEWS_SEO } from "@/app/_seo/seo_config";
+import { TopNewsRoot } from "./topNewsRoot";
 
-const Page = () => {
-  const {
-    data,
-    isLoading,
-    error,
-    handleDataUpdate,
-    handleLoading,
-    handleError,
-  } = useDataHandler();
-  const title = "Top News";
-  const apiEndpoint = "/api/article?";
-
-  return (
-    <>
-      <BodyList
-        data={data}
-        isLoading={isLoading}
-        error={error}
-        title={title}
-        apiEndpoint={apiEndpoint}
-        handleDataUpdate={handleDataUpdate}
-        handleLoading={handleLoading}
-        handleError={handleError}
-      />
-    </>
-  );
+export const metadata: Metadata = {
+  title: TOP_NEWS_SEO.TITLE,
+  description: TOP_NEWS_SEO.DESCRIPTION,
 };
 
-export default Page;
+export default function Page() {
+  return <TopNewsRoot />;
+}

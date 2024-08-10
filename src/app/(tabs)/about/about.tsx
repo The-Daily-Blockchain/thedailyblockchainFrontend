@@ -26,7 +26,7 @@ const About = () => {
         </div>
       </div>
       <div className="mx-18 mb-12 mt-6 text-center">
-        <div className="text-[30px] font-bold mb-5">Vission/Mission</div>
+        <div className="text-[30px] font-bold mb-5">Vision/Mission</div>
         <div className="text-start md:w-6/12 mx-auto">
           <span className="font-bold"> Vision:</span> To become the primary
           destination for comprehensive news, analysis, and education on the
