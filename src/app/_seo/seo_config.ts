@@ -40,3 +40,7 @@ export const LIVE_PRICE_SEO = {
   DESCRIPTION:
     "Stay updated with live cryptocurrency prices at The Daily Blockchain PH. Our real-time data provides accurate, up-to-the-second information on market prices, trends, and fluctuations for various digital currencies. Make informed investment decisions and track market movements effectively with our reliable and instantaneous price updates. Discover the latest in cryptocurrency pricing and never miss a market change.",
 };
+
+export const CRYPTO_SEO = (symbol: string) => ({
+  TITLE: `Latest ${symbol} & Cryptocurrency Insights | The Daily Blockchain PH`,
+});
