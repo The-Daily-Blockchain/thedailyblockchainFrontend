@@ -5,13 +5,15 @@ import NavBar from "@/app/_navbar/navbar";
 import Footer from "./_navbar/footer";
 import { AuthProvider, useAuth } from "./_context/authContext";
 import LogoutButton from "./_components/component/logout";
+import { ROOT_SEO } from "@/app/_seo/seo_config";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "The Daily Blockchain Ph",
-  description: "Giving your daily dose of cryptocurrency needs",
-  icons: { icon: "/LOGO.png" },
+  title: ROOT_SEO.TITLE,
+  description: ROOT_SEO.DESCRIPTION,
+  icons: { icon: ROOT_SEO.LOGO },
+  authors: { name: ROOT_SEO.AUTHOR },
 };
 
 export default function RootLayout({

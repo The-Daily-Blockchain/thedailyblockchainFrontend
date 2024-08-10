@@ -20,7 +20,8 @@ export async function generateMetadata(
 
   return {
     title: data?.title_post,
-    authors: data.username,
+    authors: data?.username,
+    description: data?.content_post,
     openGraph: {
       images: data?.image_post,
     },
