@@ -5,16 +5,8 @@ import stripHtmlRegex from "@/app/_components/utils/StripHtmlRegex";
 import { CRYPTO_SEO } from "@/app/_seo/seo_config";
 import { capitalizeFirstLetter } from "@/app/_components/utils/capitalizefirstletter";
 
-type Props = {
-  params: { slug: string };
-  seo: {
-    TITLE: string;
-    DESCRIPTION: string;
-  };
-};
-
 export async function generateMetadata(
-  { params }: Props,
+  { params }: { params: { slug: string } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const symbol = params.slug;
