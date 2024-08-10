@@ -18,7 +18,7 @@ const LogoutButton = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    console.log("data change");
+    console.log("*");
   }, [data]);
 
   if (!data) return <></>;
