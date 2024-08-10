@@ -33,3 +33,10 @@ export const DONATE_US_SEO = {
   DESCRIPTION:
     "Help sustain The Daily Blockchain PH, a non-profit news site dedicated to delivering accurate, up-to-date information on blockchain technology and cryptocurrency. Your donation enables us to continue producing high-quality content, covering essential expenses like web hosting and content creation, and expanding our reach. By contributing, you support independent journalism and promote transparency, innovation, and progress in the blockchain industry. Explore our donation options, including GCash QR, and make a difference today. Thank you for supporting our mission to educate and inform the community.",
 };
+
+export const LIVE_PRICE_SEO = {
+  TITLE:
+    "Live Cryptocurrency Prices | Real-Time Crypto Data | The Daily Blockchain PH",
+  DESCRIPTION:
+    "Stay updated with live cryptocurrency prices at The Daily Blockchain PH. Our real-time data provides accurate, up-to-the-second information on market prices, trends, and fluctuations for various digital currencies. Make informed investment decisions and track market movements effectively with our reliable and instantaneous price updates. Discover the latest in cryptocurrency pricing and never miss a market change.",
+};
