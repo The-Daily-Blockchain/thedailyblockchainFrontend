@@ -32,7 +32,7 @@ const CryptoPage = ({ params }: any) => {
   return (
     <>
       <div className="hidden lg:block">
-        <div className="grid grid-cols-[1fr,2fr,1fr] xl:mx-[200px] mt-10 justify-items-center mb-10">
+        <div className="grid grid-cols-[1fr,2fr,1fr] 2xl:mx-[180px] mt-10 justify-items-center mb-10">
           <div className="w-[340px] ml-2">
             <div className="border-r-2 pl-3 rounded-xl  shadow-2xl">
               <StreamComponent name={name} dataStream={dataStream} />

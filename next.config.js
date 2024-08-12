@@ -5,38 +5,40 @@ const nextConfig = {
     domains: ["res.cloudinary.com"],
   },
   async headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: [
+    return process.env.NODE_ENV === "production"
+      ? [
           {
-            key: "Strict-Transport-Security",
-            value: "max-age=63072000; includeSubDomains; preload",
+            source: "/(.*)",
+            headers: [
+              {
+                key: "Strict-Transport-Security",
+                value: "max-age=63072000; includeSubDomains; preload",
+              },
+              {
+                key: "Content-Security-Policy",
+                value:
+                  "default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none';",
+              },
+              {
+                key: "X-Frame-Options",
+                value: "DENY",
+              },
+              {
+                key: "X-Content-Type-Options",
+                value: "nosniff",
+              },
+              {
+                key: "Referrer-Policy",
+                value: "strict-origin-when-cross-origin",
+              },
+              {
+                key: "Permissions-Policy",
+                value: "geolocation=(self), microphone=()",
+              },
+            ],
           },
-          {
-            key: "Content-Security-Policy",
-            value:
-              "default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none';",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "DENY",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
-          },
-          {
-            key: "Permissions-Policy",
-            value: "geolocation=(self), microphone=()",
-          },
-        ],
-      },
-    ];
+        ]
+      : [];
   },
 };
 
