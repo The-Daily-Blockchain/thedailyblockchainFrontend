@@ -17,7 +17,7 @@ const nextConfig = {
               {
                 key: "Content-Security-Policy",
                 value:
-                  "default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none';",
+                  "default-src *; img-src * https: data:; script-src * 'unsafe-inline'; style-src * 'unsafe-inline'; object-src 'none';",
               },
               {
                 key: "X-Frame-Options",
