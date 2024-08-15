@@ -16,7 +16,7 @@ const MobileAbout = () => {
         wanted to stay ahead of the game.
       </div>
       <div className="text-[24px] font-bold text-center mb-3">
-        Vission/Mission
+        Vision/Mission
       </div>
       <div className="mb-3">
         Vision: To become the primary destination for comprehensive news,
