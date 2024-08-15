@@ -17,7 +17,7 @@ const nextConfig = {
               {
                 key: "Content-Security-Policy",
                 value:
-                  "default-src *; img-src * https: data:; script-src * 'unsafe-inline'; style-src * 'unsafe-inline'; object-src 'none';",
+                  "default-src *; img-src * https: data:; script-src * 'unsafe-inline'; style-src * 'unsafe-inline'; object-src 'none'; connect-src * https://*.facebook.com https://*.fbcdn.net;",
               },
               {
                 key: "X-Frame-Options",
@@ -33,7 +33,7 @@ const nextConfig = {
               },
               {
                 key: "Permissions-Policy",
-                value: "geolocation=(self), microphone=()",
+                value: "geolocation=(self), microphone=(self), camera=(self)",
               },
             ],
           },
