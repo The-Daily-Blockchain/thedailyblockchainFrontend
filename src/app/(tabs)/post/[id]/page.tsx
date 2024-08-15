@@ -7,12 +7,15 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
+const stripHtmlTags = (html: string) => {
+  return html.replace(/<\/?[^>]+(>|$)/g, "");
+};
+
 export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const id = params.id;
-  console.log(params);
 
   const data = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/post/details/${id}`
@@ -21,7 +24,7 @@ export async function generateMetadata(
   return {
     title: data?.title_post,
     authors: data?.username,
-    description: data?.content_post,
+    description: stripHtmlTags(data?.content_post),
     openGraph: {
       images: data?.image_post,
     },
