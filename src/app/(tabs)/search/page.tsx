@@ -29,7 +29,7 @@ const Page = () => {
 
   return (
     <>
-      <div>
+      <div className="min-h-screen">
         <MainSearchBody
           data={data}
           isLoading={isLoading}
