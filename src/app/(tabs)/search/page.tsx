@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import MainSearchBody from "@/app/_mainbody/searchbody/mainsearchbody";
 import Pagination from "@/app/_mainbody/pagination";
 import { useDataHandler } from "@/app/_components/utils/dataHandler";
+import SuspenseWrapper from "./SuspenseWrapper";
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -28,7 +29,7 @@ const Page = () => {
   } = useDataHandler();
 
   return (
-    <>
+    <SuspenseWrapper>
       <div className="min-h-screen">
         <MainSearchBody
           data={data}
@@ -49,7 +50,7 @@ const Page = () => {
           onErrorUpdate={handleError}
         />
       </div>
-    </>
+    </SuspenseWrapper>
   );
 };
 
