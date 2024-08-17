@@ -7,9 +7,9 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-const stripHtmlTags = (html: string) => {
-  return html.replace(/<\/?[^>]+(>|$)/g, "");
-};
+// const stripHtmlTags = (html: string) => {
+//   return html.replace(/<\/?[^>]+(>|$)/g, "");
+// };
 
 export async function generateMetadata(
   { params, searchParams }: Props,
@@ -24,7 +24,7 @@ export async function generateMetadata(
   return {
     title: data?.title_post,
     authors: data?.username,
-    description: stripHtmlTags(data?.content_post),
+    description: data?.content_post,
     openGraph: {
       images: data?.image_post,
     },
