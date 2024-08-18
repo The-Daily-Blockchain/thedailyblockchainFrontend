@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
-import { Suspense } from "react";
 import NavBar from "@/app/_navbar/navbar";
 import Footer from "./_navbar/footer";
 import { AuthProvider, useAuth } from "./_context/authContext";
@@ -25,18 +24,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Suspense fallback={<Loading />}>
-        <body>
-          <AuthProvider>
-            <NavBar />
-            <div className="bg-black text-white">
-              <LogoutButton />
-            </div>
-            {children}
-            <Footer />
-          </AuthProvider>
-        </body>
-      </Suspense>
+      <body>
+        <AuthProvider>
+          <NavBar />
+          <div className="bg-black text-white">
+            <LogoutButton />
+          </div>
+          {children}
+          <Footer />
+        </AuthProvider>
+      </body>
+      s
     </html>
   );
 }
