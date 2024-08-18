@@ -4,9 +4,9 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com"],
   },
-  // experimental: {
-  //   missingSuspenseWithCSRBailout: false,
-  // },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 
   async headers() {
     return process.env.NODE_ENV === "production"
