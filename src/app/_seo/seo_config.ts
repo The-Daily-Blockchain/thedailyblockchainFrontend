@@ -29,9 +29,9 @@ export const CRYPTO101_SEO = {
 };
 
 export const DONATE_US_SEO = {
-  TITLE: "Support Our Mission - Donate to The Daily Blockchain PH",
+  TITLE: "Contact Us - Support Our Mission - Donate to The Daily Blockchain PH",
   DESCRIPTION:
-    "Help sustain The Daily Blockchain PH, a non-profit news site dedicated to delivering accurate, up-to-date information on blockchain technology and cryptocurrency. Your donation enables us to continue producing high-quality content, covering essential expenses like web hosting and content creation, and expanding our reach. By contributing, you support independent journalism and promote transparency, innovation, and progress in the blockchain industry. Explore our donation options, including GCash QR, and make a difference today. Thank you for supporting our mission to educate and inform the community.",
+    "Reach out to us at The Daily Blockchain PH for any inquiries and learn how you can support our mission. As a non-profit news site dedicated to delivering accurate, up-to-date information on blockchain technology and cryptocurrency, your donation helps us sustain high-quality content and cover essential expenses like web hosting and content creation. Explore our donation options, including GCash QR, and make a difference today. Thank you for supporting independent journalism and promoting transparency, innovation, and progress in the blockchain industry.",
 };
 
 export const LIVE_PRICE_SEO = {

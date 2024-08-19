@@ -1,14 +1,27 @@
 import React from "react";
 import Image from "next/image";
 
-const Xldonate = () => {
+const MobileDonate = () => {
   return (
     <>
       <div className="text-center font-bold mt-10 mb-10 text-[32px]">
-        Donate To Us
+        Contact Us
       </div>
-      <div className="grid grid-cols-2 mb-64">
-        <div className="text-left my-12 md:w-7/12 justify-self-end">
+      <div className="mx-8">
+        <p>
+          We’d love to hear from you! Whether you have questions, feedback, or
+          just want to say hello, feel free to reach out to us. Our team is
+          always here to help.
+        </p>
+        <p className="mt-3">
+          <b className="mr-3">Email:</b> contactus@thedailyblockchainph.com
+        </p>
+      </div>
+      <div className="text-center font-bold mt-10 mb-10 text-[32px]">
+        Donate Us
+      </div>
+      <div className="grid grid-cols-1">
+        <div className="mx-8">
           As a non-profit news site dedicated to providing accurate and
           up-to-date information about blockchain technology, we rely on the
           generosity of our readers to keep us running. Your donation can help
@@ -23,10 +36,8 @@ const Xldonate = () => {
           our news site, and for helping us promote transparency, innovation,
           and progress in the world of blockchain.
         </div>
-        <div className="my-12 ml-24 justify-self-start">
-          <div className="flex justify-center items-center text-[32px]">
-            Gcash QR
-          </div>
+        <div className="mb-8 mt-4">
+          <div className="text-center font-bold text-[22px] mb-2">Gcash QR</div>
           <Image
             src="/dexgcash.jpg"
             width={500}
@@ -40,4 +51,4 @@ const Xldonate = () => {
   );
 };
 
-export default Xldonate;
+export default MobileDonate;

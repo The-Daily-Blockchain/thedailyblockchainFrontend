@@ -89,10 +89,10 @@ const NavBar = () => {
           <div
             className="no-underline hover:underline hover:opacity-60"
             style={{ cursor: "pointer" }}
-            onClick={() => router.push(`/donate`)}
+            onClick={() => router.push(`/contactus`)}
           >
             {" "}
-            Donate Us
+            Contact Us
           </div>
           <div className="absolute top-[2px] right-2 md:right-10">
             <SearchComponent />
@@ -160,12 +160,12 @@ const NavBar = () => {
               </div>
               <div
                 onClick={() => {
-                  router.push(`/donate`);
+                  router.push(`/contactus`);
                   handleNav();
                 }}
                 className="hover:bg-gray-200 pl-8 pt-3 font-bold pb-3 border-b-2 border-solid hover:cursor-pointer"
               >
-                DONATE US
+                CONTACT US
               </div>
 
               <div className="mt-20">
