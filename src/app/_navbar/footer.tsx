@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
       </div>
       <div className="justify-center flex font-bold bg-[#fff]">
         Copyright <AiOutlineCopyrightCircle className="mr-2" />
-        The Daily Blockchain PH 2023
+        The Daily Blockchain PH 2024
       </div>
       <div className="bg-white z-10" style={{ visibility: "hidden" }}>
         <div className="text-center">
