@@ -8,23 +8,23 @@ import {
   formatAmount,
   newFormatAmount,
 } from "../_components/utils/formatamount";
+import { fetcher } from "../_components/utils/fetcher";
+import useSWR from "swr";
 
 const MarQuee = () => {
   const [crypto, setCrypto] = useState<any[]>([]);
   const [isLoading, setLoading] = useState<Boolean>(true);
 
-  const crypto_api = Constants.crypto_api;
+  const { data: marqueeData } = useSWR("/api/marquee", fetcher);
+
   useEffect(() => {
     const fetchCrypto = async () => {
       try {
-        const res = await fetch(crypto_api);
-
-        if (!res.ok) {
-          throw new Error(`Failed to fetch data. Status: ${res.status}`);
+        if (!marqueeData) {
+          return;
         }
 
-        const data = await res.json();
-        setCrypto(data);
+        setCrypto(marqueeData?.data);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -36,7 +36,7 @@ const MarQuee = () => {
       fetchCrypto();
     }, 500000);
     return () => clearInterval(interval);
-  }, [crypto_api]);
+  }, [marqueeData]);
 
   return (
     <div>
@@ -44,7 +44,7 @@ const MarQuee = () => {
         <Marquee>
           <div className="hidden sm:block">
             <div className="flex border-b-4 border-[#000]">
-              {crypto.map((coin, index) => (
+              {crypto?.map?.((coin, index) => (
                 <div
                   className="mr-3 flex border-solid border-black border-r-2 pr-2"
                   key={coin.symbol}
@@ -93,7 +93,7 @@ const MarQuee = () => {
           {/* mobile */}
           <div className="sm:hidden">
             <div className="flex border-b-2 border-[#000]">
-              {crypto.map((coin) => (
+              {crypto?.map?.((coin) => (
                 <div
                   className="mr-2 flex border-solid border-black border-r-2 pr-2"
                   key={coin.symbol}
