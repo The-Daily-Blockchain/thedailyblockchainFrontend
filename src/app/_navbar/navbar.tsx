@@ -170,7 +170,16 @@ const NavBar = () => {
 
               <div className="mt-20">
                 <div className="flex justify-center font-bold">
-                  <AiOutlineCopyrightCircle size={30} /> 2023
+                  <AiOutlineCopyrightCircle size={30} /> 2024
+                </div>
+                <div
+                  onClick={() => {
+                    router.push(`privacy-policy`);
+                    handleNav();
+                  }}
+                  className="flex justify-center font-bold text-sm cursor-pointer text-indigo-900"
+                >
+                  Privacy Policy
                 </div>
               </div>
             </div>
