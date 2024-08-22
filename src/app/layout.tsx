@@ -7,6 +7,7 @@ import { AuthProvider, useAuth } from "./_context/authContext";
 import LogoutButton from "./_components/component/logout";
 import { ROOT_SEO } from "@/app/_seo/seo_config";
 import Loading from "./_navbar/loading";
+import { Suspense } from "react";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <NavBar />
+          <Suspense fallback={<Loading />}>
+            <NavBar />
+          </Suspense>
           <div className="bg-black text-white">
             <LogoutButton />
           </div>
