@@ -24,6 +24,12 @@ const NavBar = () => {
     year: "numeric",
   });
 
+  const handleClick = () => {
+    // Specify the full external URL
+    const externalUrl = "https://signals.thedailyblockchainph.com";
+    window.open(externalUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="bg-[#fff]">
       <div className="flex border-b-2 border-[#ebebeb] items-center">
@@ -82,18 +88,26 @@ const NavBar = () => {
           <div
             className="no-underline hover:underline hover:opacity-60"
             style={{ cursor: "pointer" }}
-            onClick={() => router.push(`/liveprices`)}
-          >
-            Live Prices
-          </div>
-          <div
-            className="no-underline hover:underline hover:opacity-60"
-            style={{ cursor: "pointer" }}
             onClick={() => router.push(`/contactus`)}
           >
             {" "}
             Contact Us
           </div>
+          <div
+            className="no-underline hover:underline hover:opacity-60"
+            style={{ cursor: "pointer" }}
+            onClick={() => router.push(`/liveprices`)}
+          >
+            Live Prices
+          </div>
+          <div
+            className="no-underline hover:underline hover:opacity-60 font-bold"
+            style={{ cursor: "pointer" }}
+            onClick={handleClick}
+          >
+            Signals
+          </div>
+
           <div className="absolute top-[2px] right-2 md:right-10">
             <SearchComponent />
           </div>
@@ -149,6 +163,17 @@ const NavBar = () => {
               >
                 CRYPTO101
               </div>
+
+              <div
+                onClick={() => {
+                  router.push(`/contactus`);
+                  handleNav();
+                }}
+                className="hover:bg-gray-200 pl-8 pt-3 font-bold pb-3 border-b-2 border-solid hover:cursor-pointer"
+              >
+                CONTACT US
+              </div>
+
               <div
                 onClick={() => {
                   router.push(`/liveprices`);
@@ -158,14 +183,15 @@ const NavBar = () => {
               >
                 LIVE PRICES
               </div>
+
               <div
                 onClick={() => {
-                  router.push(`/contactus`);
+                  handleClick();
                   handleNav();
                 }}
                 className="hover:bg-gray-200 pl-8 pt-3 font-bold pb-3 border-b-2 border-solid hover:cursor-pointer"
               >
-                CONTACT US
+                SIGNALS
               </div>
 
               <div className="mt-20">
