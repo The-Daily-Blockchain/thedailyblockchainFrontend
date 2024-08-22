@@ -213,7 +213,7 @@ const NavBar = () => {
         </div>
       </div>
       <MarketCap />
-      <MarQuee />
+      {/* <MarQuee /> */}
     </div>
   );
 };
