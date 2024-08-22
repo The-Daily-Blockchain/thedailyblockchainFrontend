@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AuthProvider>
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={""}>
             <NavBar />
           </Suspense>
           <div className="bg-black text-white">
@@ -37,7 +37,6 @@ export default function RootLayout({
           <Footer />
         </AuthProvider>
       </body>
-      s
     </html>
   );
 }
