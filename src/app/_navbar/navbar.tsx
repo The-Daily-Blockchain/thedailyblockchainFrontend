@@ -46,7 +46,7 @@ const NavBar = () => {
           style={{ cursor: "pointer" }}
         >
           <Image
-            className="hover:opacity-80 sm:w-full sm:h-auto"
+            className="hover:opacity-80 pt-1 sm:pt-0 sm:w-full sm:h-auto m-1 pr-5 sm:pr-0 sm:my-4 md:my-8"
             src="/Daily.png"
             alt="Daily Blockchain Ph"
             width={700}
@@ -101,7 +101,7 @@ const NavBar = () => {
             Live Prices
           </div>
           <div
-            className="no-underline hover:underline hover:opacity-60 font-bold"
+            className="no-underline hover:underline hover:opacity-60"
             style={{ cursor: "pointer" }}
             onClick={handleClick}
           >
