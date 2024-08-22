@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-// import MarQuee from "./marquee";
+import MarQuee from "./marquee";
 import { useRouter } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiOutlineCopyrightCircle } from "react-icons/ai";
@@ -213,7 +213,7 @@ const NavBar = () => {
         </div>
       </div>
       <MarketCap />
-      {/* <MarQuee /> */}
+      <MarQuee />
     </div>
   );
 };
