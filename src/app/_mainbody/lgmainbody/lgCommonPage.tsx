@@ -3,6 +3,7 @@ import parse from "html-react-parser";
 import { formatDate } from "@/app/_components/utils/formattingDate";
 import Loader from "@/app/loader";
 import Error from "@/app/error";
+import { Tweet } from "react-tweet";
 
 interface Props {
   payload: any;

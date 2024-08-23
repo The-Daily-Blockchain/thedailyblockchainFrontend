@@ -1,4 +1,5 @@
 import React from "react";
+import { Tweet } from "react-tweet";
 
 interface Props {
   children: any;
