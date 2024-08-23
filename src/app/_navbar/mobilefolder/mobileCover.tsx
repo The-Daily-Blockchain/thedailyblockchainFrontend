@@ -23,12 +23,13 @@ const MobileCover = ({ data }: Props) => {
           (article: any, index: number) => index <= 1 && !article.archived
         )
         .map((x: any, index: number) => (
-          <div key={x.id} className="justify-items-end">
-            <div
-              className={`grid grid-cols-2 pb-6 mb-6 ${
-                index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
-              }`}
-            >
+          <div
+            key={x.id}
+            className={`justify-items-end ${
+              index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
+            }`}
+          >
+            <div className="grid grid-cols-2 mt-5">
               <div className="mx-2">
                 <div>
                   <Image
@@ -39,10 +40,10 @@ const MobileCover = ({ data }: Props) => {
                     className="rounded-lg border border-black"
                   />
                 </div>
-                <div className="mt-4 font-bold text-md">
+                <div className="mt-4 font-bold text-md ml-1">
                   By: {x.author.first_name} {x.author.last_name}
                 </div>
-                <div className="text-xs">{formatDate(x.time_created)}</div>
+                <div className="text-xs ml-1">{formatDate(x.time_created)}</div>
               </div>
               <div
                 onClick={() => router.push(`/article/${x.id}`)}
@@ -52,13 +53,13 @@ const MobileCover = ({ data }: Props) => {
                   {x.title}
                 </div>
               </div>
-              <div className="text-[#5a5a5a] text-[12px] hover:cursor-pointer hover:opacity-50 transition-opacity duration-300 mb-6">
-                {parse(
-                  x.content.length > 150
-                    ? `${x.content.substring(0, 150)}...`
-                    : x.content
-                )}
-              </div>
+            </div>
+            <div className="text-[#5a5a5a] text-[12px] hover:cursor-pointer hover:opacity-50 transition-opacity duration-300 mb-3 mx-3 mt-2">
+              {parse(
+                x.content.length > 150
+                  ? `${x.content.substring(0, 150)}...`
+                  : x.content
+              )}
             </div>
           </div>
         ))}
