@@ -21,13 +21,14 @@ const LeftCover = ({ data }: Props) => {
           (article: any, index: number) => index <= 1 && !article.archived
         )
         .map((x: any, index: number) => (
-          <div key={x.id} className="justify-items-end">
-            <div
-              className={`grid grid-cols-2 mb-7 ${
-                index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
-              }`}
-            >
-              <div className="mb-2">
+          <div
+            key={x.id}
+            className={`justify-items-end ${
+              index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
+            }`}
+          >
+            <div className={`grid grid-cols-2 mt-7`}>
+              <div>
                 <div className="flex justify-end items-center mr-8">
                   <Image
                     width={280}
@@ -51,7 +52,7 @@ const LeftCover = ({ data }: Props) => {
                 <div className="text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
                   {x.title}
                 </div>
-                <div className="text-[#5a5a5a] text-[12px] mt-6 hover:opacity-50 transition-opacity duration-300">
+                <div className="text-[#5a5a5a] text-[12px] mt-6 hover:opacity-50 transition-opacity duration-300 hidden 2xl:block">
                   {parse(
                     x.content.length > 150
                       ? `${x.content.substring(0, 150)}...`
@@ -59,6 +60,16 @@ const LeftCover = ({ data }: Props) => {
                   )}
                 </div>
               </div>
+            </div>
+            <div
+              onClick={() => router.push(`/article/${x.id}`)}
+              className="text-[#5a5a5a] text-[12px] mt-6 hover:opacity-50 transition-opacity duration-300 hidden lg:block 2xl:hidden cursor-pointer"
+            >
+              {parse(
+                x.content.length > 150
+                  ? `${x.content.substring(0, 150)}...`
+                  : x.content
+              )}
             </div>
           </div>
         ))}
