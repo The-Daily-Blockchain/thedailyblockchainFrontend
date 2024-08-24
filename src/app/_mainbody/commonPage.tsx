@@ -1,5 +1,5 @@
 "use client";
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 
 import Loader from "../loader";
 
@@ -21,6 +21,13 @@ interface Props {
 }
 
 export default function CommonPage({ payload, isLoading, error }: Props) {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://platform.twitter.com/widgets.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, [payload]);
+
   if (error) {
     return <Error />;
   }

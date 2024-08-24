@@ -13,13 +13,6 @@ interface Props {
   error?: boolean;
 }
 const XlCommonPage = ({ payload, isLoading, error }: Props) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://platform.twitter.com/widgets.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, [payload]);
-
   if (isLoading) return <Loader />;
   if (error) return <Error />;
 
