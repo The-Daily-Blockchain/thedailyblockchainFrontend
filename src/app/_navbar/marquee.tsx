@@ -43,7 +43,7 @@ const MarQuee = () => {
       {!isLoading && (
         <Marquee>
           <div className="hidden sm:block">
-            <div className="flex border-b-4 border-[#000]">
+            <div className="flex mt-1 border-y-4 border-[#000]">
               {crypto?.map?.((coin, index) => (
                 <div
                   className="mr-3 flex border-solid border-black border-r-2 pr-2"
