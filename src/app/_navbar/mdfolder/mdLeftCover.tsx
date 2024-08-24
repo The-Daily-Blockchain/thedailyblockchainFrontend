@@ -25,7 +25,7 @@ const MdLeftCover = ({ data }: Props) => {
           <div key={x.id} className="justify-items-end">
             <div
               className={`grid grid-cols-2 pb-6 mb-7 ${
-                index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
+                index === 1 ? "" : "border-b-4 border-double border-slate-300"
               }`}
             >
               <div>
@@ -49,7 +49,7 @@ const MdLeftCover = ({ data }: Props) => {
                 onClick={() => router.push(`/article/${x.id}`)}
                 style={{ cursor: "pointer" }}
               >
-                <div className="text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
+                <div className="self-start mt-[10%] text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
                   {x.title}
                 </div>
                 <div className="text-[#5a5a5a] text-[12px]  hover:opacity-50 transition-opacity duration-300">

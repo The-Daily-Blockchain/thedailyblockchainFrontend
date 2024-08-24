@@ -24,17 +24,17 @@ const LeftPage = () => {
             return (
               <div
                 key={x.id}
-                className={`mb-8 pb-6 border-[#121212] ${
+                className={`mb-8 pb-8 border-slate-300 ${
                   index === array.length - 1
                     ? "border-b-0"
-                    : "border-b-2 border-solid"
+                    : "border-double border-b-2 "
                 }`}
               >
                 <div
                   onClick={() => router.push(`/article/${x.id}`)}
                   style={{ cursor: "pointer" }}
                 >
-                  <div className="text-2xl font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
+                  <div className="self-start mt-[25%] text-2xl font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
                     {x.title}
                   </div>
                   <div className="text-[#5a5a5a] text-[14px] hover:opacity-50 transition-opacity duration-300 mt-3">

@@ -24,7 +24,9 @@ const LeftCover = ({ data }: Props) => {
           <div
             key={x.id}
             className={`justify-items-end ${
-              index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
+              index === 1
+                ? ""
+                : "border-b-4 pb-3 border-double border-slate-300"
             }`}
           >
             <div className={`grid grid-cols-2 mt-7`}>

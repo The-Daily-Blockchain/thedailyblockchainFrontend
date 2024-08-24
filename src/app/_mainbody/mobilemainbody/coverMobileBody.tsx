@@ -7,7 +7,7 @@ interface Props {
 
 const CoverMobileBody = ({ data }: Props) => {
   return (
-    <div className="pt-6 border-b-2 mb-12 border-solid border-[#727272]">
+    <div className="pt-6 border-b-4 mb-12 pb-10 border-double border-slate-600">
       <MobileCover data={data} />
     </div>
   );

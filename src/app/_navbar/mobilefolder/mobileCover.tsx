@@ -26,7 +26,7 @@ const MobileCover = ({ data }: Props) => {
           <div
             key={x.id}
             className={`justify-items-end ${
-              index === 1 ? "" : "border-b-2 border-solid border-[#727272]"
+              index === 1 ? "" : "border-b-4 border-double border-slate-300"
             }`}
           >
             <div className="grid grid-cols-2 mt-5">
@@ -49,7 +49,7 @@ const MobileCover = ({ data }: Props) => {
                 onClick={() => router.push(`/article/${x.id}`)}
                 style={{ cursor: "pointer" }}
               >
-                <div className="text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
+                <div className="self-start mt-[25%] mx-auto text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
                   {x.title}
                 </div>
               </div>

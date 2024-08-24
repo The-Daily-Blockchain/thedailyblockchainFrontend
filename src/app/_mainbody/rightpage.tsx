@@ -24,7 +24,7 @@ const RightPage = () => {
               className={`mb-8 pb-6 ${
                 index === data.results.length - 1
                   ? ""
-                  : "border-b-2 border-solid border-[#121212]"
+                  : "border-b-2 border-slate-300"
               }`}
             >
               <div

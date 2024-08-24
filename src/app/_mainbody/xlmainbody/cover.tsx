@@ -9,7 +9,7 @@ interface Props {
 
 const Cover = ({ data }: Props) => {
   return (
-    <div className="grid grid-cols-2 border-b-2 mb-12 border-solid border-[#727272]">
+    <div className="grid grid-cols-2 border-b-4 border-double pb-10 mb-10 border-slate-600">
       <LeftCover data={data} />
       <RightCover />
     </div>
