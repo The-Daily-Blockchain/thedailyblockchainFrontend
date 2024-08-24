@@ -49,7 +49,7 @@ const MobileCover = ({ data }: Props) => {
                 onClick={() => router.push(`/article/${x.id}`)}
                 style={{ cursor: "pointer" }}
               >
-                <div className="self-start mt-[13%] mx-auto text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
+                <div className="self-start mx-auto text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
                   {x.title}
                 </div>
               </div>
