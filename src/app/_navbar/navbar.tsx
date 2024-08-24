@@ -41,7 +41,7 @@ const NavBar = () => {
           />
         </div>
         <div
-          className="mx-auto"
+          className="mx-auto w-100%"
           onClick={() => router.push("/")}
           style={{ cursor: "pointer" }}
         >
@@ -51,6 +51,7 @@ const NavBar = () => {
             alt="Daily Blockchain Ph"
             width={700}
             height={400}
+            objectFit="contain"
             priority
           />
           <div className="hidden lg:block font-bold text-center">
