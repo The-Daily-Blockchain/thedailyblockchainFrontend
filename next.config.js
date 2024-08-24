@@ -21,7 +21,7 @@ const nextConfig = {
               {
                 key: "Content-Security-Policy",
                 value:
-                  "default-src *; img-src * https: data:; script-src * 'unsafe-inline'; style-src * 'unsafe-inline'; object-src 'none'; connect-src * https://*.facebook.com https://*.fbcdn.net https://signals.thedailyblockchainph.com;",
+                  "default-src *; img-src * https: data:; script-src * 'unsafe-inline'; style-src * 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; connect-src * https://*.facebook.com https://*.fbcdn.net https://signals.thedailyblockchainph.com;",
               },
               {
                 key: "X-Frame-Options",
