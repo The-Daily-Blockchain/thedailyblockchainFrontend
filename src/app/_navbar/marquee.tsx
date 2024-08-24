@@ -92,7 +92,7 @@ const MarQuee = () => {
           </div>
           {/* mobile */}
           <div className="sm:hidden">
-            <div className="flex border-b-2 border-[#000]">
+            <div className="flex border-y-2 border-[#000]">
               {crypto?.map?.((coin) => (
                 <div
                   className="mr-2 flex border-solid border-black border-r-2 pr-2"
