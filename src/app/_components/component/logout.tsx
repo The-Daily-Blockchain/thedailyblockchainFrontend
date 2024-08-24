@@ -59,6 +59,13 @@ const LogoutButton = () => {
           >
             Create Post
           </Button>
+          <Button
+            variant={pathname === "/sendfb" ? "secondary" : undefined}
+            onClick={() => router.push("/sendfb")}
+            className="ml-2 mb-2 hover:opacity-60"
+          >
+            Send Facebook
+          </Button>
         </div>
       </div>
     )
