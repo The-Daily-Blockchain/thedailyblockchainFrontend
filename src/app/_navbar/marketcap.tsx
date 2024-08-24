@@ -39,7 +39,7 @@ const MarketCap = () => {
   return (
     <>
       {!loading && (
-        <div className="border-solid mx-2 border-black flex justify-center text-[13px] md:text-md">
+        <div className="border-solid mx-2 mt-1 border-black flex justify-center text-[13px] md:text-md">
           <p className="md:mr-4">
             Total Market Cap: ${formatAmount(marketCap)}🔥
           </p>
