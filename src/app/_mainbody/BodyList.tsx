@@ -12,6 +12,8 @@ import MdBodyList from "./mdmainbody/mdBodyList";
 import MobileMainBody from "./mobilemainbody/mobileBodyList";
 import ArrowButton from "./arrowbutton";
 import Pagination from "./pagination";
+import { usePathname } from "next/navigation";
+import path from "path";
 
 interface Props {
   data: any;
@@ -35,6 +37,7 @@ const BodyList = ({
   handleError,
 }: Props) => {
   const router = useRouter();
+  const pathname = usePathname();
 
   if (error) return <Error />;
 
@@ -65,6 +68,7 @@ const BodyList = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
+          endpointPath={pathname}
         />
       </LgScreenAdhoc>
       <FullScreenAdhoc>
@@ -79,6 +83,7 @@ const BodyList = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
+          endpointPath={pathname}
         />
       </FullScreenAdhoc>
       <MdScreenAdhoc>
@@ -93,6 +98,7 @@ const BodyList = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
+          endpointPath={pathname}
         />
       </MdScreenAdhoc>
       <MobileScreenAdhoc>
@@ -107,6 +113,7 @@ const BodyList = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
+          endpointPath={pathname}
         />
         <ArrowButton />
       </MobileScreenAdhoc>

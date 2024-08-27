@@ -3,12 +3,14 @@ import ReactPaginate from "react-paginate";
 import useSWR from "swr";
 import { fetcher } from "../_components/utils/fetcher";
 import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
   apiEndpoint: any;
   onDataUpdate: (data: any) => void;
   onLoadingUpdate: (isLoading: any) => void;
   onErrorUpdate: (error: any) => void;
+  endpointPath: string;
 }
 
 const Pagination = ({
@@ -16,10 +18,18 @@ const Pagination = ({
   onDataUpdate,
   onLoadingUpdate,
   onErrorUpdate,
+  endpointPath,
 }: Props) => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const paramspage = searchParams.get("page");
+  const [currentPage, setCurrentPage] = useState<number>(
+    Number(paramspage) || 1
+  );
+
   const { data, isLoading, error } = useSWR(
-    () => `${apiEndpoint}page=${currentPage + 1}`,
+    () => `${apiEndpoint}page=${currentPage}`,
     fetcher
   );
 
@@ -32,7 +42,11 @@ const Pagination = ({
   }, [data, error, isLoading, onDataUpdate, onErrorUpdate, onLoadingUpdate]);
 
   const handlePageChange = (selectedItem: { selected: number }) => {
-    setCurrentPage(selectedItem.selected);
+    const newPage = selectedItem.selected + 1;
+    router.replace(
+      `${process.env.NEXT_PUBLIC_BASE_URL}${endpointPath}?page=${newPage}`
+    );
+    setCurrentPage(newPage);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -59,6 +73,7 @@ const Pagination = ({
             <BsChevronLeft />
           </span>
         }
+        forcePage={currentPage - 1}
       />
     </div>
   );
