@@ -23,6 +23,7 @@ interface Props {
   handleDataUpdate?: any;
   handleLoading?: any;
   handleError?: any;
+  searchQuery?: string;
 }
 
 const MainSearchBody = ({
@@ -34,6 +35,7 @@ const MainSearchBody = ({
   handleDataUpdate,
   handleLoading,
   handleError,
+  searchQuery,
 }: Props) => {
   const router = useRouter();
 
@@ -64,6 +66,7 @@ const MainSearchBody = ({
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
           endpointPath={"/search"}
+          params={`&title=${searchQuery}`}
         />
       </FullScreenAdhoc>
       <LgScreenAdhoc>
@@ -79,6 +82,7 @@ const MainSearchBody = ({
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
           endpointPath={"/search"}
+          params={`&title=${searchQuery}`}
         />
       </LgScreenAdhoc>
       <MdScreenAdhoc>
@@ -94,6 +98,7 @@ const MainSearchBody = ({
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
           endpointPath={"/search"}
+          params={`&title=${searchQuery}`}
         />
       </MdScreenAdhoc>
       <MobileScreenAdhoc>
@@ -109,6 +114,7 @@ const MainSearchBody = ({
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
           endpointPath={"/search"}
+          params={`&title=${searchQuery}`}
         />
         <ArrowButton />
       </MobileScreenAdhoc>

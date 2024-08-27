@@ -38,6 +38,7 @@ const SearchPage = ({
           handleDataUpdate={handleDataUpdate}
           handleLoading={handleLoading}
           handleError={handleError}
+          searchQuery={searchQuery}
         />
       </div>
       <div className="hidden">
