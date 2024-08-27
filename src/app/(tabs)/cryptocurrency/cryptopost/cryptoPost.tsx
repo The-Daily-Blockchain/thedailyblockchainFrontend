@@ -63,7 +63,7 @@ const CryptoPost = ({ symbol }: Props) => {
               </div>
               <div>
                 <div className="flex">
-                  <div className="font-bold mr-2 xl:flex-1">
+                  <div className="font-bold mr-2 ">
                     {items?.profile?.nickname}
                   </div>
                   <div className="justify-self-center xl:flex-1">
