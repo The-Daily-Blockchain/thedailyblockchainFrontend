@@ -46,7 +46,9 @@ const Pagination = ({
   const handlePageChange = (selectedItem: { selected: number }) => {
     const newPage = selectedItem.selected + 1;
     router.replace(
-      `${process.env.NEXT_PUBLIC_BASE_URL}${endpointPath}?page=${newPage}${params}`
+      `${process.env.NEXT_PUBLIC_BASE_URL}${endpointPath}?page=${newPage}${
+        params || ""
+      }`
     );
     setCurrentPage(newPage);
     window.scrollTo({ top: 0, behavior: "smooth" });
