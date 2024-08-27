@@ -51,7 +51,7 @@ const NavBar = () => {
             alt="Daily Blockchain Ph"
             width={700}
             height={400}
-            objectFit="contain"
+            style={{ objectFit: "contain" }}
             priority
           />
           <div className="hidden lg:block font-bold text-center">
