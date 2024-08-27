@@ -2,7 +2,7 @@ import Pagination from "@/app/_mainbody/pagination";
 import MainSearchBody from "@/app/_mainbody/searchbody/mainsearchbody";
 import React from "react";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 
 const SearchPage = ({
   data,
@@ -14,6 +14,7 @@ const SearchPage = ({
 }: any) => {
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
+  const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState("");
   const apiEndpoint = `/api/search?title=${title}&`;
 
@@ -45,6 +46,7 @@ const SearchPage = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
+          endpointPath={pathname}
         />
       </div>
       ;

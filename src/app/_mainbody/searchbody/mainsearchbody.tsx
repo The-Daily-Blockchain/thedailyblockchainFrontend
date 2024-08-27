@@ -63,7 +63,7 @@ const MainSearchBody = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
-          endpointPath={"search"}
+          endpointPath={"/search"}
         />
       </FullScreenAdhoc>
       <LgScreenAdhoc>
@@ -78,7 +78,7 @@ const MainSearchBody = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
-          endpointPath={"search"}
+          endpointPath={"/search"}
         />
       </LgScreenAdhoc>
       <MdScreenAdhoc>
@@ -93,7 +93,7 @@ const MainSearchBody = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
-          endpointPath={"search"}
+          endpointPath={"/search"}
         />
       </MdScreenAdhoc>
       <MobileScreenAdhoc>
@@ -108,7 +108,7 @@ const MainSearchBody = ({
           onDataUpdate={handleDataUpdate}
           onLoadingUpdate={handleLoading}
           onErrorUpdate={handleError}
-          endpointPath={"search"}
+          endpointPath={"/search"}
         />
         <ArrowButton />
       </MobileScreenAdhoc>
