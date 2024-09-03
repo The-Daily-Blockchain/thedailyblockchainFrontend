@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Suspense fallback={""}>
+          <Suspense fallback={null}>
             <NavBar />
           </Suspense>
           <div className="bg-black text-white">
