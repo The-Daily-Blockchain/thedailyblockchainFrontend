@@ -49,7 +49,7 @@ const MdLeftCover = ({ data }: Props) => {
                 onClick={() => router.push(`/article/${x.id}`)}
                 style={{ cursor: "pointer" }}
               >
-                <div className="self-start mt-[10%] text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
+                <div className="self-start text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
                   {x.title}
                 </div>
                 <div className="text-[#5a5a5a] text-[12px]  hover:opacity-50 transition-opacity duration-300">

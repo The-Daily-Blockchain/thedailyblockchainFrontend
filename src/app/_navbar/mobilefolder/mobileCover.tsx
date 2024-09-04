@@ -40,10 +40,6 @@ const MobileCover = ({ data }: Props) => {
                     className="rounded-lg border border-black"
                   />
                 </div>
-                <div className="mt-4 font-bold text-md ml-1">
-                  By: {x.author.first_name} {x.author.last_name}
-                </div>
-                <div className="text-xs ml-1">{formatDate(x.time_created)}</div>
               </div>
               <div
                 onClick={() => router.push(`/article/${x.id}`)}
@@ -54,12 +50,20 @@ const MobileCover = ({ data }: Props) => {
                 </div>
               </div>
             </div>
-            <div className="text-[#5a5a5a] text-[12px] hover:cursor-pointer hover:opacity-50 transition-opacity duration-300 mb-3 mx-3 mt-2">
+            <div className="text-[#5a5a5a] text-[12px] hover:cursor-pointer hover:opacity-50 transition-opacity duration-300  mx-3 mt-5">
               {parse(
                 x.content.length > 150
                   ? `${x.content.substring(0, 150)}...`
                   : x.content
               )}
+            </div>
+            <div className="ml-3">
+              <div className="mt-4 font-bold text-md ml-1">
+                By: {x.author.first_name} {x.author.last_name}
+              </div>
+              <div className="text-xs ml-1 mb-3">
+                {formatDate(x.time_created)}
+              </div>
             </div>
           </div>
         ))}

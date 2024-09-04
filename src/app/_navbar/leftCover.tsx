@@ -40,18 +40,20 @@ const LeftCover = ({ data }: Props) => {
                     className="rounded-lg border border-black"
                   />
                 </div>
-                <div className="flex justify-center items-center mt-4 font-bold">
-                  By: {x.author.first_name} {x.author.last_name}
-                </div>
-                <div className="flex justify-center items-center text-xs">
-                  {formatDate(x.time_created)}
+                <div className="lg:hidden 2xl:block">
+                  <div className="flex justify-center items-center mt-4 font-bold">
+                    By: {x.author.first_name} {x.author.last_name}
+                  </div>
+                  <div className="flex justify-center items-center text-xs">
+                    {formatDate(x.time_created)}
+                  </div>
                 </div>
               </div>
               <div
                 onClick={() => router.push(`/article/${x.id}`)}
                 style={{ cursor: "pointer" }}
               >
-                <div className="self-start mt-[6%] text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
+                <div className="self-start  text-[16px] font-medium text-[#121212] hover:opacity-50 transition-opacity duration-300">
                   {x.title}
                 </div>
                 <div className="text-[#5a5a5a] text-[12px] mt-6 hover:opacity-50 transition-opacity duration-300 hidden 2xl:block">
@@ -72,6 +74,14 @@ const LeftCover = ({ data }: Props) => {
                   ? `${x.content.substring(0, 150)}...`
                   : x.content
               )}
+            </div>
+            <div className="hidden lg:block 2xl:hidden">
+              <div className="items-center mt-4 font-bold">
+                By: {x.author.first_name} {x.author.last_name}
+              </div>
+              <div className="items-center text-xs">
+                {formatDate(x.time_created)}
+              </div>
             </div>
           </div>
         ))}
