@@ -197,7 +197,7 @@ const NavBar = () => {
 
               <div className="mt-20">
                 <div className="flex justify-center font-bold">
-                  <AiOutlineCopyrightCircle size={30} /> 2024
+                  <AiOutlineCopyrightCircle size={30} /> {new Date().getFullYear()}
                 </div>
                 <div
                   onClick={() => {

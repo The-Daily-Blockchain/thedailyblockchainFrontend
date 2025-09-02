@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
       </div>
       <div className="justify-center flex font-bold bg-[#fff]">
         Copyright <AiOutlineCopyrightCircle className="mr-2" />
-        The Daily Blockchain PH 2024
+        The Daily Blockchain PH {new Date().getFullYear()}
       </div>
       <div
         onClick={() => router.push("/privacy-policy")}

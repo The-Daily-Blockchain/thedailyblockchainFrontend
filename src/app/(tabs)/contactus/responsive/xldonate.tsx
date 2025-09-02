@@ -38,7 +38,7 @@ const Xldonate = () => {
         </div>
         <div className="my-12 ml-24 justify-self-start">
           <div className="flex justify-center items-center text-[32px]">
-            Gcash QR
+            QR Ph
           </div>
           <Image
             src="/dexgcash.jpg"
